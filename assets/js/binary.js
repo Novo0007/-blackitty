@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.53/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.1","target":"arcade","targetVersion":"1.12.53","repo":"novo0007/-blackitty"}
-// total=1994848 new=8.39% cached=86.67% other=4.94%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.53/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.1.0","target":"arcade","targetVersion":"1.12.53","repo":"novo0007/-blackitty"}
+// total=2175890 new=7.76% cached=87.27% other=4.97%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -98,9 +98,13 @@ pxtrt.mapKeyNames = [
  "add",
  "addShape",
  "addSprite",
+ "advanceNoteEvent",
  "alignX",
  "alignY",
  "allSprites",
+ "ampEnvelope",
+ "ampLFO",
+ "amplitude",
  "analog",
  "anchor",
  "animations",
@@ -108,10 +112,13 @@ pxtrt.mapKeyNames = [
  "areaHeight",
  "areaWidth",
  "args",
+ "attack",
  "ax",
  "ay",
  "background",
  "basicCard",
+ "beatsPerMeasure",
+ "beatsPerMinute",
  "bestScore",
  "bg",
  "bgColor",
@@ -119,9 +126,11 @@ pxtrt.mapKeyNames = [
  "borderColor",
  "bottom",
  "buckets",
+ "buf",
  "button",
  "buttonEventHandlers",
  "buttons",
+ "byteLength",
  "cachedTileView",
  "cachedVx",
  "cachedVy",
@@ -164,11 +173,14 @@ pxtrt.mapKeyNames = [
  "createdHandlers",
  "currIndent",
  "currentCommand",
+ "currentNoteEvent",
+ "currentTick",
  "cursor",
  "cursorCount",
  "cursorOn",
  "cursorRowHeight",
  "data",
+ "decay",
  "defaultLifespan",
  "defaultRate",
  "deltaTime",
@@ -199,6 +211,8 @@ pxtrt.mapKeyNames = [
  "drawSprite",
  "drawText",
  "drawTextCore",
+ "drums",
+ "duration",
  "dx",
  "dy",
  "effect",
@@ -207,6 +221,7 @@ pxtrt.mapKeyNames = [
  "elapsedTime",
  "enabled",
  "endScreenEffect",
+ "endTick",
  "ensureControlPoint",
  "event",
  "eventContext",
@@ -226,6 +241,7 @@ pxtrt.mapKeyNames = [
  "frameWorker",
  "frames",
  "framesInSample",
+ "frequency",
  "fx",
  "fy",
  "galois",
@@ -235,6 +251,7 @@ pxtrt.mapKeyNames = [
  "getEffect",
  "getImageType",
  "getMessage",
+ "getNote",
  "getObstacle",
  "getOrCreateHandlerForEvent",
  "getSound",
@@ -246,6 +263,7 @@ pxtrt.mapKeyNames = [
  "getTileIndex",
  "getTilesByType",
  "getTileset",
+ "getValue",
  "go",
  "handler",
  "handlerState",
@@ -277,16 +295,22 @@ pxtrt.mapKeyNames = [
  "innerTop",
  "insertAABB",
  "insertAtKey",
+ "instrument",
+ "instrumentByteLength",
  "isHittingTile",
  "isInvalidIndex",
  "isJudgedGame",
+ "isLooping",
+ "isMelodicTrack",
  "isMultiplayerGame",
  "isNewBestScore",
  "isObstacle",
  "isOnWall",
  "isOutOfScreen",
  "isOutsideMap",
+ "isPlaying",
  "isPressed",
+ "isRunning",
  "isScaled",
  "isStatic",
  "isUpdated",
@@ -323,6 +347,7 @@ pxtrt.mapKeyNames = [
  "maxSpeed",
  "maxStep",
  "maxVelocity",
+ "measures",
  "melody",
  "mergeAtKey",
  "message",
@@ -340,7 +365,13 @@ pxtrt.mapKeyNames = [
  "neighbors",
  "next",
  "nodeInterval",
+ "noteEventByteLength",
+ "noteEventStart",
+ "numSteps",
  "number",
+ "numberOfTracks",
+ "octave",
+ "offset",
  "offsetX",
  "offsetY",
  "onEvent",
@@ -365,6 +396,8 @@ pxtrt.mapKeyNames = [
  "period",
  "physicsEngine",
  "pickRandom",
+ "pitchEnvelope",
+ "pitchLFO",
  "place",
  "play",
  "playCore",
@@ -372,6 +405,7 @@ pxtrt.mapKeyNames = [
  "player",
  "playerIndex",
  "playerStates",
+ "polyphony",
  "position",
  "preferredDelay",
  "pressureLevel",
@@ -395,6 +429,7 @@ pxtrt.mapKeyNames = [
  "registerHandler",
  "registerMelody",
  "registerObstacle",
+ "release",
  "remove",
  "removeSprite",
  "render",
@@ -423,6 +458,9 @@ pxtrt.mapKeyNames = [
  "scale",
  "scene",
  "sceneDefaultRate",
+ "scheduleCurrentTick",
+ "scheduleDrumTrack",
+ "scheduleMelodicTrack",
  "score",
  "scoreReachedHandlers",
  "scores",
@@ -460,6 +498,7 @@ pxtrt.mapKeyNames = [
  "setTheme",
  "setTile",
  "setTileAt",
+ "setVolume",
  "shakeAmplitude",
  "shakeDuration",
  "shakeStartTime",
@@ -468,6 +507,7 @@ pxtrt.mapKeyNames = [
  "showLife",
  "showPlayer",
  "showScore",
+ "song",
  "soundSetByUser",
  "source",
  "sourceFactory",
@@ -483,14 +523,19 @@ pxtrt.mapKeyNames = [
  "src",
  "start",
  "startEffect",
+ "startFrequency",
  "startScreenEffect",
+ "startTick",
+ "startVolume",
  "startX",
  "startY",
  "state",
+ "steps",
  "stop",
  "stopped",
  "str",
  "strIndex",
+ "sustain",
  "sx",
  "sy",
  "system",
@@ -500,6 +545,8 @@ pxtrt.mapKeyNames = [
  "textAreaWidth",
  "textColor",
  "theme",
+ "tickToMs",
+ "ticksPerBeat",
  "tileIndex",
  "tileKind",
  "tileMap",
@@ -514,6 +561,7 @@ pxtrt.mapKeyNames = [
  "times",
  "toString",
  "top",
+ "tracks",
  "turnRate",
  "unit",
  "unregister",
@@ -529,9 +577,11 @@ pxtrt.mapKeyNames = [
  "vid",
  "visibility",
  "visibilityFlag",
+ "volume",
  "vx",
  "vy",
  "wallCollisionHandlers",
+ "waveform",
  "width",
  "winEffect",
  "winMessage",
@@ -575,7 +625,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P104131(s) {
+function _main___P118225(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1046,128 +1096,139 @@ switch (step) {
     s.callLocIdx = 80; s.pc = 43; return s.tmp_0;
   case 43:
     r0 = s.retval;
-    globals.Coin___83108 = (r0);
+    globals.Coin___117706 = (r0);
     s.tmp_0 = SpriteKind_create__P81234_mk(s);
     s.callLocIdx = 81; s.pc = 44; return s.tmp_0;
   case 44:
     r0 = s.retval;
-    globals.Flower___83109 = (r0);
+    globals.Flower___117709 = (r0);
     s.tmp_0 = SpriteKind_create__P81234_mk(s);
     s.callLocIdx = 82; s.pc = 45; return s.tmp_0;
   case 45:
     r0 = s.retval;
-    globals.Fireball___83110 = (r0);
+    globals.Fireball___117712 = (r0);
     s.tmp_0 = sprites_onOverlap__P81213_mk(s);
     s.tmp_0.arg0 = globals.Player___81235;
-    s.tmp_0.arg1 = globals.Coin___83108;
-    s.tmp_0.arg2 = inline__P85937;
+    s.tmp_0.arg1 = globals.Coin___117706;
+    s.tmp_0.arg2 = inline__P117717;
     s.callLocIdx = 85; s.pc = 46; return s.tmp_0;
   case 46:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P80951_mk(s);
     s.tmp_0.arg0 = globals.A___80868;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = inline__P85949;
-    s.callLocIdx = 88; s.pc = 47; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P117728;
+    s.callLocIdx = 90; s.pc = 47; return s.tmp_0;
   case 47:
     r0 = s.retval;
     s.tmp_0 = scene_onOverlapTile__P81215_mk(s);
     s.tmp_0.arg0 = globals.Player___81235;
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile3";
-    s.callLocIdx = 89; s.pc = 49; return s.tmp_1;
+    s.callLocIdx = 91; s.pc = 49; return s.tmp_1;
   case 49:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = inline__P85962;
-    s.callLocIdx = 91; s.pc = 48; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P117747;
+    s.callLocIdx = 93; s.pc = 48; return s.tmp_0;
   case 48:
     r0 = s.retval;
     s.tmp_0 = scene_onOverlapTile__P81215_mk(s);
     s.tmp_0.arg0 = globals.Player___81235;
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile2";
-    s.callLocIdx = 92; s.pc = 51; return s.tmp_1;
+    s.callLocIdx = 94; s.pc = 51; return s.tmp_1;
   case 51:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = inline__P85971;
-    s.callLocIdx = 94; s.pc = 50; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P117756;
+    s.callLocIdx = 96; s.pc = 50; return s.tmp_0;
   case 50:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P81213_mk(s);
     s.tmp_0.arg0 = globals.Player___81235;
-    s.tmp_0.arg1 = globals.Flower___83109;
-    s.tmp_0.arg2 = inline__P85983;
-    s.callLocIdx = 102; s.pc = 52; return s.tmp_0;
+    s.tmp_0.arg1 = globals.Flower___117709;
+    s.tmp_0.arg2 = inline__P117770;
+    s.callLocIdx = 104; s.pc = 52; return s.tmp_0;
   case 52:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P81213_mk(s);
     s.tmp_0.arg0 = globals.Player___81235;
-    s.tmp_0.arg1 = globals.Fireball___83110;
-    s.tmp_0.arg2 = inline__P86018;
-    s.callLocIdx = 105; s.pc = 53; return s.tmp_0;
+    s.tmp_0.arg1 = globals.Fireball___117712;
+    s.tmp_0.arg2 = inline__P117806;
+    s.callLocIdx = 107; s.pc = 53; return s.tmp_0;
   case 53:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P81213_mk(s);
     s.tmp_0.arg0 = globals.Player___81235;
     s.tmp_0.arg1 = globals.Enemy___81238;
-    s.tmp_0.arg2 = inline__P86175;
-    s.callLocIdx = 153; s.pc = 54; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P117965;
+    s.callLocIdx = 155; s.pc = 54; return s.tmp_0;
   case 54:
     r0 = s.retval;
-    globals.fireball___83112 = (null);
-    globals.flower___83113 = (null);
-    globals.bee___83114 = (null);
-    globals.Hops_and_Paw___83115 = (null);
-    globals.current_level___83116 = (0);
+    globals.fireball___117943 = (null);
+    globals.flower___117884 = (null);
+    globals.bee___117778 = (null);
+    globals.Hops_and_Paw___117737 = (null);
+    globals.current_level___117761 = (0);
     s.tmp_0 = scene_setBackgroundColor__P81638_mk(s);
     s.tmp_0.arg0 = 1;
-    s.callLocIdx = 154; s.pc = 55; return s.tmp_0;
+    s.callLocIdx = 156; s.pc = 55; return s.tmp_0;
   case 55:
     r0 = s.retval;
     s.tmp_0 = scene_setBackgroundImage__P81640_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex86194);
+    r0 = pxsim.image.ofBuffer(_hex117984);
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 155; s.pc = 56; return s.tmp_0;
+    s.callLocIdx = 157; s.pc = 56; return s.tmp_0;
   case 56:
     r0 = s.retval;
-    globals.current_level___83116 = (0);
+    globals.current_level___117761 = (0);
     s.tmp_0 = sprites_create__P81030_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex86199);
+    r0 = pxsim.image.ofBuffer(_hex117989);
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = globals.Player___81235;
-    s.callLocIdx = 156; s.pc = 57; return s.tmp_0;
+    s.callLocIdx = 158; s.pc = 57; return s.tmp_0;
   case 57:
     r0 = s.retval;
-    globals.Hops_and_Paw___83115 = (r0);
+    globals.Hops_and_Paw___117737 = (r0);
     s.tmp_0 = controller_moveSprite__P80922_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 157; s.pc = 58; return s.tmp_0;
+    s.callLocIdx = 159; s.pc = 58; return s.tmp_0;
   case 58:
     r0 = s.retval;
-    s.tmp_0 = startLevel__P83111_mk(s);
-    s.callLocIdx = 158; s.pc = 59; return s.tmp_0;
+    s.tmp_0 = startLevel__P117766_mk(s);
+    s.callLocIdx = 160; s.pc = 59; return s.tmp_0;
   case 59:
     r0 = s.retval;
-    s.tmp_0 = game_onUpdate__P81778_mk(s);
-    s.tmp_0.arg0 = inline__P86205;
-    s.callLocIdx = 178; s.pc = 60; return s.tmp_0;
+    s.tmp_0 = music_play__P80677_mk(s);
+    s.tmp_1 = music_createSong__P80398_mk(s);
+    s.tmp_1.arg0 = _hex117997;
+    s.callLocIdx = 161; s.pc = 61; return s.tmp_1;
+  case 61:
+    r0 = s.retval;
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = 2;
+    s.callLocIdx = 162; s.pc = 60; return s.tmp_0;
   case 60:
+    r0 = s.retval;
+    s.tmp_0 = game_onUpdate__P81778_mk(s);
+    s.tmp_0.arg0 = inline__P118000;
+    s.callLocIdx = 182; s.pc = 62; return s.tmp_0;
+  case 62:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-_main___P104131.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
-_main___P104131.continuations = [  ]
+_main___P118225.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
+_main___P118225.continuations = [  ]
 
-function _main___P104131_mk(s) {
+function _main___P118225_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P104131, depth: s.depth + 1,
+        parent: s, fn: _main___P118225, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1208,8 +1269,9 @@ const _hex85833 = pxsim.BufferMethods.createBufferFromHex("8704100010000000eeeee
 const _hex85837 = pxsim.BufferMethods.createBufferFromHex("8704100010000000eeeeeeeeeeeece00eeeeeeeeeeee0c00deeeeeeeeeeeee00eeeeeeeeeeeeee00eeeeeeeeedeeee0eeeeeeeeeeeeeee0ceeeeeeeeeeeeee00eeeeeeeeeeeeee00eeeeedeeeeeece00eeeeeeeeeeee0e00eeeeeeeeeeeeee00deeeeeeeeeeeee0ceeeeeeeeeeedee0eeeeeeeeeeeeeee0eeeeeeeeeeeeeee0eeeeeeeeeeeeece00")
 const _hex85841 = pxsim.BufferMethods.createBufferFromHex("870410001000000077eeeeeeeeeeeeee77ee7eeeeeeeeeee77e7eeeeeeeeeeee777eeeeeeeeeeeee77eeeeeeedeeedee77eeeeeeeeeeeeeee7eeeeeeeeeeeeee7777eeeeeeeeeeeee7e7ee7eeeeeeeee77e7eeeeeeeeeeee77eeeeeeeeeeeeed77eeeeeeeeeeeeee7777eeeeeeedeeee77eeeee7eeeeeeee77e7eeeeeeeeeeee77eeeeeeeeeeeeee")
 const _hex85845 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000020000000000000220202000000002020222200000000204044240200000002424044020000002244444022000000224444402200000022444444220000202244400022000020224220220200000200402200000000020042040000000020220000000000000000000000000000000000000000000000000000000000")
-const _hex86194 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9f99999999b99999f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff99999999bbebbbddbb9999f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9f999999bbbdbbbbbbbbbb9b9996f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9f999d99b9bbbbbbbbbbbbbbdb9d996999ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9f99999d99b9dbbbbbbbbbbbbbbbbbbb9969f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9fdd9d99999999bbbbbbbbbbbbbbbbbbbb999996f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd9dd9999999999b9bbbccbccbcbbbbbbbbbb999996ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfbb99999999996666bbbccbccbcbbcbbcbbbbdb966999ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfbbbb99996666666666e6bbcbccbbccbbbccbbbbbebcc69f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbdbb9d999966669d6d6666ccccccbbccbbcccbbcccbbcc9c96ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9fbbbbdb99999999dddd9999c6ccccccccccccccccccbbcbcc69f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbdbbbbdd696696d9dddd666666cccccccccccccccccccccccb9c96ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfbb9bbb6d66666666d6dd969999c9ccccccccccccccccccccbccc6cf9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbfbbd9bb6d9666669669dd666696c9ccccccccbccc9966c69699cccc96ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbd9b99dd6666969966666666669699ccccbcbbcc666666666669966c69f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfbb9999dd6696996666666666666699c6bcbb6666996666666966666696f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbf9b99d66d666666666696696666666666bb66666666966666996669666696ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbd9b69d69966666666666666666666666666666666b66d6666666696666666ffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfdd9966d96666669669666666666666666666666666b66b6666666666996699f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffdf9d696666666666666666666666666666666666666666bb6d6666666699699696ffffffffffffffffffffffffffffffffffffffffffffffffffffff6969666666666666666666666666668668666666666666bb6b6666666666999699ffffffffffffffffffffffffffffffffffffffffffffffffffffff996696666666666666dd66886888668668886866886886b8bb6d66669666669969ffffffffffffffffffffffffffffffffffffffffffffffffffffffd66d66666666666686686688688886688688686688668688bd6b66666669666699f9ffffffffffffffffffffffffffffffffffffffffffffffffff9fd66d696666688668886866688888886888888888888886886ddb6666666d6d6696f9ffffffffffffffffffffffffffffffffffffffffffffffffff9fdd6666668668886866868888888888888888868888888888d8bd6b66d66d6d669696ffffffffffffffffffffffffffffffffffffffffffffffffff9fbd6b6666886868668888888888888888888688888866868888b6bb6d66dd6d666691ffffffffffffffffffffffffffffffffffffffffffffffffffd9bbd66d6666868888886686886866868888868888888888888888bbdb66dd66666611ffffffffffffffffffffffffffffffffffffffffffffffffffd9bbbd66888668868868666686888888668888888888888888888888bbdd8868666666ffffffffffffffffffffffffffffffffffffffffffffffffffbd6bbb88888888888888868888888886888888888888888888886666b6dd8866666611f9ffffffffffffffffffffffffffffffffffffffffffffffffbd6b6d888888888888b8bbbbbd8b888888888888888888668888888888888888868811f9ffffffffffffffffffffffffffffffffffffffffffffff9fbb66668688888888b8bbddddbdbb8b8888888888888888888888868888888888888818f9ffffffffffffffffffffffffffffffffffffffffffffff9fdd16888688688886b8dbddddbbbbbb8888888888888888888888886888886666888816f9ffffffffffffffffffffffffffffffffffffffffffffffdf6d88888888868888b8ddbbbdbdbbbb888888888888888888886688686688688886886696ffffffffffffffffffffffffffffffffffffffffffffff9f66888888888888b8dbddbbbbbdbbbb8b888d888888888888888868686686686688181196ffffffffffffffffffffffffffffffffffffffffffffff9f8688688888bb88d8dddddbbbbbbbbb8bd88d888888888888888888888866688888881891ffffffffffffffffffffffffffffffffffffffffffffffbf81118888b8bb88d8dddbbddbbbbbbb8bd88d888888888888888888888888688888111891ffffffffffffffffffffffffffffffffffffffffffffffbf86818888cccb88ddddbbbdbbbbbbbb8b88dd8d8888888888888888888888688888811196ffffffffffffffffffffffffffffffffffffffffffffffbf188888c8cbbb88ddddbbbbbbbbbbbb8e88db8d8888888888888888888888888888888196ffffffffffffffffffffffffffffffffffffffffffffffbf1b8188ccbb8bb8ddbdbbbbbbbbbbbb8bd8bbdd8888888888888888888888888888881196ffffffffffffffffffffffffffffffffffffffffffffffbf1c8888cc8c88b8ddbbddbdbbbbbbbb88bdbb8d8888888888888888888888888888881896ffffffffffffffffffffffffffffffffffffffffffffffcfcc1c88cc8b88d8bdbbbbbbbbbbbbbb88b8bb8d8888888888888888888888888888881899ffffffffffffffffffffffffffffffffffffffffffffffffcc8cc8bc8e88bbdddbbbbbbbbbbbbb88d8bd8b88888888888888888888888888888868f9ffffffffffffffffffffffffffffffffffffffffffffffffcc8cc8bc8888b8bddbbbbbbbbbbbbb8b88888d88888888888888888888888888888868f9ffffffffffffffffffffffffffffffffffffffffffffffffcc1cc8bc8b88e8bdbbbbbbbbbbbbbbbb8e888d88888888888888888888888888888866f9ffffffffffffffffffffffffffffffffffffffffffffffffcc8cc8cc8b88b8ddbdbbbbbbbbbbbbbbbb8c8888888888888888888888888888888861ffffffffffffffffffffffffffffffffffffffffffffffffffc9ccc8ccbb88b8debbbbbbbbbbbbbbbbbbbb8888888888888888888888888888881891ffffffffffffffffffffffffffffffffffffffffffffffffffbfcbc88cbc8c88c8bbbbbbbbbbbbbbbbbbbbbbb8bbbbbbbb8c88888888888888888896ffffffffffffffffffffffffffffffffffffffffffffffffff9fcbccbcbbbc88c8bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbb8b88888888881681f6ffffffffffffffffffffffffffffffffffffffffffffffffff9fccccccbccc88c8bcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb8b888888881868f9ffffffffffffffffffffffffffffffffffffffffffffffffffffc9ccccbc8888c8bcbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbcccbcbb888888888868f9ffffffffffffffffffffffffffffffffffffffffffffffffffffb9cccc8c8888c8bcbbbbbbbbbbbbbbbbbbbbcbccbcccccbcccbb8b888888888868ffffffffffffffffffffffffffffffffffffffffffffffffffffffefcccc8c8888d8bcbcbbbbbbbbcbccccbbbbcbcccbcccccccccc8c888888888896ffffffffffffffffffffffffffffffffffffffffffffffffffffff9fcccc8cbb8888ccccccccbcccccccccbbcccccccccccccccccc888888888888f6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffc9cc8bc88c88ccbccccccccbbbcccccccccccccccccccccccc888888d88d68f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffc9cc8bc88cb8cbcccccccccccccccccccccccccccccccccc888888b8db8896ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9fccbc8b8888c8ccccccbccccccccccccccccccccccccc88888888b88e6896ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc6ccbbbceb8bcccccccccccccccccccccccccccccc8c88888888888868f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc9ccccccbcbb88cccccccccccccccccccccccccc888888888888888896ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9fcb88cccccb8bc8cccccccccccccccccccccc8c8888888888888868f6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc98c88cbccbb88c8cccccccccccccccccccc888888888888888866f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcf6cc8bbcccc8b88cccccccccccccccc8888888888888888886896ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcc86bcbcccbb8888cccccccccc8888888888b8bb8888888866f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9f6cbcb8cccc8b88cccccceb888888888888bbcc8888886896ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc9bc8bc8ccbb88c8ccccbb88888888c8dcddc888986896ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9fccbb88ccbc8888cc8c8888888888c8dc888888bd9bf9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9fbb8bc8cc88888888888888888888888888886696ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc9cc88cc888888888888888888888888886696ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff6966868888888888888888888888886896f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff696686888888888888888888886896f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff99668688888888bb8888686696ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9f9966666666bb6b6696f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9f9999999999f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
-const _hex86199 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000f000000000000000f000000000000000f000000000000000f000000000000000f0ffff0000000000f0ff000000000000f0ffff0000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ffff0000000000f0ff0000000000ffffffff00000000f0ff0f0000000000f0f500000000000000ff0000")
+const _hex117984 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ff1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1111ffffffff1f111111f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1111f1fffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fff1ffffff1ff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fff1ffffffff11ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff11fff1ffffffff1ff1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffff1ffffffff1111f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ff1f1ffff1111f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff11f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fffffffffffffffffffffffffffffffffffffffff1ff1ff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffffffff1ffffffffff1f111111f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f1111f1ffffffffffffffffffffffff1fffffffffffffff11ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff11fff1ffffffffffffffffffffffffff1f111111f1ffffff1ff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffff1f11ffffffffffffff11f1ffffffffffffff11f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f11ffffffff1ffffff1f1ffffffff1f111111f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f11ffffffffffff1fffffffffffffffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f11f1fffffffffff1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f11f1ffffffffffffffffffffffff111111ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff11f1ffffffffffffffffffffff1ff1fffff1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff11f1ffffffffffffffffffffff1fffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff11f1ffffffffffffffffffffff1fffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fffffff11fffffffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ff1ffffffffffffffffffffffffffffffffffffddddffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ff1fffffffffffffffffffffffffffffffffffffffddfffffdffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddfffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffddfffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfddfdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfddddddffffffffffffffffffffffffffffffffffffffffffffffffffff9f99999999b99999f9ffffffffffffffffffffffffffffffffffffffffffffffdfddfdffffffffffffff11f1ffffffffffffffffffffffffffffff99999999bbebbbddbb9999f9ffffffffffffffffffffffffffffffffffffffffdffdffffffffffffffffff11f1ffffffffffffffffffffffffff9f999999bbbdbbbbbbbbbb9b9996f9ffffffffffffffffffffffffffffffffffffffdfffffffffffffffffffff11f1ffffffffffffffffffffffff9f999d99b9bbbbbbbbbbbbbbdb9d996999ffffffffffffffffffffffffffffffffffffdfddffffffffffffffffffffffffffffffffffffffffffff9f99999d99b9dbbbbbbbbbbbbbbbbbbb9969f9ffffffffffffffffffffffffffffffffffffffddfdffffffffffffffffffffffffffffffffffffff9fdd9d99999999bbbbbbbbbbbbbbbbbbbb999996f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd9dd9999999999b9bbbccbccbcbbbbbbbbbb999996ffffffffffffffffffffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffdfbb99999999996666bbbccbccbcbbcbbcbbbbdb966999ffffffffffffffffffffffffffffffddddffffffffffffffffffffffffffffffffffffffdfbbbb99996666666666e6bbcbccbbccbbbccbbbbbebcc69f9ffffffffffffffffffffffffffffdfddfdffffffffffffffffffffffffffffffffffffbdbb9d999966669d6d6666ccccccbbccbbcccbbcccbbcc9c96fffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffff9fbbbbdb99999999dddd9999c6ccccccccccccccccccbbcbcc69f9ffffffffffffffffffffffffdfffffffffffdfffffffffffffffffffffffffffffbdbbbbdd696696d9dddd666666cccccccccccccccccccccccb9c96ffffffffffffffffffffffdffdffffffffffdfddddffffffffffffffffffffffdfbb9bbb6d66666666d6dd969999c9ccccccccccccccccccccbccc6cf9ffffffffffffffffffffdfffffffffffffdfffdfffffffffffffffffffffffbfbbd9bb6d9666669669dd666696c9ccccccccbccc9966c69699cccc96ffffffffffffffffffffdffffffffffffffffffffdffffffffffffffffffffbd9b99dd6666969966666666669699ccccbcbbcc666666666669966c69f9ffffffffffffffffffdffffdfffffffffffffffdffffffffffffffffffdfbb9999dd6696996666666666666699c6bcbb6666996666666966666696f9ffffffffffffffffffdfddfdffffffffffffffdfffffffffffffffffffbf9b99d66d666666666696696666666666bb66666666966666996669666696ffffffffffffffffffffffffffffffffffffffdfffffffffffffffffffbd9b69d69966666666666666666666666666666666b66d6666666696666666ffffffffffffffffffffffffffffffffffffffdfffffffffffffffffdfdd9966d96666669669666666666666666666666666b66b6666666666996699f9ffffffffffffffffffffdfddddfffffffffffffdffffffffffffffdf9d696666666666666666666666666666666666666666bb6d6666666699699696fffffffffffffffffffffdffdffffffffffffffdffffffffffffff6969666666666666666666666666668668666666666666bb6b6666666666999699ffffffffffffffffffdffdffdffffffffffffffdffffffffffffff996696666666666666dd66886888668668886866886886b8bb6d66669666669969ffffffffffffffffffdffffdfffdfffffffffffdffffffffffffffd66d66666666666686686688688886688688686688668688bd6b66666669666699f9ffffffffffffffffdffffdfffdfffffffffffdffffffffffff9fd66d696666688668886866688888886888888888888886886ddb6666666d6d6696f9ffffffffffffffffdffffdfffdffffffffdfffffffffffffff9fdd6666668668886866868888888888888888868888888888d8bd6b66d66d6d669696ffffffffffffffffdffffdfffdffffffffdfffffffffffffff9fbd6b6666886868668888888888888888888688888866868888b6bb6d66dd6d666691ffffffffffffffffdffffdfffdfffffffffdffffffffffffffd9bbd66d6666868888886686886866868888868888888888888888bbdb66dd66666611ffffffffffffffffdffffdfffdffffffdfffffffffffffffffd9bbbd66888668868868666686888888668888888888888888888888bbdd8868666666ffffffffffffffffdfdffffffdffffffdfffffffffffffffffbd6bbb88888888888888868888888886888888888888888888886666b6dd8866666611f9ffffffffffffffffddfffffdfffffffdffffffffffffffffbd6b6d888888888888b8bbbbbd8b888888888888888888668888888888888888868811f9fffffffffffffffffffffffdffffdfffffffffffffffff9fbb66668688888888b8bbddddbdbb8b8888888888888888888888868888888888888818f9fffffffffffffffffffffffdffdffdffffffffffffffff9fdd16888688688886b8dbddddbbbbbb8888888888888888888888886888886666888816f9ffffffffffffffffffffdffdfffdffffffffffffffffffdf6d88888888868888b8ddbbbdbdbbbb888888888888888888886688686688688886886696ffffffffffffffdffffffffddfffffffffffffffffffff9f66888888888888b8dbddbbbbbdbbbb8b888d888888888888888868686686686688181196ffffffffffffffdffdffffddfdffffffffffffffffffff9f8688688888bb88d8dddddbbbbbbbbb8bd88d888888888888888888888866688888881891ffffffffffffffffdfdfddffffffffffffffffffffffffbf81118888b8bb88d8dddbbddbbbbbbb8bd88d888888888888888888888888688888111891ffffffffffffffffdfddffffffffffffffffffffffffffbf86818888cccb88ddddbbbdbbbbbbbb8b88dd8d8888888888888888888888688888811196ffffffffffffffffddffffffffffffffffffffffffffffbf188888c8cbbb88ddddbbbbbbbbbbbb8e88db8d8888888888888888888888888888888196ffffffffffffffdffdffffffffffffffffffffffffffffbf1b8188ccbb8bb8ddbdbbbbbbbbbbbb8bd8bbdd8888888888888888888888888888881196ffffffffffffffddffffffffffffffffffffffffffffffbf1c8888cc8c88b8ddbbddbdbbbbbbbb88bdbb8d8888888888888888888888888888881896ffffffffffffdffdffffffffffffffffffffffffffffffcfcc1c88cc8b88d8bdbbbbbbbbbbbbbb88b8bb8d8888888888888888888888888888881899ffffffffffffffffffffffffffffffffffffffffffffffffcc8cc8bc8e88bbdddbbbbbbbbbbbbb88d8bd8b88888888888888888888888888888868f9ffffffffffffffffffffffffffffffffffffffffffffffffcc8cc8bc8888b8bddbbbbbbbbbbbbb8b88888d88888888888888888888888888888868f9ffffffffffffffffddddfdffffffffffffffffffffffffffcc1cc8bc8b88e8bdbbbbbbbbbbbbbbbb8e888d88888888888888888888888888888866f9ffffffffffffffdfffffdfffffffffffffffffffffffffffcc8cc8cc8b88b8ddbdbbbbbbbbbbbbbbbb8c8888888888888888888888888888888861ffffffffffffffffddfffffffdffffffffffffffffffffffffc9ccc8ccbb88b8debbbbbbbbbbbbbbbbbbbb8888888888888888888888888888881891fffffffffffffffffdffffffdfffffffffffffffffffffffffbfcbc88cbc8c88c8bbbbbbbbbbbbbbbbbbbbbbb8bbbbbbbb8c88888888888888888896ffffffffffffffdfffffffffdfffffffffffffffffffffffff9fcbccbcbbbc88c8bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbb8b88888888881681f6ffffffffffffffdfffffffffdfffffffffffffffffffffffff9fccccccbccc88c8bcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb8b888888881868f9ffffffffffffffffffffffffdfffffffffffffffffffffffffffc9ccccbc8888c8bcbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbcccbcbb888888888868f9ffffffffffffffffffffffddfdffffffffffffffffffffffffffb9cccc8c8888c8bcbbbbbbbbbbbbbbbbbbbbcbccbcccccbcccbb8b888888888868ffffffffffffffffffddddddffffffffffffffffffffffffffffffefcccc8c8888d8bcbcbbbbbbbbcbccccbbbbcbcccbcccccccccc8c888888888896ffffffffffffffffffffffddffffffffffffffffffffffffffffff9fcccc8cbb8888ccccccccbcccccccccbbcccccccccccccccccc888888888888f6ffffffffffffffffffffffdffdffffffffffffffffffffffffffffffc9cc8bc88c88ccbccccccccbbbcccccccccccccccccccccccc888888d88d68f9ffffffffffffffffffffffffdfffffffffffffffffffffffffffffffc9cc8bc88cb8cbcccccccccccccccccccccccccccccccccc888888b8db8896ffffffffffffffffffffffffffdfffffffffffffffffffffffffffffff9fccbc8b8888c8ccccccbccccccccccccccccccccccccc88888888b88e6896ffffffffffffffffffffffffffddffffffffffffffffffffffffffffffffc6ccbbbceb8bcccccccccccccccccccccccccccccc8c88888888888868f9ffffffffffffffffffffffffdfffffffffffffffffffffffffffffffffffc9ccccccbcbb88cccccccccccccccccccccccccc888888888888888896fffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffff9fcb88cccccb8bc8cccccccccccccccccccccc8c8888888888888868f6fffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffc98c88cbccbb88c8cccccccccccccccccccc888888888888888866f9ffffffffffffffffffffffffffffffffffffffffffffffffff1f11f1ffffffffcf6cc8bbcccc8b88cccccccccccccccc8888888888888888886896ffffffffffffffffffffffffffffffffffffffffffffffffffff1ff1ffffffffffffcc86bcbcccbb8888cccccccccc8888888888b8bb8888888866f9ffffffffffffffffffffffffffffffffffffffffffffffffffff11ffffffffffffff9f6cbcb8cccc8b88cccccceb888888888888bbcc8888886896fffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffc9bc8bc8ccbb88c8ccccbb88888888c8dcddc888986896fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffff9fccbb88ccbc8888cc8c8888888888c8dc888888bd9bf9fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffff9fbb8bc8cc88888888888888888888888888886696ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc9cc88cc888888888888888888888888886696ffffffffffffffffffffffffffffffffffffffffffffffddfdffffffffffffffffffffffffffffffffff6966868888888888888888888888886896f9fffffffffffffffffffffffffffffffffffffffffffffffdfdffffffffffffffffffffffffffffffffffff696686888888888888888888886896f9ffffffffffffffffffffffffffffffffffffffffffffffdfffdfffffffffffffffffffffffffffffffffffffff99668688888888bb8888686696ffffffffffffffffffffffffffffffffffffffdfddddddddfddfffdfffffffffffffffffffffffffffffffffffffffff9f9966666666bb6b6696f9ffffffffffffffffffffffffffffffffffffffffffffffffdffddffffffdffffffffffffffffffffffffffffffffffffffffff9f9999999999f9fffffffffffffffffffffffffffffffffffffffffffffffffffdffffdffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfddfffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfddfdfffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfdfdfffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfddffdffffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffdfffffdffdfffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffff1111f1ffffffffffffff1fffffffffffffffffffffffdffdfffffffdfffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffff1111f1fffffffffffffffff1ffffffffffffffffffffffffffffffdffffffffffffdffffffffff1fffffffffffffffffffffffffffffffffffffffff1111f1ffffffffffffffff1fffffffffffffffffffffffffffffffdffffffffffffdffffffff111fffffffffffffffffffffffffffffffffffffffff11f1f1ffffffffffffffff1ff1ffffffffffffffffffffffffffffdffffffffffffdffffffff1f11f1ffffffffffffffffffffffffffffffffffffff1111f1fffffffffffffffffff1fffffffffffffffffffffffffffffffffffffffffdffffffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff11fffffffffffffffffffffffffffffffffffffffffdffffffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffffffffdfffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffffffdffffffffffdffdfffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fffffffffffffffffffffffffddddffdffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f11ffffffff1fffffffffffffffffffffffffffffddddfffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f11ffffffff1ffffffffffffffffffffffffdffffdfffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1f11ffffffff1ffffffffffffffffffffffffdffffdfffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffdfffffffdffffffdfffffffffffffffffffffffffffffffffff11f1ffffffffffffffffffffffffffffffffffffffff1fffffffffffffffffffffffddddddddfdffffffdfffffffffffffffffffffffffffffffffff11f1ffffffffffffffffffffffffffffffffffffffff11ffffffffffffffffffddddfdfffffffffffffffdffffffffffffffffffffffffffffffffff11f1fffffffffffffffffffffffffffffffffffffffff1fffffffffffffffffffffffdfffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffff1111f1ffffffffffffffff1ffffffffffffffffffffffffffffdfffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffff1111f1ffffffffffffffff11fffffffffffffffffffffffffffdffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffff1111f1ffffffffffffff1ff1ffffffffffffffffffffdffdfffdffddffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffff11f1f1ffffffffffffff11ffffffffffffffffffffffffdfddddddddfdfffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffff1111f1ffffffffffff1ffffffffffffffffffffffffffffffffdffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffffdffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddffffffffffffffffffffff11ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddffffffffffffffffffffff1f11ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddffddffffffffffffffffffffffff1f1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfddffffffffffffffffffffffffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddfdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfddffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+const _hex117989 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000f000000000000000f000000000000000f000000000000000f000000000000000f0ffff0000000000f0ff000000000000f0ffff0000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ffff0000000000f0ff0000000000ffffffff00000000f0ff0f0000000000f0f500000000000000ff0000")
+const _hex117997 = pxsim.BufferMethods.createBufferFromHex("0078000408020200001c00010a006400f4016400000400000000000000000000000000050000041a000c001000011e1c002000021e272c00300002202c30003400011e06001c00010a006400f401640000040000000000000000000000000000000002330004000800012a08000c00012510001400012518001c00031b222c20002400012224002800011928002c00021d25300034000124")
 
 
 
@@ -2113,7 +2175,7 @@ function myTiles_inline__P85910_mk(s) {
 
 
 
-function inline__P85937(s) {
+function inline__P117717(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2144,12 +2206,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P85937.info = {"start":217,"length":86,"line":5,"column":54,"endLine":8,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
+inline__P117717.info = {"start":217,"length":86,"line":5,"column":54,"endLine":8,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
 
-function inline__P85937_mk(s) {
+function inline__P117717_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P85937, depth: s.depth + 1,
+        parent: s, fn: inline__P117717, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2160,7 +2222,7 @@ function inline__P85937_mk(s) {
 
 
 
-function inline__P85949(s) {
+function inline__P117728(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2170,10 +2232,21 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tmp_2 = Sprite_vy__P81115_mk(s);
-    s.tmp_2.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 86; s.pc = 3; return s.tmp_2;
+    s.tmp_0 = music_play__P80677_mk(s);
+    s.tmp_1 = music_createSong__P80398_mk(s);
+    s.tmp_1.arg0 = _hex117732;
+    s.callLocIdx = 86; s.pc = 4; return s.tmp_1;
+  case 4:
+    r0 = s.retval;
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = 1;
+    s.callLocIdx = 87; s.pc = 3; return s.tmp_0;
   case 3:
+    r0 = s.retval;
+    s.tmp_2 = Sprite_vy__P81115_mk(s);
+    s.tmp_2.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 88; s.pc = 5; return s.tmp_2;
+  case 5:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_1 == 0);
@@ -2181,10 +2254,10 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_3 = Sprite_vy__P81116_mk(s);
-    s.tmp_3.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_3.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_3.arg1 = -150;
-    s.callLocIdx = 87; s.pc = 4; return s.tmp_3;
-  case 4:
+    s.callLocIdx = 89; s.pc = 6; return s.tmp_3;
+  case 6:
     r0 = s.retval;
   case 1:
   case 2:
@@ -2192,12 +2265,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P85949.info = {"start":357,"length":84,"line":9,"column":52,"endLine":13,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P117728.info = {"start":357,"length":251,"line":9,"column":52,"endLine":14,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P85949_mk(s) {
+function inline__P117728_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P85949, depth: s.depth + 1,
+        parent: s, fn: inline__P117728, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2205,11 +2278,12 @@ function inline__P85949_mk(s) {
   tmp_3: undefined,
 } }
 
+const _hex117732 = pxsim.BufferMethods.createBufferFromHex("0078000408020108001c000e050046006603320000040a002d000000640014000132000201000206001c002000011d")
 
 
 
 
-function inline__P85962(s) {
+function inline__P117747(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2227,19 +2301,19 @@ switch (step) {
     s.tmp_0 = game_over__P81767_mk(s);
     s.tmp_0.arg0 = false;
     s.tmp_0.arg1 = globals.melt___82051;
-    s.callLocIdx = 90; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 92; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P85962.info = {"start":502,"length":66,"line":14,"column":59,"endLine":16,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
+inline__P117747.info = {"start":669,"length":66,"line":15,"column":59,"endLine":17,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
 
-function inline__P85962_mk(s) {
+function inline__P117747_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P85962, depth: s.depth + 1,
+        parent: s, fn: inline__P117747, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2250,7 +2324,7 @@ function inline__P85962_mk(s) {
 
 
 
-function inline__P85971(s) {
+function inline__P117756(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2265,22 +2339,22 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = (globals.current_level___83116 + 1);
-    globals.current_level___83116 = (r0);
-    s.tmp_0 = startLevel__P83111_mk(s);
-    s.callLocIdx = 93; s.pc = 1; return s.tmp_0;
+    r0 = (globals.current_level___117761 + 1);
+    globals.current_level___117761 = (r0);
+    s.tmp_0 = startLevel__P117766_mk(s);
+    s.callLocIdx = 95; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P85971.info = {"start":629,"length":71,"line":17,"column":59,"endLine":20,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
+inline__P117756.info = {"start":796,"length":71,"line":18,"column":59,"endLine":21,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
 
-function inline__P85971_mk(s) {
+function inline__P117756_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P85971, depth: s.depth + 1,
+        parent: s, fn: inline__P117756, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2291,7 +2365,7 @@ function inline__P85971_mk(s) {
 
 
 
-function inline__P85983(s) {
+function inline__P117770(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2310,72 +2384,72 @@ switch (step) {
     s.tmp_0.arg0 = s.arg1;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 95; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 97; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = sprites_create__P81030_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex85994);
+    r0 = pxsim.image.ofBuffer(_hex117782);
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = globals.Enemy___81238;
-    s.callLocIdx = 96; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 98; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
-    globals.bee___83114 = (r0);
+    globals.bee___117778 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim.image.ofBuffer(_hex86000);
+    r0 = pxsim.image.ofBuffer(_hex117788);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    r0 = pxsim.image.ofBuffer(_hex86002);
+    r0 = pxsim.image.ofBuffer(_hex117790);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
     s.tmp_3 = animation_runImageAnimation__P82117_mk(s);
-    s.tmp_3.arg0 = globals.bee___83114;
+    s.tmp_3.arg0 = globals.bee___117778;
     s.tmp_3.arg1 = s.tmp_0;
     s.tmp_3.arg2 = 100;
     s.tmp_3.arg3 = true;
-    s.callLocIdx = 97; s.pc = 3; return s.tmp_3;
+    s.callLocIdx = 99; s.pc = 3; return s.tmp_3;
   case 3:
     r0 = s.retval;
     s.tmp_0 = Sprite_setPosition__P81164_mk(s);
-    s.tmp_0.arg0 = globals.bee___83114;
+    s.tmp_0.arg0 = globals.bee___117778;
     s.tmp_2 = Sprite_x__P81109_mk(s);
-    s.tmp_2.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 98; s.pc = 5; return s.tmp_2;
+    s.tmp_2.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 100; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_1 + 80);
     s.tmp_0.arg1 = r0;
     s.tmp_4 = Sprite_y__P81111_mk(s);
-    s.tmp_4.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 99; s.pc = 6; return s.tmp_4;
+    s.tmp_4.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 101; s.pc = 6; return s.tmp_4;
   case 6:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = (s.tmp_3 - 80);
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 100; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 102; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = Sprite_follow__P81185_mk(s);
-    s.tmp_0.arg0 = globals.bee___83114;
-    s.tmp_0.arg1 = globals.Hops_and_Paw___83115;
+    s.tmp_0.arg0 = globals.bee___117778;
+    s.tmp_0.arg1 = globals.Hops_and_Paw___117737;
     s.tmp_0.arg2 = 50;
     s.tmp_0.arg3 = 400;
-    s.callLocIdx = 101; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 103; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P85983.info = {"start":758,"length":2285,"line":21,"column":56,"endLine":83,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
+inline__P117770.info = {"start":925,"length":2285,"line":22,"column":56,"endLine":84,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
 
-function inline__P85983_mk(s) {
+function inline__P117770_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P85983, depth: s.depth + 1,
+        parent: s, fn: inline__P117770, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2386,14 +2460,14 @@ function inline__P85983_mk(s) {
   arg1: undefined,
 } }
 
-const _hex85994 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86000 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000ff00ff0f000000f011f0f5f5000000f011f155f5000000f011f155f5000000f0fff1ffff000000f011f155f5000000f011f155f5000000f011f0f5f500000000ff00ff0f0000000000000000000000000000000000000000000000000000000000000000")
-const _hex86002 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000000000000000000000ff0f0000000000f0f5f50000000000f055f50000000000f055f50000000000f0ffff0000000000f055f50000000000f055f50000000000f0f5f5000000000000ff0f0000000000000000000000000000000000000000000000000000000000000000")
+const _hex117782 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117788 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000ff00ff0f000000f011f0f5f5000000f011f155f5000000f011f155f5000000f0fff1ffff000000f011f155f5000000f011f155f5000000f011f0f5f500000000ff00ff0f0000000000000000000000000000000000000000000000000000000000000000")
+const _hex117790 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000000000000000000000ff0f0000000000f0f5f50000000000f055f50000000000f055f50000000000f0ffff0000000000f055f50000000000f055f50000000000f0f5f5000000000000ff0f0000000000000000000000000000000000000000000000000000000000000000")
 
 
 
 
-function inline__P86018(s) {
+function inline__P117806(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2410,26 +2484,26 @@ switch (step) {
     }
     s.tmp_0 = info_changeLifeBy__P81332_mk(s);
     s.tmp_0.arg0 = -2;
-    s.callLocIdx = 103; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 105; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = Sprite_destroy__P81183_mk(s);
     s.tmp_0.arg0 = s.arg1;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 104; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 106; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P86018.info = {"start":3103,"length":86,"line":84,"column":58,"endLine":87,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
+inline__P117806.info = {"start":3270,"length":86,"line":85,"column":58,"endLine":88,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
 
-function inline__P86018_mk(s) {
+function inline__P117806_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P86018, depth: s.depth + 1,
+        parent: s, fn: inline__P117806, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2440,7 +2514,7 @@ function inline__P86018_mk(s) {
 
 
 
-function inline__P86175(s) {
+function inline__P117965(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2459,18 +2533,18 @@ switch (step) {
     s.tmp_0.arg0 = s.arg1;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 148; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 150; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_2 = Sprite_y__P81111_mk(s);
-    s.tmp_2.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 149; s.pc = 4; return s.tmp_2;
+    s.tmp_2.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 151; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
     s.tmp_1 = r0;
     s.tmp_4 = Sprite_y__P81111_mk(s);
     s.tmp_4.arg0 = s.arg1;
-    s.callLocIdx = 150; s.pc = 5; return s.tmp_4;
+    s.callLocIdx = 152; s.pc = 5; return s.tmp_4;
   case 5:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -2480,14 +2554,14 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_5 = info_changeScoreBy__P81328_mk(s);
     s.tmp_5.arg0 = 3;
-    s.callLocIdx = 151; s.pc = 6; return s.tmp_5;
+    s.callLocIdx = 153; s.pc = 6; return s.tmp_5;
   case 6:
     r0 = s.retval;
     { step = 2; continue; }
   case 1:
     s.tmp_0 = info_changeLifeBy__P81332_mk(s);
     s.tmp_0.arg0 = -1;
-    s.callLocIdx = 152; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 154; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
   case 2:
@@ -2495,12 +2569,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P86175.info = {"start":13872,"length":181,"line":346,"column":55,"endLine":353,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
+inline__P117965.info = {"start":14039,"length":181,"line":347,"column":55,"endLine":354,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
 
-function inline__P86175_mk(s) {
+function inline__P117965_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P86175, depth: s.depth + 1,
+        parent: s, fn: inline__P117965, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2516,7 +2590,7 @@ function inline__P86175_mk(s) {
 
 
 
-function inline__P86205(s) {
+function inline__P118000(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2527,8 +2601,8 @@ switch (step) {
   case 0:
 
     s.tmp_2 = Sprite_vy__P81115_mk(s);
-    s.tmp_2.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 159; s.pc = 17; return s.tmp_2;
+    s.tmp_2.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 163; s.pc = 17; return s.tmp_2;
   case 17:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -2537,17 +2611,17 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_3 = Sprite_setImage__P81146_mk(s);
-    s.tmp_3.arg0 = globals.Hops_and_Paw___83115;
-    r0 = pxsim.image.ofBuffer(_hex86212);
+    s.tmp_3.arg0 = globals.Hops_and_Paw___117737;
+    r0 = pxsim.image.ofBuffer(_hex118007);
     s.tmp_3.arg1 = r0;
-    s.callLocIdx = 160; s.pc = 18; return s.tmp_3;
+    s.callLocIdx = 164; s.pc = 18; return s.tmp_3;
   case 18:
     r0 = s.retval;
     { step = 6; continue; }
   case 1:
     s.tmp_2 = Sprite_vy__P81115_mk(s);
-    s.tmp_2.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 161; s.pc = 19; return s.tmp_2;
+    s.tmp_2.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 165; s.pc = 19; return s.tmp_2;
   case 19:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -2556,17 +2630,17 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     s.tmp_3 = Sprite_setImage__P81146_mk(s);
-    s.tmp_3.arg0 = globals.Hops_and_Paw___83115;
-    r0 = pxsim.image.ofBuffer(_hex86219);
+    s.tmp_3.arg0 = globals.Hops_and_Paw___117737;
+    r0 = pxsim.image.ofBuffer(_hex118014);
     s.tmp_3.arg1 = r0;
-    s.callLocIdx = 162; s.pc = 20; return s.tmp_3;
+    s.callLocIdx = 166; s.pc = 20; return s.tmp_3;
   case 20:
     r0 = s.retval;
     { step = 5; continue; }
   case 2:
     s.tmp_3 = Sprite_x__P81109_mk(s);
-    s.tmp_3.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 163; s.pc = 21; return s.tmp_3;
+    s.tmp_3.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 167; s.pc = 21; return s.tmp_3;
   case 21:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -2577,28 +2651,28 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     s.tmp_4 = Sprite_setImage__P81146_mk(s);
-    s.tmp_4.arg0 = globals.Hops_and_Paw___83115;
-    r0 = pxsim.image.ofBuffer(_hex86227);
+    s.tmp_4.arg0 = globals.Hops_and_Paw___117737;
+    r0 = pxsim.image.ofBuffer(_hex118022);
     s.tmp_4.arg1 = r0;
-    s.callLocIdx = 164; s.pc = 22; return s.tmp_4;
+    s.callLocIdx = 168; s.pc = 22; return s.tmp_4;
   case 22:
     r0 = s.retval;
     { step = 4; continue; }
   case 3:
     s.tmp_0 = Sprite_setImage__P81146_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
-    r0 = pxsim.image.ofBuffer(_hex86231);
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
+    r0 = pxsim.image.ofBuffer(_hex118026);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 165; s.pc = 23; return s.tmp_0;
+    s.callLocIdx = 169; s.pc = 23; return s.tmp_0;
   case 23:
     r0 = s.retval;
   case 4:
   case 5:
   case 6:
     s.tmp_1 = Sprite_isHittingTile__P81176_mk(s);
-    s.tmp_1.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_1.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_1.arg1 = 0;
-    s.callLocIdx = 166; s.pc = 24; return s.tmp_1;
+    s.callLocIdx = 170; s.pc = 24; return s.tmp_1;
   case 24:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -2608,9 +2682,9 @@ switch (step) {
     { step = 8; continue; }
   case 7:
     s.tmp_2 = Sprite_isHittingTile__P81176_mk(s);
-    s.tmp_2.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_2.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_2.arg1 = 2;
-    s.callLocIdx = 167; s.pc = 25; return s.tmp_2;
+    s.callLocIdx = 171; s.pc = 25; return s.tmp_2;
   case 25:
     r0 = s.retval;
   case 8:
@@ -2622,8 +2696,8 @@ switch (step) {
     { step = 10; continue; }
   case 9:
     s.tmp_5 = Sprite_vy__P81115_mk(s);
-    s.tmp_5.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 168; s.pc = 26; return s.tmp_5;
+    s.tmp_5.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 172; s.pc = 26; return s.tmp_5;
   case 26:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -2634,36 +2708,36 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_6);
     if (!r0) { step = 11; continue; }
     s.tmp_7 = Sprite_vy__P81116_mk(s);
-    s.tmp_7.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_7.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_7.arg1 = 0;
-    s.callLocIdx = 169; s.pc = 27; return s.tmp_7;
+    s.callLocIdx = 173; s.pc = 27; return s.tmp_7;
   case 27:
     r0 = s.retval;
     s.tmp_0 = Sprite_ay__P81120_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 170; s.pc = 28; return s.tmp_0;
+    s.callLocIdx = 174; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
     s.tmp_0 = Sprite_setImage__P81146_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
-    r0 = pxsim.image.ofBuffer(_hex86252);
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
+    r0 = pxsim.image.ofBuffer(_hex118047);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 171; s.pc = 29; return s.tmp_0;
+    s.callLocIdx = 175; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
     { step = 12; continue; }
   case 11:
     s.tmp_0 = Sprite_ay__P81120_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_0.arg1 = 350;
-    s.callLocIdx = 172; s.pc = 30; return s.tmp_0;
+    s.callLocIdx = 176; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
   case 12:
     s.tmp_2 = Sprite_vx__P81113_mk(s);
-    s.tmp_2.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 173; s.pc = 31; return s.tmp_2;
+    s.tmp_2.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 177; s.pc = 31; return s.tmp_2;
   case 31:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -2675,9 +2749,9 @@ switch (step) {
     { step = 14; continue; }
   case 13:
     s.tmp_3 = Sprite_isHittingTile__P81176_mk(s);
-    s.tmp_3.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_3.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_3.arg1 = 0;
-    s.callLocIdx = 174; s.pc = 32; return s.tmp_3;
+    s.callLocIdx = 178; s.pc = 32; return s.tmp_3;
   case 32:
     r0 = s.retval;
   case 14:
@@ -2685,14 +2759,14 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 15; continue; }
-    r0 = globals.Hops_and_Paw___83115.fields["_image"];
+    r0 = globals.Hops_and_Paw___117737.fields["_image"];
     s.tmp_5 = r0;
     r0 = pxsim_ImageMethods.flipX(s.tmp_5);
     s.tmp_0 = Sprite_setImage__P81146_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
-    r0 = globals.Hops_and_Paw___83115.fields["_image"];
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
+    r0 = globals.Hops_and_Paw___117737.fields["_image"];
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 177; s.pc = 33; return s.tmp_0;
+    s.callLocIdx = 181; s.pc = 33; return s.tmp_0;
   case 33:
     r0 = s.retval;
   case 15:
@@ -2701,12 +2775,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P86205.info = {"start":34792,"length":4422,"line":503,"column":14,"endLine":609,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P118000.info = {"start":35339,"length":4422,"line":505,"column":14,"endLine":611,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P86205_mk(s) {
+function inline__P118000_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P86205, depth: s.depth + 1,
+        parent: s, fn: inline__P118000, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2718,11 +2792,11 @@ function inline__P86205_mk(s) {
   tmp_7: undefined,
 } }
 
-const _hex86212 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000f0ff0f00000000f0ff00ff00000000000000f000000000000000f0f0ff0000000000f0ff000000000000ff0f0000000000f0ffff0f000000f0ffff00000000f0ffff0f000000ffffffff0f000000f0ff0f0f0f000000f0f50f0f0f00000000ff000f0f0000000000000f000000")
-const _hex86219 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000ffffff000000ffffff0f000000f00ff0ffffff00000f0000ffff0f000000000000ffffffff00000000f0ff0f000000000000ffffff0000000000ff0ff000000000f0ff0f000000000000ff0f0000000000005f0f000000000000f00f00")
-const _hex86227 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000f000000000000000f000000000000000f000000000000000f000000000000000f0ffff0000000000f0ffff0000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ffff00000000ffffffff00000000f0ff0f0000000000f0f500000000000000ff0000")
-const _hex86231 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000f000000000000000f000000000000000f000000000000000f000000000000000f0ffff0000000000f0ff000000000000f0ffff0000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ffff0000000000f0ff0000000000ffffffff00000000f0ff0f0000000000f0f500000000000000ff0000")
-const _hex86252 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff0f00000000000000ff00000000000000f00000000f000000f00000ff0f000000f000f0f5ffffffffff00f0ffffffffffff000000f0f000f0f0000000f0f000f0f0")
+const _hex118007 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000f0ff0f00000000f0ff00ff00000000000000f000000000000000f0f0ff0000000000f0ff000000000000ff0f0000000000f0ffff0f000000f0ffff00000000f0ffff0f000000ffffffff0f000000f0ff0f0f0f000000f0f50f0f0f00000000ff000f0f0000000000000f000000")
+const _hex118014 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000ffffff000000ffffff0f000000f00ff0ffffff00000f0000ffff0f000000000000ffffffff00000000f0ff0f000000000000ffffff0000000000ff0ff000000000f0ff0f000000000000ff0f0000000000005f0f000000000000f00f00")
+const _hex118022 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000f000000000000000f000000000000000f000000000000000f000000000000000f0ffff0000000000f0ffff0000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ffff00000000ffffffff00000000f0ff0f0000000000f0f500000000000000ff0000")
+const _hex118026 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000f000000000000000f000000000000000f000000000000000f000000000000000f0ffff0000000000f0ff000000000000f0ffff0000000000f0ff000000000000f0ff000000000000f0ff000000000000f0ffff0000000000f0ff0000000000ffffffff00000000f0ff0f0000000000f0f500000000000000ff0000")
+const _hex118047 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff0f00000000000000ff00000000000000f00000000f000000f00000ff0f000000f000f0f5ffffffffff00f0ffffffffffff000000f0f000f0f0000000f0f000f0f0")
 
 
 
@@ -23418,85 +23492,6 @@ function info_multiplayerScoring__P81318_mk(s) {
 
 
 
-function music_play__P80677(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.lambdaArgs = null;
-    }
-    s.tmp_0 = music_Playable__C80666_v0_2_mk(s);
-    s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.arg1;
-    if (!checkSubtype(s.tmp_0.arg0, music_Playable__C80666_VT)) failedCast(s.tmp_0.arg0);
-    s.tmp_0.fn = s.tmp_0.arg0.vtable.methods.play;
-    s.pc = 1; return s.tmp_0;
-  case 1:
-    r0 = s.retval;
-    r0 = undefined;
-    return leave(s, r0)
-  default: oops()
-} } }
-music_play__P80677.info = {"start":2835,"length":109,"line":110,"column":4,"endLine":112,"endColumn":5,"fileName":"pxt_modules/mixer/playable.ts","functionName":"play","argumentNames":["toPlay","playbackMode"]}
-
-function music_play__P80677_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: music_play__P80677, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  arg0: undefined,
-  arg1: undefined,
-} }
-
-
-
-
-
-function music_Playable_play__P80669(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.lambdaArgs = null;
-    }
-    r0 = s.arg0;
-    if (!checkSubtype(r0, music_Playable__C80666_VT)) failedCast(r0);
-    r0 = undefined;
-    return leave(s, r0)
-  default: oops()
-} } }
-music_Playable_play__P80669.info = {"start":1122,"length":68,"line":51,"column":8,"endLine":53,"endColumn":9,"fileName":"pxt_modules/mixer/playable.ts","functionName":"play","argumentNames":["this","playbackMode"]}
-
-function music_Playable_play__P80669_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: music_Playable_play__P80669, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  arg0: undefined,
-  arg1: undefined,
-} }
-
-
-
-
-
 function helpers_arrayMap__P78860(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
@@ -29176,7 +29171,7 @@ function Sprite_ax__P81117_mk(s) {
 
 
 
-function startLevel__P83111(s) {
+function startLevel__P117766(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -29186,71 +29181,71 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.value___86050 = undefined;
-    s.unnamed934___U1 = undefined;
-    s.unnamed935___U2 = undefined;
-    s.value2___86063 = undefined;
-    s.unnamed936___U4 = undefined;
-    s.unnamed937___U5 = undefined;
-    s.value3___86072 = undefined;
-    s.unnamed938___U7 = undefined;
-    s.unnamed939___U8 = undefined;
-    s.value4___86081 = undefined;
-    s.unnamed940___U10 = undefined;
-    s.unnamed941___U11 = undefined;
-    s.value5___86090 = undefined;
-    s.unnamed942___U13 = undefined;
-    s.unnamed943___U14 = undefined;
-    s.value6___86130 = undefined;
-    s.unnamed944___U16 = undefined;
-    s.unnamed945___U17 = undefined;
-    s.value7___86148 = undefined;
-    s.unnamed946___U19 = undefined;
-    s.unnamed947___U20 = undefined;
-    r0 = (globals.current_level___83116 == 0);
+    s.value___117838 = undefined;
+    s.unnamed3346___U1 = undefined;
+    s.unnamed3347___U2 = undefined;
+    s.value2___117851 = undefined;
+    s.unnamed3348___U4 = undefined;
+    s.unnamed3349___U5 = undefined;
+    s.value3___117860 = undefined;
+    s.unnamed3350___U7 = undefined;
+    s.unnamed3351___U8 = undefined;
+    s.value4___117869 = undefined;
+    s.unnamed3352___U10 = undefined;
+    s.unnamed3353___U11 = undefined;
+    s.value5___117878 = undefined;
+    s.unnamed3354___U13 = undefined;
+    s.unnamed3355___U14 = undefined;
+    s.value6___117919 = undefined;
+    s.unnamed3356___U16 = undefined;
+    s.unnamed3357___U17 = undefined;
+    s.value7___117937 = undefined;
+    s.unnamed3358___U19 = undefined;
+    s.unnamed3359___U20 = undefined;
+    r0 = (globals.current_level___117761 == 0);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_1 = tiles_setTilemap__P81518_mk(s);
     s.tmp_2 = helpers_getTilemapByName__P82090_mk(s);
     s.tmp_2.arg0 = "level";
-    s.callLocIdx = 106; s.pc = 22; return s.tmp_2;
+    s.callLocIdx = 108; s.pc = 22; return s.tmp_2;
   case 22:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 107; s.pc = 21; return s.tmp_1;
+    s.callLocIdx = 109; s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
     { step = 6; continue; }
   case 1:
-    r0 = (globals.current_level___83116 == 1);
+    r0 = (globals.current_level___117761 == 1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     s.tmp_1 = tiles_setTilemap__P81518_mk(s);
     s.tmp_2 = helpers_getTilemapByName__P82090_mk(s);
     s.tmp_2.arg0 = "level_0";
-    s.callLocIdx = 108; s.pc = 24; return s.tmp_2;
+    s.callLocIdx = 110; s.pc = 24; return s.tmp_2;
   case 24:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 109; s.pc = 23; return s.tmp_1;
+    s.callLocIdx = 111; s.pc = 23; return s.tmp_1;
   case 23:
     r0 = s.retval;
     { step = 5; continue; }
   case 2:
-    r0 = (globals.current_level___83116 == 2);
+    r0 = (globals.current_level___117761 == 2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     s.tmp_1 = tiles_setTilemap__P81518_mk(s);
     s.tmp_2 = helpers_getTilemapByName__P82090_mk(s);
     s.tmp_2.arg0 = "level_1";
-    s.callLocIdx = 110; s.pc = 26; return s.tmp_2;
+    s.callLocIdx = 112; s.pc = 26; return s.tmp_2;
   case 26:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 111; s.pc = 25; return s.tmp_1;
+    s.callLocIdx = 113; s.pc = 25; return s.tmp_1;
   case 25:
     r0 = s.retval;
     { step = 4; continue; }
@@ -29258,369 +29253,369 @@ switch (step) {
     s.tmp_0 = game_over__P81767_mk(s);
     s.tmp_0.arg0 = true;
     s.tmp_0.arg1 = undefined;
-    s.callLocIdx = 112; s.pc = 27; return s.tmp_0;
+    s.callLocIdx = 114; s.pc = 27; return s.tmp_0;
   case 27:
     r0 = s.retval;
   case 4:
   case 5:
   case 6:
     s.tmp_0 = tiles_placeOnRandomTile__P81529_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile6";
-    s.callLocIdx = 113; s.pc = 29; return s.tmp_1;
+    s.callLocIdx = 115; s.pc = 29; return s.tmp_1;
   case 29:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 114; s.pc = 28; return s.tmp_0;
+    s.callLocIdx = 116; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
-    s.value___86050 = (undefined);
+    s.value___117838 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P81530_mk(s);
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile6";
-    s.callLocIdx = 115; s.pc = 31; return s.tmp_1;
+    s.callLocIdx = 117; s.pc = 31; return s.tmp_1;
   case 31:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 116; s.pc = 30; return s.tmp_0;
+    s.callLocIdx = 118; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
-    s.unnamed934___U1 = (r0);
-    s.unnamed935___U2 = (0);
+    s.unnamed3346___U1 = (r0);
+    s.unnamed3347___U2 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed935___U2;
-    r0 = pxsim_Array__length(s.unnamed934___U1);
+    s.tmp_0 = r0 = s.unnamed3347___U2;
+    r0 = pxsim_Array__length(s.unnamed3346___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed934___U1, s.unnamed935___U2);
-    s.value___86050 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed3346___U1, s.unnamed3347___U2);
+    s.value___117838 = (r0);
     s.tmp_2 = tiles_setTileAt__P81520_mk(s);
-    s.tmp_2.arg0 = s.value___86050;
+    s.tmp_2.arg0 = s.value___117838;
     s.tmp_3 = helpers_getTileByName__P82093_mk(s);
     s.tmp_3.arg0 = "tile0";
-    s.callLocIdx = 117; s.pc = 33; return s.tmp_3;
+    s.callLocIdx = 119; s.pc = 33; return s.tmp_3;
   case 33:
     r0 = s.retval;
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 118; s.pc = 32; return s.tmp_2;
+    s.callLocIdx = 120; s.pc = 32; return s.tmp_2;
   case 32:
     r0 = s.retval;
-    r0 = (s.unnamed935___U2 + 1);
-    s.unnamed935___U2 = (r0);
+    r0 = (s.unnamed3347___U2 + 1);
+    s.unnamed3347___U2 = (r0);
     { step = 7; continue; }
   case 8:
-    s.unnamed934___U1 = (undefined);
+    s.unnamed3346___U1 = (undefined);
     s.tmp_0 = scene_cameraFollowSprite__P81645_mk(s);
-    s.tmp_0.arg0 = globals.Hops_and_Paw___83115;
-    s.callLocIdx = 119; s.pc = 34; return s.tmp_0;
+    s.tmp_0.arg0 = globals.Hops_and_Paw___117737;
+    s.callLocIdx = 121; s.pc = 34; return s.tmp_0;
   case 34:
     r0 = s.retval;
     s.tmp_0 = info_setLife__P81331_mk(s);
     s.tmp_0.arg0 = 5;
-    s.callLocIdx = 120; s.pc = 35; return s.tmp_0;
+    s.callLocIdx = 122; s.pc = 35; return s.tmp_0;
   case 35:
     r0 = s.retval;
-    s.value2___86063 = (undefined);
+    s.value2___117851 = (undefined);
     s.tmp_0 = sprites_allOfKind__P81033_mk(s);
     s.tmp_0.arg0 = globals.Enemy___81238;
-    s.callLocIdx = 121; s.pc = 36; return s.tmp_0;
+    s.callLocIdx = 123; s.pc = 36; return s.tmp_0;
   case 36:
     r0 = s.retval;
-    s.unnamed936___U4 = (r0);
-    s.unnamed937___U5 = (0);
+    s.unnamed3348___U4 = (r0);
+    s.unnamed3349___U5 = (0);
   case 9:
-    s.tmp_0 = r0 = s.unnamed937___U5;
-    r0 = pxsim_Array__length(s.unnamed936___U4);
+    s.tmp_0 = r0 = s.unnamed3349___U5;
+    r0 = pxsim_Array__length(s.unnamed3348___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed936___U4, s.unnamed937___U5);
-    s.value2___86063 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed3348___U4, s.unnamed3349___U5);
+    s.value2___117851 = (r0);
     s.tmp_2 = Sprite_destroy__P81183_mk(s);
-    s.tmp_2.arg0 = s.value2___86063;
+    s.tmp_2.arg0 = s.value2___117851;
     s.tmp_2.arg1 = undefined;
     s.tmp_2.arg2 = undefined;
-    s.callLocIdx = 122; s.pc = 37; return s.tmp_2;
+    s.callLocIdx = 124; s.pc = 37; return s.tmp_2;
   case 37:
     r0 = s.retval;
-    r0 = (s.unnamed937___U5 + 1);
-    s.unnamed937___U5 = (r0);
+    r0 = (s.unnamed3349___U5 + 1);
+    s.unnamed3349___U5 = (r0);
     { step = 9; continue; }
   case 10:
-    s.unnamed936___U4 = (undefined);
-    s.value3___86072 = (undefined);
+    s.unnamed3348___U4 = (undefined);
+    s.value3___117860 = (undefined);
     s.tmp_0 = sprites_allOfKind__P81033_mk(s);
-    s.tmp_0.arg0 = globals.Coin___83108;
-    s.callLocIdx = 123; s.pc = 38; return s.tmp_0;
+    s.tmp_0.arg0 = globals.Coin___117706;
+    s.callLocIdx = 125; s.pc = 38; return s.tmp_0;
   case 38:
     r0 = s.retval;
-    s.unnamed938___U7 = (r0);
-    s.unnamed939___U8 = (0);
+    s.unnamed3350___U7 = (r0);
+    s.unnamed3351___U8 = (0);
   case 11:
-    s.tmp_0 = r0 = s.unnamed939___U8;
-    r0 = pxsim_Array__length(s.unnamed938___U7);
+    s.tmp_0 = r0 = s.unnamed3351___U8;
+    r0 = pxsim_Array__length(s.unnamed3350___U7);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed938___U7, s.unnamed939___U8);
-    s.value3___86072 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed3350___U7, s.unnamed3351___U8);
+    s.value3___117860 = (r0);
     s.tmp_2 = Sprite_destroy__P81183_mk(s);
-    s.tmp_2.arg0 = s.value3___86072;
+    s.tmp_2.arg0 = s.value3___117860;
     s.tmp_2.arg1 = undefined;
     s.tmp_2.arg2 = undefined;
-    s.callLocIdx = 124; s.pc = 39; return s.tmp_2;
+    s.callLocIdx = 126; s.pc = 39; return s.tmp_2;
   case 39:
     r0 = s.retval;
-    r0 = (s.unnamed939___U8 + 1);
-    s.unnamed939___U8 = (r0);
+    r0 = (s.unnamed3351___U8 + 1);
+    s.unnamed3351___U8 = (r0);
     { step = 11; continue; }
   case 12:
-    s.unnamed938___U7 = (undefined);
-    s.value4___86081 = (undefined);
+    s.unnamed3350___U7 = (undefined);
+    s.value4___117869 = (undefined);
     s.tmp_0 = sprites_allOfKind__P81033_mk(s);
-    s.tmp_0.arg0 = globals.Flower___83109;
-    s.callLocIdx = 125; s.pc = 40; return s.tmp_0;
+    s.tmp_0.arg0 = globals.Flower___117709;
+    s.callLocIdx = 127; s.pc = 40; return s.tmp_0;
   case 40:
     r0 = s.retval;
-    s.unnamed940___U10 = (r0);
-    s.unnamed941___U11 = (0);
+    s.unnamed3352___U10 = (r0);
+    s.unnamed3353___U11 = (0);
   case 13:
-    s.tmp_0 = r0 = s.unnamed941___U11;
-    r0 = pxsim_Array__length(s.unnamed940___U10);
+    s.tmp_0 = r0 = s.unnamed3353___U11;
+    r0 = pxsim_Array__length(s.unnamed3352___U10);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 14; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed940___U10, s.unnamed941___U11);
-    s.value4___86081 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed3352___U10, s.unnamed3353___U11);
+    s.value4___117869 = (r0);
     s.tmp_2 = Sprite_destroy__P81183_mk(s);
-    s.tmp_2.arg0 = s.value4___86081;
+    s.tmp_2.arg0 = s.value4___117869;
     s.tmp_2.arg1 = undefined;
     s.tmp_2.arg2 = undefined;
-    s.callLocIdx = 126; s.pc = 41; return s.tmp_2;
+    s.callLocIdx = 128; s.pc = 41; return s.tmp_2;
   case 41:
     r0 = s.retval;
-    r0 = (s.unnamed941___U11 + 1);
-    s.unnamed941___U11 = (r0);
+    r0 = (s.unnamed3353___U11 + 1);
+    s.unnamed3353___U11 = (r0);
     { step = 13; continue; }
   case 14:
-    s.unnamed940___U10 = (undefined);
-    s.value5___86090 = (undefined);
+    s.unnamed3352___U10 = (undefined);
+    s.value5___117878 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P81530_mk(s);
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile4";
-    s.callLocIdx = 127; s.pc = 43; return s.tmp_1;
+    s.callLocIdx = 129; s.pc = 43; return s.tmp_1;
   case 43:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 128; s.pc = 42; return s.tmp_0;
+    s.callLocIdx = 130; s.pc = 42; return s.tmp_0;
   case 42:
     r0 = s.retval;
-    s.unnamed942___U13 = (r0);
-    s.unnamed943___U14 = (0);
+    s.unnamed3354___U13 = (r0);
+    s.unnamed3355___U14 = (0);
   case 15:
-    s.tmp_0 = r0 = s.unnamed943___U14;
-    r0 = pxsim_Array__length(s.unnamed942___U13);
+    s.tmp_0 = r0 = s.unnamed3355___U14;
+    r0 = pxsim_Array__length(s.unnamed3354___U13);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 16; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed942___U13, s.unnamed943___U14);
-    s.value5___86090 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed3354___U13, s.unnamed3355___U14);
+    s.value5___117878 = (r0);
     s.tmp_2 = sprites_create__P81030_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex86099);
+    r0 = pxsim.image.ofBuffer(_hex117888);
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = globals.Coin___83108;
-    s.callLocIdx = 129; s.pc = 44; return s.tmp_2;
+    s.tmp_2.arg1 = globals.Coin___117706;
+    s.callLocIdx = 131; s.pc = 44; return s.tmp_2;
   case 44:
     r0 = s.retval;
-    globals.flower___83113 = (r0);
+    globals.flower___117884 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim.image.ofBuffer(_hex86105);
+    r0 = pxsim.image.ofBuffer(_hex117894);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    r0 = pxsim.image.ofBuffer(_hex86107);
+    r0 = pxsim.image.ofBuffer(_hex117896);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
-    r0 = pxsim.image.ofBuffer(_hex86109);
+    r0 = pxsim.image.ofBuffer(_hex117898);
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
-    r0 = pxsim.image.ofBuffer(_hex86111);
+    r0 = pxsim.image.ofBuffer(_hex117900);
     s.tmp_4 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_4);
-    r0 = pxsim.image.ofBuffer(_hex86113);
+    r0 = pxsim.image.ofBuffer(_hex117902);
     s.tmp_5 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_5);
-    r0 = pxsim.image.ofBuffer(_hex86115);
+    r0 = pxsim.image.ofBuffer(_hex117904);
     s.tmp_6 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_6);
-    r0 = pxsim.image.ofBuffer(_hex86117);
+    r0 = pxsim.image.ofBuffer(_hex117906);
     s.tmp_7 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_7);
-    r0 = pxsim.image.ofBuffer(_hex86119);
+    r0 = pxsim.image.ofBuffer(_hex117908);
     s.tmp_8 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_8);
-    r0 = pxsim.image.ofBuffer(_hex86121);
+    r0 = pxsim.image.ofBuffer(_hex117910);
     s.tmp_9 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_9);
     s.tmp_10 = animation_runImageAnimation__P82117_mk(s);
-    s.tmp_10.arg0 = globals.flower___83113;
+    s.tmp_10.arg0 = globals.flower___117884;
     s.tmp_10.arg1 = s.tmp_0;
     s.tmp_10.arg2 = 100;
     s.tmp_10.arg3 = true;
-    s.callLocIdx = 130; s.pc = 45; return s.tmp_10;
+    s.callLocIdx = 132; s.pc = 45; return s.tmp_10;
   case 45:
     r0 = s.retval;
     s.tmp_0 = tiles_placeOnTile__P81528_mk(s);
-    s.tmp_0.arg0 = globals.flower___83113;
-    s.tmp_0.arg1 = s.value5___86090;
-    s.callLocIdx = 131; s.pc = 46; return s.tmp_0;
+    s.tmp_0.arg0 = globals.flower___117884;
+    s.tmp_0.arg1 = s.value5___117878;
+    s.callLocIdx = 133; s.pc = 46; return s.tmp_0;
   case 46:
     r0 = s.retval;
     s.tmp_0 = tiles_setTileAt__P81520_mk(s);
-    s.tmp_0.arg0 = s.value5___86090;
+    s.tmp_0.arg0 = s.value5___117878;
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile0";
-    s.callLocIdx = 132; s.pc = 48; return s.tmp_1;
+    s.callLocIdx = 134; s.pc = 48; return s.tmp_1;
   case 48:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 133; s.pc = 47; return s.tmp_0;
+    s.callLocIdx = 135; s.pc = 47; return s.tmp_0;
   case 47:
     r0 = s.retval;
-    r0 = (s.unnamed943___U14 + 1);
-    s.unnamed943___U14 = (r0);
+    r0 = (s.unnamed3355___U14 + 1);
+    s.unnamed3355___U14 = (r0);
     { step = 15; continue; }
   case 16:
-    s.unnamed942___U13 = (undefined);
-    s.value6___86130 = (undefined);
+    s.unnamed3354___U13 = (undefined);
+    s.value6___117919 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P81530_mk(s);
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile5";
-    s.callLocIdx = 134; s.pc = 50; return s.tmp_1;
+    s.callLocIdx = 136; s.pc = 50; return s.tmp_1;
   case 50:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 135; s.pc = 49; return s.tmp_0;
+    s.callLocIdx = 137; s.pc = 49; return s.tmp_0;
   case 49:
     r0 = s.retval;
-    s.unnamed944___U16 = (r0);
-    s.unnamed945___U17 = (0);
+    s.unnamed3356___U16 = (r0);
+    s.unnamed3357___U17 = (0);
   case 17:
-    s.tmp_0 = r0 = s.unnamed945___U17;
-    r0 = pxsim_Array__length(s.unnamed944___U16);
+    s.tmp_0 = r0 = s.unnamed3357___U17;
+    r0 = pxsim_Array__length(s.unnamed3356___U16);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 18; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed944___U16, s.unnamed945___U17);
-    s.value6___86130 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed3356___U16, s.unnamed3357___U17);
+    s.value6___117919 = (r0);
     s.tmp_2 = sprites_create__P81030_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex86138);
+    r0 = pxsim.image.ofBuffer(_hex117927);
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = globals.Flower___83109;
-    s.callLocIdx = 136; s.pc = 51; return s.tmp_2;
+    s.tmp_2.arg1 = globals.Flower___117709;
+    s.callLocIdx = 138; s.pc = 51; return s.tmp_2;
   case 51:
     r0 = s.retval;
-    globals.flower___83113 = (r0);
+    globals.flower___117884 = (r0);
     s.tmp_0 = tiles_placeOnTile__P81528_mk(s);
-    s.tmp_0.arg0 = globals.flower___83113;
-    s.tmp_0.arg1 = s.value6___86130;
-    s.callLocIdx = 137; s.pc = 52; return s.tmp_0;
+    s.tmp_0.arg0 = globals.flower___117884;
+    s.tmp_0.arg1 = s.value6___117919;
+    s.callLocIdx = 139; s.pc = 52; return s.tmp_0;
   case 52:
     r0 = s.retval;
     s.tmp_0 = tiles_setTileAt__P81520_mk(s);
-    s.tmp_0.arg0 = s.value6___86130;
+    s.tmp_0.arg0 = s.value6___117919;
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile0";
-    s.callLocIdx = 138; s.pc = 54; return s.tmp_1;
+    s.callLocIdx = 140; s.pc = 54; return s.tmp_1;
   case 54:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 139; s.pc = 53; return s.tmp_0;
+    s.callLocIdx = 141; s.pc = 53; return s.tmp_0;
   case 53:
     r0 = s.retval;
-    r0 = (s.unnamed945___U17 + 1);
-    s.unnamed945___U17 = (r0);
+    r0 = (s.unnamed3357___U17 + 1);
+    s.unnamed3357___U17 = (r0);
     { step = 17; continue; }
   case 18:
-    s.unnamed944___U16 = (undefined);
-    s.value7___86148 = (undefined);
+    s.unnamed3356___U16 = (undefined);
+    s.value7___117937 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P81530_mk(s);
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile11";
-    s.callLocIdx = 140; s.pc = 56; return s.tmp_1;
+    s.callLocIdx = 142; s.pc = 56; return s.tmp_1;
   case 56:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 141; s.pc = 55; return s.tmp_0;
+    s.callLocIdx = 143; s.pc = 55; return s.tmp_0;
   case 55:
     r0 = s.retval;
-    s.unnamed946___U19 = (r0);
-    s.unnamed947___U20 = (0);
+    s.unnamed3358___U19 = (r0);
+    s.unnamed3359___U20 = (0);
   case 19:
-    s.tmp_0 = r0 = s.unnamed947___U20;
-    r0 = pxsim_Array__length(s.unnamed946___U19);
+    s.tmp_0 = r0 = s.unnamed3359___U20;
+    r0 = pxsim_Array__length(s.unnamed3358___U19);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 20; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed946___U19, s.unnamed947___U20);
-    s.value7___86148 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed3358___U19, s.unnamed3359___U20);
+    s.value7___117937 = (r0);
     s.tmp_2 = sprites_create__P81030_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex86157);
+    r0 = pxsim.image.ofBuffer(_hex117947);
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = globals.Fireball___83110;
-    s.callLocIdx = 142; s.pc = 57; return s.tmp_2;
+    s.tmp_2.arg1 = globals.Fireball___117712;
+    s.callLocIdx = 144; s.pc = 57; return s.tmp_2;
   case 57:
     r0 = s.retval;
-    globals.fireball___83112 = (r0);
+    globals.fireball___117943 = (r0);
     s.tmp_0 = tiles_placeOnTile__P81528_mk(s);
-    s.tmp_0.arg0 = globals.fireball___83112;
-    s.tmp_0.arg1 = s.value7___86148;
-    s.callLocIdx = 143; s.pc = 58; return s.tmp_0;
+    s.tmp_0.arg0 = globals.fireball___117943;
+    s.tmp_0.arg1 = s.value7___117937;
+    s.callLocIdx = 145; s.pc = 58; return s.tmp_0;
   case 58:
     r0 = s.retval;
     s.tmp_0 = tiles_setTileAt__P81520_mk(s);
-    s.tmp_0.arg0 = s.value7___86148;
+    s.tmp_0.arg0 = s.value7___117937;
     s.tmp_1 = helpers_getTileByName__P82093_mk(s);
     s.tmp_1.arg0 = "tile0";
-    s.callLocIdx = 144; s.pc = 60; return s.tmp_1;
+    s.callLocIdx = 146; s.pc = 60; return s.tmp_1;
   case 60:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 145; s.pc = 59; return s.tmp_0;
+    s.callLocIdx = 147; s.pc = 59; return s.tmp_0;
   case 59:
     r0 = s.retval;
     s.tmp_0 = animation_runMovementAnimation__P82118_mk(s);
-    s.tmp_0.arg0 = globals.fireball___83112;
+    s.tmp_0.arg0 = globals.fireball___117943;
     s.tmp_0.arg1 = "c 0 -100 0 100 0 0";
     s.tmp_0.arg2 = 2000;
     s.tmp_0.arg3 = true;
-    s.callLocIdx = 146; s.pc = 61; return s.tmp_0;
+    s.callLocIdx = 148; s.pc = 61; return s.tmp_0;
   case 61:
     r0 = s.retval;
     s.tmp_0 = Sprite_startEffect__P81168_mk(s);
-    s.tmp_0.arg0 = globals.fireball___83112;
+    s.tmp_0.arg0 = globals.fireball___117943;
     s.tmp_0.arg1 = globals.fire___82033;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 147; s.pc = 62; return s.tmp_0;
+    s.callLocIdx = 149; s.pc = 62; return s.tmp_0;
   case 62:
     r0 = s.retval;
-    r0 = (s.unnamed947___U20 + 1);
-    s.unnamed947___U20 = (r0);
+    r0 = (s.unnamed3359___U20 + 1);
+    s.unnamed3359___U20 = (r0);
     { step = 19; continue; }
   case 20:
-    s.unnamed946___U19 = (undefined);
+    s.unnamed3358___U19 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-startLevel__P83111.info = {"start":3191,"length":10625,"line":88,"column":0,"endLine":345,"endColumn":1,"fileName":"main.ts","functionName":"startLevel","argumentNames":[]}
+startLevel__P117766.info = {"start":3358,"length":10625,"line":89,"column":0,"endLine":346,"endColumn":1,"fileName":"main.ts","functionName":"startLevel","argumentNames":[]}
 
-function startLevel__P83111_mk(s) {
+function startLevel__P117766_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: startLevel__P83111, depth: s.depth + 1,
+        parent: s, fn: startLevel__P117766, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -29633,41 +29628,41 @@ function startLevel__P83111_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  value___86050: undefined,
-  unnamed934___U1: undefined,
-  unnamed935___U2: undefined,
-  value2___86063: undefined,
-  unnamed936___U4: undefined,
-  unnamed937___U5: undefined,
-  value3___86072: undefined,
-  unnamed938___U7: undefined,
-  unnamed939___U8: undefined,
-  value4___86081: undefined,
-  unnamed940___U10: undefined,
-  unnamed941___U11: undefined,
-  value5___86090: undefined,
-  unnamed942___U13: undefined,
-  unnamed943___U14: undefined,
-  value6___86130: undefined,
-  unnamed944___U16: undefined,
-  unnamed945___U17: undefined,
-  value7___86148: undefined,
-  unnamed946___U19: undefined,
-  unnamed947___U20: undefined,
+  value___117838: undefined,
+  unnamed3346___U1: undefined,
+  unnamed3347___U2: undefined,
+  value2___117851: undefined,
+  unnamed3348___U4: undefined,
+  unnamed3349___U5: undefined,
+  value3___117860: undefined,
+  unnamed3350___U7: undefined,
+  unnamed3351___U8: undefined,
+  value4___117869: undefined,
+  unnamed3352___U10: undefined,
+  unnamed3353___U11: undefined,
+  value5___117878: undefined,
+  unnamed3354___U13: undefined,
+  unnamed3355___U14: undefined,
+  value6___117919: undefined,
+  unnamed3356___U16: undefined,
+  unnamed3357___U17: undefined,
+  value7___117937: undefined,
+  unnamed3358___U19: undefined,
+  unnamed3359___U20: undefined,
 } }
 
-const _hex86099 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000f0ffffff000000005f5555550f0000f055444444f500005f55555555550f005f54555555540f005f54555555540f005f54555555550f005f54555555550f005f55555555550f005f55555555550f00f055555555f50000005f5555550f000000f0ffffff00000000000000000000")
-const _hex86105 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f04555555545f500f04555555545f500f04555555555f500f05555555555f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f000000000000000000000000000000000000")
-const _hex86107 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f04555555545f500f04555555555f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f0000000000000000000000000000000000000000000000000000")
-const _hex86109 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f00000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86111 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500005f555555550f0000f0555555f500000000ffffff0f000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86113 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000ff555555f50f00f04555555555f50000ff555555f50f000000ffffff0f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86115 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffff0f00f04555555555f50000ffffffffff0f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86117 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000ff555555f50f00f04555555555f50000ff555555f50f000000ffffff0f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86119 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500005f55555555ff0000f0555555f500000000ffffff0f000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86121 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f00000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86138 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000770000000000000077880000000000a3708700000000003a0a77080000000020c377770000000020c37087000000003a0a770800000000a3708700000000000070070000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex86157 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000005525000500000005445505000000004504200405000000422222420500005045828802250000004522284254000000248242445500000045444455050000000525550000000000000000000000000000000000000500000000000000000000000000000000")
+const _hex117888 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000f0ffffff000000005f5555550f0000f055444444f500005f55555555550f005f54555555540f005f54555555540f005f54555555550f005f54555555550f005f55555555550f005f55555555550f00f055555555f50000005f5555550f000000f0ffffff00000000000000000000")
+const _hex117894 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f04555555545f500f04555555545f500f04555555555f500f05555555555f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f000000000000000000000000000000000000")
+const _hex117896 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f04555555545f500f04555555555f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f0000000000000000000000000000000000000000000000000000")
+const _hex117898 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f00000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117900 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500005f555555550f0000f0555555f500000000ffffff0f000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117902 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000ff555555f50f00f04555555555f50000ff555555f50f000000ffffff0f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117904 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffff0f00f04555555555f50000ffffffffff0f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117906 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000ff555555f50f00f04555555555f50000ff555555f50f000000ffffff0f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117908 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500005f55555555ff0000f0555555f500000000ffffff0f000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117910 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000ffffff0f000000f0555555f50000005f444444550f00f04555555555f500f04555555545f500f05555555555f500005f555555550f0000f0555555f500000000ffffff0f00000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117927 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000000000000000000000000000000000000000770000000000000077880000000000a3708700000000003a0a77080000000020c377770000000020c37087000000003a0a770800000000a3708700000000000070070000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex117947 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000005525000500000005445505000000004504200405000000422222420500005045828802250000004522284254000000248242445500000045444455050000000525550000000000000000000000000000000000000500000000000000000000000000000000")
 
 
 
@@ -36473,6 +36468,1429 @@ function Sprite_vy__P81115_mk(s) {
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
+} }
+
+
+
+
+
+function music_createSong__P80398(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_Song__C80538_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_Song_constructor__P80540_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    s.tmp_1.arg1 = s.arg0;
+    s.callLocIdx = 0; s.pc = 1; return s.tmp_1;
+  case 1:
+    r0 = s.retval;
+    r0 = s.tmp_0;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_createSong__P80398.info = {"start":21308,"length":99,"line":604,"column":4,"endLine":606,"endColumn":5,"fileName":"pxt_modules/mixer/melody.ts","functionName":"createSong","argumentNames":["song"]}
+
+function music_createSong__P80398_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_createSong__P80398, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_constructor__P80540(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.currentOffset___105995 = undefined;
+    s.i___105996 = undefined;
+    s.track___106001 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Song__C80538_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = undefined;
+    s.tmp_0 = r0 = s.arg0;
+    r0 = pxsim_Array__mk();
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["tracks"] = (s.tmp_1);
+    s.currentOffset___105995 = (7);
+    s.i___105996 = (0);
+  case 1:
+    s.tmp_1 = r0 = s.i___105996;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_3, 6);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 4; continue; }
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_MelodicTrack__C80596_VT);
+    s.tmp_4 = r0;
+    s.tmp_5 = music_sequencer_MelodicTrack_constructor__P80598_mk(s);
+    s.tmp_5.arg0 = s.tmp_4;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_5.arg1 = r0;
+    s.tmp_5.arg2 = s.currentOffset___105995;
+    s.callLocIdx = 5; s.pc = 5; return s.tmp_5;
+  case 5:
+    r0 = s.retval;
+    s.track___106001 = (s.tmp_4);
+    s.tmp_3 = music_sequencer_Track_isMelodicTrack__P80584_mk(s);
+    s.tmp_3.arg0 = s.track___106001;
+    s.callLocIdx = 6; s.pc = 6; return s.tmp_3;
+  case 6:
+    r0 = s.retval;
+    s.tmp_2 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_2);
+    s.tmp_1 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_DrumTrack__C80599_VT);
+    s.tmp_4 = r0;
+    s.tmp_5 = music_sequencer_DrumTrack_constructor__P80601_mk(s);
+    s.tmp_5.arg0 = s.tmp_4;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_5.arg1 = r0;
+    s.tmp_5.arg2 = s.currentOffset___105995;
+    s.callLocIdx = 7; s.pc = 7; return s.tmp_5;
+  case 7:
+    r0 = s.retval;
+    s.track___106001 = (s.tmp_4);
+  case 2:
+  case 3:
+    r0 = s.arg0.fields["tracks"];
+    s.tmp_0 = r0;
+    r0 = pxsim_Array__push(s.tmp_0, s.track___106001);
+    s.tmp_0 = r0 = s.currentOffset___105995;
+    s.tmp_2 = music_sequencer_Track_byteLength__P80594_mk(s);
+    s.tmp_2.arg0 = s.track___106001;
+    s.callLocIdx = 8; s.pc = 8; return s.tmp_2;
+  case 8:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 + s.tmp_1);
+    s.currentOffset___105995 = (r0);
+    r0 = (s.i___105996 + 1);
+    s.i___105996 = (r0);
+    { step = 1; continue; }
+  case 4:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_constructor__P80540.info = {"start":1790,"length":506,"line":73,"column":8,"endLine":88,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf"]}
+
+function music_sequencer_Song_constructor__P80540_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_constructor__P80540, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  currentOffset___105995: undefined,
+  i___105996: undefined,
+  track___106001: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_Playable_constructor__P80668(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_Playable__C80666_VT)) failedCast(r0);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_Playable_constructor__P80668.info = {"start":1086,"length":26,"line":47,"column":8,"endLine":49,"endColumn":9,"fileName":"pxt_modules/mixer/playable.ts","functionName":"inline","argumentNames":["this"]}
+
+function music_Playable_constructor__P80668_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_Playable_constructor__P80668, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumTrack_constructor__P80601(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.currentOffset___106069 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumTrack__C80599_VT)) failedCast(r0);
+    s.tmp_0 = music_sequencer_Track_constructor__P80583_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.tmp_0.arg1 = s.arg1;
+    s.tmp_0.arg2 = s.arg2;
+    s.callLocIdx = 43; s.pc = 3; return s.tmp_0;
+  case 3:
+    r0 = s.retval;
+    s.tmp_0 = r0 = s.arg0;
+    r0 = pxsim_Array__mk();
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["drums"] = (s.tmp_1);
+    s.currentOffset___106069 = (0);
+  case 1:
+    s.tmp_1 = r0 = s.currentOffset___106069;
+    s.tmp_3 = music_sequencer_Track_instrumentByteLength__P80589_mk(s);
+    s.tmp_3.arg0 = s.arg0;
+    s.callLocIdx = 44; s.pc = 4; return s.tmp_3;
+  case 4:
+    r0 = s.retval;
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_DrumInstrument__C80612_VT);
+    s.tmp_4 = r0;
+    s.tmp_5 = music_sequencer_DrumInstrument_constructor__P80614_mk(s);
+    s.tmp_5.arg0 = s.tmp_4;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_5.arg1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_7 = r0;
+    r0 = (s.tmp_7 + 4);
+    s.tmp_6 = r0;
+    r0 = (s.tmp_6 + s.currentOffset___106069);
+    s.tmp_5.arg2 = r0;
+    s.callLocIdx = 45; s.pc = 5; return s.tmp_5;
+  case 5:
+    r0 = s.retval;
+    r0 = s.arg0.fields["drums"];
+    s.tmp_8 = r0;
+    r0 = pxsim_Array__push(s.tmp_8, s.tmp_4);
+    s.tmp_0 = r0 = s.currentOffset___106069;
+    s.tmp_2 = music_sequencer_DrumInstrument_byteLength__P80615_mk(s);
+    r0 = s.arg0.fields["drums"];
+    s.tmp_3 = r0;
+    r0 = s.arg0.fields["drums"];
+    s.tmp_6 = r0;
+    r0 = pxsim_Array__length(s.tmp_6);
+    s.tmp_5 = r0;
+    r0 = (s.tmp_5 - 1);
+    s.tmp_4 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_3, s.tmp_4);
+    s.tmp_2.arg0 = r0;
+    s.callLocIdx = 46; s.pc = 6; return s.tmp_2;
+  case 6:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 + s.tmp_1);
+    s.currentOffset___106069 = (r0);
+    { step = 1; continue; }
+  case 2:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumTrack_constructor__P80601.info = {"start":10342,"length":402,"line":382,"column":8,"endLine":391,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_DrumTrack_constructor__P80601_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumTrack_constructor__P80601, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  currentOffset___106069: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumInstrument_byteLength__P80615(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumInstrument__C80612_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_2 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_2, s.tmp_3);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 * 7);
+    s.tmp_0 = r0;
+    r0 = (5 + s.tmp_0);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumInstrument_byteLength__P80615.info = {"start":12038,"length":78,"line":437,"column":8,"endLine":439,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"byteLength","argumentNames":["this"]}
+music_sequencer_DrumInstrument_byteLength__P80615.isGetter = true;
+
+function music_sequencer_DrumInstrument_byteLength__P80615_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumInstrument_byteLength__P80615, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumInstrument_numSteps__P80616(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumInstrument__C80612_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumInstrument_numSteps__P80616.info = {"start":12126,"length":76,"line":441,"column":8,"endLine":443,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"numSteps","argumentNames":["this"]}
+music_sequencer_DrumInstrument_numSteps__P80616.isGetter = true;
+
+function music_sequencer_DrumInstrument_numSteps__P80616_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumInstrument_numSteps__P80616, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumInstrument_constructor__P80614(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.i___106114 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumInstrument__C80612_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = (s.arg0).fields["offset"] = (s.arg2);
+    s.tmp_0 = r0 = s.arg0;
+    r0 = pxsim_Array__mk();
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["steps"] = (s.tmp_1);
+    s.i___106114 = (0);
+  case 1:
+    s.tmp_1 = r0 = s.i___106114;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_3 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_3, s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_DrumStep__C80622_VT);
+    s.tmp_5 = r0;
+    s.tmp_6 = music_sequencer_DrumStep_constructor__P80623_mk(s);
+    s.tmp_6.arg0 = s.tmp_5;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_6.arg1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_8 = r0;
+    r0 = (s.tmp_8 + 5);
+    s.tmp_7 = r0;
+    r0 = (s.i___106114 * 7);
+    s.tmp_9 = r0;
+    r0 = (s.tmp_7 + s.tmp_9);
+    s.tmp_6.arg2 = r0;
+    s.callLocIdx = 52; s.pc = 3; return s.tmp_6;
+  case 3:
+    r0 = s.retval;
+    r0 = s.arg0.fields["steps"];
+    s.tmp_10 = r0;
+    r0 = pxsim_Array__push(s.tmp_10, s.tmp_5);
+    r0 = (s.i___106114 + 1);
+    s.i___106114 = (r0);
+    { step = 1; continue; }
+  case 2:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumInstrument_constructor__P80614.info = {"start":11783,"length":245,"line":429,"column":8,"endLine":435,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_DrumInstrument_constructor__P80614_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumInstrument_constructor__P80614, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  i___106114: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumStep_constructor__P80623(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumStep__C80622_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = (s.arg0).fields["offset"] = (s.arg2);
+    r0 = pxsim_numops_toBoolDecr(s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_2 = r0 = s.arg0;
+    r0 = pxsim.control.createBuffer(7);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2).fields["buf"] = (s.tmp_3);
+  case 1:
+  case 2:
+    r0 = s.arg0.fields["offset"];
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    r0 = s.tmp_0;
+    { step = 4; continue; }
+  case 3:
+    r0 = 0;
+  case 4:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    r0 = (s.arg0).fields["offset"] = (s.tmp_1);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumStep_constructor__P80623.info = {"start":12985,"length":170,"line":475,"column":8,"endLine":478,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_DrumStep_constructor__P80623_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumStep_constructor__P80623, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_instrumentByteLength__P80589(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    s.tmp_0 = r0 = s.arg0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 2);
+    s.tmp_1 = r0;
+    r0 = s.tmp_0.fields["buf"];
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_3, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_instrumentByteLength__P80589.info = {"start":8781,"length":97,"line":329,"column":8,"endLine":331,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"instrumentByteLength","argumentNames":["this"]}
+music_sequencer_Track_instrumentByteLength__P80589.isGetter = true;
+
+function music_sequencer_Track_instrumentByteLength__P80589_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_instrumentByteLength__P80589, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_getValue__P83298(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.arg1);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_getValue__P83298.info = {"start":9740,"length":116,"line":361,"column":8,"endLine":363,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"getValue","argumentNames":["this","offset"]}
+
+function music_sequencer_Track_getValue__P83298_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_getValue__P83298, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_constructor__P80583(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = (s.arg0).fields["offset"] = (s.arg2);
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_NoteEvent__C80571_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_NoteEvent_constructor__P80572_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    s.tmp_3 = music_sequencer_Track_noteEventStart__P80591_mk(s);
+    s.tmp_3.arg0 = s.arg0;
+    s.callLocIdx = 29; s.pc = 2; return s.tmp_3;
+  case 2:
+    r0 = s.retval;
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 2);
+    s.tmp_1.arg2 = r0;
+    s.callLocIdx = 30; s.pc = 1; return s.tmp_1;
+  case 1:
+    r0 = s.retval;
+    r0 = (s.arg0).fields["currentNoteEvent"] = (s.tmp_0);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_constructor__P80583.info = {"start":8185,"length":152,"line":305,"column":8,"endLine":307,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_Track_constructor__P80583_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_constructor__P80583, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_noteEventStart__P80591(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["offset"];
+    s.tmp_1 = r0;
+    s.tmp_3 = music_sequencer_Track_instrumentByteLength__P80589_mk(s);
+    s.tmp_3.arg0 = s.arg0;
+    s.callLocIdx = 33; s.pc = 1; return s.tmp_3;
+  case 1:
+    r0 = s.retval;
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 + s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 + 4);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_noteEventStart__P80591.info = {"start":9000,"length":104,"line":337,"column":8,"endLine":339,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"noteEventStart","argumentNames":["this"]}
+music_sequencer_Track_noteEventStart__P80591.isGetter = true;
+
+function music_sequencer_Track_noteEventStart__P80591_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_noteEventStart__P80591, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_NoteEvent_constructor__P80572(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_NoteEvent__C80571_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = (s.arg0).fields["offset"] = (s.arg2);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_NoteEvent_constructor__P80572.info = {"start":6886,"length":67,"line":253,"column":8,"endLine":255,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_NoteEvent_constructor__P80572_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_NoteEvent_constructor__P80572, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_MelodicTrack_constructor__P80598(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_MelodicTrack__C80596_VT)) failedCast(r0);
+    s.tmp_0 = music_sequencer_Track_constructor__P80583_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.tmp_0.arg1 = s.arg1;
+    s.tmp_0.arg2 = s.arg2;
+    s.callLocIdx = 41; s.pc = 1; return s.tmp_0;
+  case 1:
+    r0 = s.retval;
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_Instrument__C80602_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_Instrument_constructor__P80607_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 4);
+    s.tmp_1.arg2 = r0;
+    s.callLocIdx = 42; s.pc = 2; return s.tmp_1;
+  case 2:
+    r0 = s.retval;
+    r0 = (s.arg0).fields["instrument"] = (s.tmp_0);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_MelodicTrack_constructor__P80598.info = {"start":10092,"length":157,"line":373,"column":8,"endLine":376,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_MelodicTrack_constructor__P80598_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_MelodicTrack_constructor__P80598, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Instrument_constructor__P80607(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Instrument__C80602_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = (s.arg0).fields["offset"] = (s.arg2);
+    r0 = pxsim_numops_toBoolDecr(s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_2 = r0 = s.arg0;
+    r0 = pxsim.control.createBuffer(27);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2).fields["buf"] = (s.tmp_3);
+  case 1:
+  case 2:
+    r0 = s.arg0.fields["offset"];
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    r0 = s.tmp_0;
+    { step = 4; continue; }
+  case 3:
+    r0 = 0;
+  case 4:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    r0 = (s.arg0).fields["offset"] = (s.tmp_1);
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_Envelope__C80553_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_Envelope_constructor__P80554_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1.arg2 = r0;
+    s.callLocIdx = 47; s.pc = 5; return s.tmp_1;
+  case 5:
+    r0 = s.retval;
+    r0 = (s.arg0).fields["ampEnvelope"] = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_Envelope__C80553_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_Envelope_constructor__P80554_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 11);
+    s.tmp_1.arg2 = r0;
+    s.callLocIdx = 48; s.pc = 6; return s.tmp_1;
+  case 6:
+    r0 = s.retval;
+    r0 = (s.arg0).fields["pitchEnvelope"] = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_LFO__C80565_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_LFO_constructor__P80566_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 21);
+    s.tmp_1.arg2 = r0;
+    s.callLocIdx = 49; s.pc = 7; return s.tmp_1;
+  case 7:
+    r0 = s.retval;
+    r0 = (s.arg0).fields["ampLFO"] = (s.tmp_0);
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_LFO__C80565_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_LFO_constructor__P80566_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 24);
+    s.tmp_1.arg2 = r0;
+    s.callLocIdx = 50; s.pc = 8; return s.tmp_1;
+  case 8:
+    r0 = s.retval;
+    r0 = (s.arg0).fields["pitchLFO"] = (s.tmp_0);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Instrument_constructor__P80607.info = {"start":10899,"length":445,"line":400,"column":8,"endLine":407,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_Instrument_constructor__P80607_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Instrument_constructor__P80607, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_LFO_constructor__P80566(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_LFO__C80565_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = (s.arg0).fields["offset"] = (s.arg2);
+    r0 = pxsim_numops_toBoolDecr(s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_2 = r0 = s.arg0;
+    r0 = pxsim.control.createBuffer(3);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2).fields["buf"] = (s.tmp_3);
+  case 1:
+  case 2:
+    r0 = s.arg0.fields["offset"];
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    r0 = s.tmp_0;
+    { step = 4; continue; }
+  case 3:
+    r0 = 0;
+  case 4:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    r0 = (s.arg0).fields["offset"] = (s.tmp_1);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_LFO_constructor__P80566.info = {"start":6238,"length":170,"line":230,"column":8,"endLine":233,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_LFO_constructor__P80566_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_LFO_constructor__P80566, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Envelope_constructor__P80554(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Envelope__C80553_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["buf"] = (s.arg1);
+    r0 = (s.arg0).fields["offset"] = (s.arg2);
+    r0 = pxsim_numops_toBoolDecr(s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_2 = r0 = s.arg0;
+    r0 = pxsim.control.createBuffer(10);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2).fields["buf"] = (s.tmp_3);
+  case 1:
+  case 2:
+    r0 = s.arg0.fields["offset"];
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    r0 = s.tmp_0;
+    { step = 4; continue; }
+  case 3:
+    r0 = 0;
+  case 4:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    r0 = (s.arg0).fields["offset"] = (s.tmp_1);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Envelope_constructor__P80554.info = {"start":4531,"length":171,"line":170,"column":8,"endLine":173,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["this","buf","offset"]}
+
+function music_sequencer_Envelope_constructor__P80554_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Envelope_constructor__P80554, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_byteLength__P80594(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    s.tmp_2 = music_sequencer_Track_noteEventByteLength__P80592_mk(s);
+    s.tmp_2.arg0 = s.arg0;
+    s.callLocIdx = 36; s.pc = 1; return s.tmp_2;
+  case 1:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    s.tmp_4 = music_sequencer_Track_instrumentByteLength__P80589_mk(s);
+    s.tmp_4.arg0 = s.arg0;
+    s.callLocIdx = 37; s.pc = 2; return s.tmp_4;
+  case 2:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (s.tmp_1 + s.tmp_3);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 + 6);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_byteLength__P80594.info = {"start":9339,"length":105,"line":349,"column":8,"endLine":351,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"byteLength","argumentNames":["this"]}
+music_sequencer_Track_byteLength__P80594.isGetter = true;
+
+function music_sequencer_Track_byteLength__P80594_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_byteLength__P80594, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_noteEventByteLength__P80592(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    s.tmp_0 = r0 = s.arg0;
+    s.tmp_2 = music_sequencer_Track_noteEventStart__P80591_mk(s);
+    s.tmp_2.arg0 = s.arg0;
+    s.callLocIdx = 34; s.pc = 1; return s.tmp_2;
+  case 1:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    r0 = s.tmp_0.fields["buf"];
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_3, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_noteEventByteLength__P80592.info = {"start":9114,"length":100,"line":341,"column":8,"endLine":343,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"noteEventByteLength","argumentNames":["this"]}
+music_sequencer_Track_noteEventByteLength__P80592.isGetter = true;
+
+function music_sequencer_Track_noteEventByteLength__P80592_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_noteEventByteLength__P80592, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_isMelodicTrack__P80584(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 + 1);
+    s.tmp_2 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_1, s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 === 0);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_isMelodicTrack__P80584.info = {"start":8347,"length":78,"line":309,"column":8,"endLine":311,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"isMelodicTrack","argumentNames":["this"]}
+music_sequencer_Track_isMelodicTrack__P80584.isGetter = true;
+
+function music_sequencer_Track_isMelodicTrack__P80584_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_isMelodicTrack__P80584, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_flags__P80587(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_flags__P80587.info = {"start":8601,"length":77,"line":321,"column":8,"endLine":323,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"flags","argumentNames":["this"]}
+music_sequencer_Track_flags__P80587.isGetter = true;
+
+function music_sequencer_Track_flags__P80587_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_flags__P80587, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_numberOfTracks__P80551(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Song__C80538_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, 6);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_numberOfTracks__P80551.info = {"start":3193,"length":72,"line":130,"column":8,"endLine":132,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"numberOfTracks","argumentNames":["this"]}
+music_sequencer_Song_numberOfTracks__P80551.isGetter = true;
+
+function music_sequencer_Song_numberOfTracks__P80551_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_numberOfTracks__P80551, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_play__P80677(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_0 = music_Playable__C80666_v0_2_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.tmp_0.arg1 = s.arg1;
+    if (!checkSubtype(s.tmp_0.arg0, music_Playable__C80666_VT)) failedCast(s.tmp_0.arg0);
+    s.tmp_0.fn = s.tmp_0.arg0.vtable.methods.play;
+    s.pc = 1; return s.tmp_0;
+  case 1:
+    r0 = s.retval;
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_play__P80677.info = {"start":2835,"length":109,"line":110,"column":4,"endLine":112,"endColumn":5,"fileName":"pxt_modules/mixer/playable.ts","functionName":"play","argumentNames":["toPlay","playbackMode"]}
+
+function music_play__P80677_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_play__P80677, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_Playable_play__P80669(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_Playable__C80666_VT)) failedCast(r0);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_Playable_play__P80669.info = {"start":1122,"length":68,"line":51,"column":8,"endLine":53,"endColumn":9,"fileName":"pxt_modules/mixer/playable.ts","functionName":"play","argumentNames":["this","playbackMode"]}
+
+function music_Playable_play__P80669_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_Playable_play__P80669, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  arg0: undefined,
+  arg1: undefined,
 } }
 
 
@@ -45222,40 +46640,6 @@ function music_MelodyPlayable_constructor__P80672_mk(s) {
 
 
 
-function music_Playable_constructor__P80668(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.lambdaArgs = null;
-    }
-    r0 = s.arg0;
-    if (!checkSubtype(r0, music_Playable__C80666_VT)) failedCast(r0);
-    r0 = undefined;
-    return leave(s, r0)
-  default: oops()
-} } }
-music_Playable_constructor__P80668.info = {"start":1086,"length":26,"line":47,"column":8,"endLine":49,"endColumn":9,"fileName":"pxt_modules/mixer/playable.ts","functionName":"inline","argumentNames":["this"]}
-
-function music_Playable_constructor__P80668_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: music_Playable_constructor__P80668, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  arg0: undefined,
-} }
-
-
-
-
-
 function music_Melody_constructor__P80384(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
@@ -49060,6 +50444,4401 @@ function effects_ScreenEffect_endScreenEffect__P82024_mk(s) {
   tmp_0: undefined,
   tmp_1: undefined,
   arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_flags__P80588(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.setByte(s.tmp_0, s.tmp_1, s.arg1);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_flags__P80588.info = {"start":8688,"length":83,"line":325,"column":8,"endLine":327,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"flags","argumentNames":["this","value"]}
+
+function music_sequencer_Track_flags__P80588_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_flags__P80588, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_id__P80586(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.setByte(s.tmp_0, s.tmp_1, s.arg1);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_id__P80586.info = {"start":8515,"length":76,"line":317,"column":8,"endLine":319,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"id","argumentNames":["this","value"]}
+
+function music_sequencer_Track_id__P80586_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_id__P80586, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_id__P80585(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_id__P80585.info = {"start":8435,"length":70,"line":313,"column":8,"endLine":315,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"id","argumentNames":["this"]}
+music_sequencer_Track_id__P80585.isGetter = true;
+
+function music_sequencer_Track_id__P80585_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_id__P80585, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_play__P80552(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.seq___106303 = undefined;
+    s.seq___106340 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Song__C80538_VT)) failedCast(r0);
+    r0 = pxsim.control.deviceDalVersion();
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 === "sim");
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 5; continue; }
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer__SimulatorSequencer__C80647_VT);
+    s.tmp_2 = r0;
+    s.tmp_3 = music_sequencer__SimulatorSequencer_constructor__P80648_mk(s);
+    s.tmp_3.arg0 = s.tmp_2;
+    s.callLocIdx = 9; s.pc = 13; return s.tmp_3;
+  case 13:
+    r0 = s.retval;
+    s.seq___106303 = (s.tmp_2);
+    r0 = (s.arg1 === 0);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_1 = music_sequencer__SimulatorSequencer_play__P80649_mk(s);
+    s.tmp_1.arg0 = s.seq___106303;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    s.tmp_1.arg2 = false;
+    s.callLocIdx = 10; s.pc = 14; return s.tmp_1;
+  case 14:
+    r0 = s.retval;
+    r0 = pxsim_pxtcore_mkAction(1, music_sequencer_Song_play_inline__P106315);
+    s.tmp_0 = r0;
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.seq___106303);
+    s.tmp_1 = pauseUntil__P79121_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    s.tmp_1.arg1 = undefined;
+    s.callLocIdx = 12; s.pc = 15; return s.tmp_1;
+  case 15:
+    r0 = s.retval;
+    { step = 4; continue; }
+  case 1:
+    r0 = (s.arg1 === 1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    s.tmp_1 = music_sequencer__SimulatorSequencer_play__P80649_mk(s);
+    s.tmp_1.arg0 = s.seq___106303;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1.arg1 = r0;
+    s.tmp_1.arg2 = false;
+    s.callLocIdx = 13; s.pc = 16; return s.tmp_1;
+  case 16:
+    r0 = s.retval;
+    { step = 3; continue; }
+  case 2:
+    s.tmp_0 = music_sequencer__SimulatorSequencer_play__P80649_mk(s);
+    s.tmp_0.arg0 = s.seq___106303;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = true;
+    s.callLocIdx = 14; s.pc = 17; return s.tmp_0;
+  case 17:
+    r0 = s.retval;
+  case 3:
+  case 4:
+    { step = 12; continue; }
+  case 5:
+    r0 = pxsim_numops_toBoolDecr(globals.currentSequencer___83292);
+    if (!r0) { step = 6; continue; }
+    s.tmp_0 = music_sequencer_Sequencer_stop__P80644_mk(s);
+    s.tmp_0.arg0 = globals.currentSequencer___83292;
+    s.callLocIdx = 15; s.pc = 18; return s.tmp_0;
+  case 18:
+    r0 = s.retval;
+  case 6:
+  case 7:
+    r0 = pxsim_pxtcore_mkClassInstance(music_sequencer_Sequencer__C80637_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = music_sequencer_Sequencer_constructor__P80642_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    s.tmp_1.arg1 = s.arg0;
+    s.callLocIdx = 16; s.pc = 19; return s.tmp_1;
+  case 19:
+    r0 = s.retval;
+    globals.currentSequencer___83292 = (s.tmp_0);
+    r0 = (s.arg1 === 0);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 8; continue; }
+    s.seq___106340 = (globals.currentSequencer___83292);
+    s.tmp_0 = music_sequencer_Sequencer_start__P80643_mk(s);
+    s.tmp_0.arg0 = globals.currentSequencer___83292;
+    s.tmp_0.arg1 = false;
+    s.callLocIdx = 17; s.pc = 20; return s.tmp_0;
+  case 20:
+    r0 = s.retval;
+    r0 = pxsim_pxtcore_mkAction(1, music_sequencer_Song_play_inline__P106346);
+    s.tmp_0 = r0;
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.seq___106340);
+    s.tmp_1 = pauseUntil__P79121_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    s.tmp_1.arg1 = undefined;
+    s.callLocIdx = 18; s.pc = 21; return s.tmp_1;
+  case 21:
+    r0 = s.retval;
+    { step = 11; continue; }
+  case 8:
+    r0 = (s.arg1 === 1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 9; continue; }
+    s.tmp_1 = music_sequencer_Sequencer_start__P80643_mk(s);
+    s.tmp_1.arg0 = globals.currentSequencer___83292;
+    s.tmp_1.arg1 = false;
+    s.callLocIdx = 19; s.pc = 22; return s.tmp_1;
+  case 22:
+    r0 = s.retval;
+    { step = 10; continue; }
+  case 9:
+    s.tmp_0 = music_sequencer_Sequencer_start__P80643_mk(s);
+    s.tmp_0.arg0 = globals.currentSequencer___83292;
+    s.tmp_0.arg1 = true;
+    s.callLocIdx = 20; s.pc = 23; return s.tmp_0;
+  case 23:
+    r0 = s.retval;
+  case 10:
+  case 11:
+  case 12:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_play__P80552.info = {"start":3275,"length":1212,"line":134,"column":8,"endLine":166,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"play","argumentNames":["this","playbackMode"]}
+
+function music_sequencer_Song_play__P80552_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_play__P80552, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  seq___106303: undefined,
+  seq___106340: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_play_inline__P106315(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.tmp_1 = music_sequencer__SimulatorSequencer_state__P80654_mk(s);
+    s.tmp_1.arg0 = s.caps[0];
+    s.callLocIdx = 11; s.pc = 1; return s.tmp_1;
+  case 1:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 === "stop");
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_play_inline__P106315.info = {"start":3564,"length":28,"line":141,"column":31,"endLine":141,"endColumn":59,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":[]}
+
+function music_sequencer_Song_play_inline__P106315_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_play_inline__P106315, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_play_inline__P106346(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    r0 = s.caps[0].fields["isRunning"];
+    s.tmp_1 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_0);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_play_inline__P106346.info = {"start":4192,"length":20,"line":157,"column":31,"endLine":157,"endColumn":51,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":[]}
+
+function music_sequencer_Song_play_inline__P106346_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_play_inline__P106346, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+} }
+
+
+
+
+
+function music_sequencer__SimulatorSequencer_state__P80654(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer__SimulatorSequencer__C80647_VT)) failedCast(r0);
+    r0 = s.arg0.fields["id"];
+    s.tmp_1 = r0;
+    r0 = pxsim.music._sequencerState(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = s.tmp_0;
+    { step = 2; continue; }
+  case 1:
+    r0 = "stop";
+  case 2:
+    // jmp value (already in r0)
+    s.tmp_2 = r0;
+    r0 = s.tmp_2;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer__SimulatorSequencer_state__P80654.info = {"start":4302,"length":74,"line":136,"column":8,"endLine":138,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"state","argumentNames":["this"]}
+
+function music_sequencer__SimulatorSequencer_state__P80654_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer__SimulatorSequencer_state__P80654, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer__SimulatorSequencer_play__P80649(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer__SimulatorSequencer__C80647_VT)) failedCast(r0);
+    s.tmp_0 = music_sequencer__SimulatorSequencer_setVolume__P80651_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.tmp_1 = music_volume__P80376_mk(s);
+    s.callLocIdx = 191; s.pc = 2; return s.tmp_1;
+  case 2:
+    r0 = s.retval;
+    s.tmp_0.arg1 = r0;
+    s.callLocIdx = 192; s.pc = 1; return s.tmp_0;
+  case 1:
+    r0 = s.retval;
+    r0 = s.arg0.fields["id"];
+    s.tmp_0 = r0;
+    r0 = pxsim.music._sequencerPlaySong(s.tmp_0, s.arg1, s.arg2);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer__SimulatorSequencer_play__P80649.info = {"start":3675,"length":141,"line":115,"column":8,"endLine":118,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"play","argumentNames":["this","song","loop"]}
+
+function music_sequencer__SimulatorSequencer_play__P80649_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer__SimulatorSequencer_play__P80649, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer__SimulatorSequencer_setVolume__P80651(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer__SimulatorSequencer__C80647_VT)) failedCast(r0);
+    r0 = s.arg0.fields["id"];
+    s.tmp_0 = r0;
+    r0 = pxsim.music._sequencerSetVolume(s.tmp_0, s.arg1);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer__SimulatorSequencer_setVolume__P80651.info = {"start":3891,"length":87,"line":124,"column":8,"endLine":126,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"setVolume","argumentNames":["this","volume"]}
+
+function music_sequencer__SimulatorSequencer_setVolume__P80651_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer__SimulatorSequencer_setVolume__P80651, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer__SimulatorSequencer_constructor__P80648(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer__SimulatorSequencer__C80647_VT)) failedCast(r0);
+    r0 = pxsim_numops_toBoolDecr(globals.activeSimSequencers___83321);
+    s.tmp_1 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = pxsim_Array__mk();
+    globals.activeSimSequencers___83321 = (r0);
+  case 1:
+  case 2:
+    r0 = pxsim_Array__push(globals.activeSimSequencers___83321, s.arg0);
+    s.tmp_0 = r0 = s.arg0;
+    (function(cb) { pxsim.music._createSequencer().then(cb) })(buildResume(s, 3));
+    checkResumeConsumed();
+    return;
+  case 3:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["id"] = (s.tmp_1);
+    s.tmp_0 = music_sequencer__SimulatorSequencer_setVolume__P80651_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.tmp_1 = music_volume__P80376_mk(s);
+    s.callLocIdx = 189; s.pc = 5; return s.tmp_1;
+  case 5:
+    r0 = s.retval;
+    s.tmp_0.arg1 = r0;
+    s.callLocIdx = 190; s.pc = 4; return s.tmp_0;
+  case 4:
+    r0 = s.retval;
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer__SimulatorSequencer_constructor__P80648.info = {"start":3446,"length":219,"line":108,"column":8,"endLine":113,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"inline","argumentNames":["this"]}
+
+function music_sequencer__SimulatorSequencer_constructor__P80648_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer__SimulatorSequencer_constructor__P80648, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_stop__P80644(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Sequencer__C80637_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["isPlaying"] = (false);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_stop__P80644.info = {"start":1287,"length":54,"line":43,"column":8,"endLine":45,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"stop","argumentNames":["this"]}
+
+function music_sequencer_Sequencer_stop__P80644_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_stop__P80644, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_start__P80643(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Sequencer__C80637_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["currentTick"] = (0);
+    r0 = (s.arg0).fields["isLooping"] = (s.arg1);
+    r0 = (s.arg0).fields["isPlaying"] = (true);
+    r0 = s.arg0.fields["isRunning"];
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    { step = 3; continue; }
+  case 1:
+  case 2:
+    r0 = (s.arg0).fields["isRunning"] = (true);
+    r0 = pxsim_pxtcore_mkAction(1, music_sequencer_Sequencer_start_inline__P106372);
+    s.tmp_0 = r0;
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
+    r0 = pxsim.control.runInParallel(s.tmp_0);
+  case 3:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_start__P80643.info = {"start":512,"length":765,"line":18,"column":8,"endLine":41,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"start","argumentNames":["this","loop"]}
+
+function music_sequencer_Sequencer_start__P80643_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_start__P80643, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_start_inline__P106372(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+  case 1:
+    r0 = s.caps[0].fields["isPlaying"];
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 6; continue; }
+    s.tmp_1 = music_sequencer_Sequencer_scheduleCurrentTick__P83318_mk(s);
+    s.tmp_1.arg0 = s.caps[0];
+    s.callLocIdx = 161; s.pc = 7; return s.tmp_1;
+  case 7:
+    r0 = s.retval;
+    s.tmp_0 = r0 = s.caps[0];
+    r0 = s.tmp_0.fields["currentTick"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["currentTick"] = (s.tmp_1);
+    r0 = s.caps[0].fields["currentTick"];
+    s.tmp_1 = r0;
+    r0 = s.caps[0].fields["song"];
+    s.tmp_5 = r0;
+    r0 = s.tmp_5.fields["buf"];
+    s.tmp_6 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_6, 3);
+    s.tmp_4 = r0;
+    r0 = s.caps[0].fields["song"];
+    s.tmp_8 = r0;
+    r0 = s.tmp_8.fields["buf"];
+    s.tmp_9 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_9, 5);
+    s.tmp_7 = r0;
+    r0 = (s.tmp_4 * s.tmp_7);
+    s.tmp_3 = r0;
+    r0 = s.caps[0].fields["song"];
+    s.tmp_11 = r0;
+    r0 = s.tmp_11.fields["buf"];
+    s.tmp_12 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_12, 4);
+    s.tmp_10 = r0;
+    r0 = (s.tmp_3 * s.tmp_10);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 >= s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 4; continue; }
+    r0 = s.caps[0].fields["isLooping"];
+    s.tmp_13 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_13);
+    if (!r0) { step = 2; continue; }
+    r0 = (s.caps[0]).fields["currentTick"] = (0);
+    { step = 3; continue; }
+  case 2:
+    r0 = (s.caps[0]).fields["isPlaying"] = (false);
+  case 3:
+  case 4:
+  case 5:
+    s.tmp_0 = pause__P79167_mk(s);
+    s.tmp_1 = music_sequencer_Sequencer_tickToMs__P80645_mk(s);
+    s.tmp_1.arg0 = s.caps[0];
+    s.tmp_1.arg1 = 1;
+    s.callLocIdx = 165; s.pc = 9; return s.tmp_1;
+  case 9:
+    r0 = s.retval;
+    s.tmp_0.arg0 = r0;
+    s.callLocIdx = 166; s.pc = 8; return s.tmp_0;
+  case 8:
+    r0 = s.retval;
+    { step = 1; continue; }
+  case 6:
+    r0 = (s.caps[0]).fields["isRunning"] = (false);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_start_inline__P106372.info = {"start":750,"length":516,"line":26,"column":34,"endLine":40,"endColumn":13,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"inline","argumentNames":[]}
+
+function music_sequencer_Sequencer_start_inline__P106372_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_start_inline__P106372, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  tmp_12: undefined,
+  tmp_13: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_scheduleCurrentTick__P83318(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.track___106437 = undefined;
+    s.unnamed1244___U1 = undefined;
+    s.unnamed1245___U2 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Sequencer__C80637_VT)) failedCast(r0);
+    s.track___106437 = (undefined);
+    r0 = s.arg0.fields["song"];
+    r0 = r0.fields["tracks"];
+    s.unnamed1244___U1 = (r0);
+    s.unnamed1245___U2 = (0);
+  case 1:
+    s.tmp_0 = r0 = s.unnamed1245___U2;
+    r0 = pxsim_Array__length(s.unnamed1244___U1);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 < s.tmp_1);
+    if (!r0) { step = 6; continue; }
+    r0 = pxsim_Array__getAt(s.unnamed1244___U1, s.unnamed1245___U2);
+    s.track___106437 = (r0);
+    s.tmp_4 = music_sequencer_NoteEvent_startTick__P80573_mk(s);
+    r0 = s.track___106437.fields["currentNoteEvent"];
+    s.tmp_4.arg0 = r0;
+    s.callLocIdx = 169; s.pc = 7; return s.tmp_4;
+  case 7:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = s.arg0.fields["currentTick"];
+    s.tmp_5 = r0;
+    r0 = (s.tmp_3 === s.tmp_5);
+    s.tmp_2 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_2);
+    if (!r0) { step = 4; continue; }
+    s.tmp_7 = music_sequencer_Track_isMelodicTrack__P80584_mk(s);
+    s.tmp_7.arg0 = s.track___106437;
+    s.callLocIdx = 170; s.pc = 8; return s.tmp_7;
+  case 8:
+    r0 = s.retval;
+    s.tmp_6 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_6);
+    if (!r0) { step = 2; continue; }
+    s.tmp_8 = music_sequencer_Sequencer_scheduleMelodicTrack__P83319_mk(s);
+    s.tmp_8.arg0 = s.arg0;
+    s.tmp_8.arg1 = s.track___106437;
+    s.callLocIdx = 171; s.pc = 9; return s.tmp_8;
+  case 9:
+    r0 = s.retval;
+    { step = 3; continue; }
+  case 2:
+    s.tmp_0 = music_sequencer_Sequencer_scheduleDrumTrack__P83320_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.tmp_0.arg1 = s.track___106437;
+    s.callLocIdx = 172; s.pc = 10; return s.tmp_0;
+  case 10:
+    r0 = s.retval;
+  case 3:
+    s.tmp_0 = music_sequencer_Track_advanceNoteEvent__P80595_mk(s);
+    s.tmp_0.arg0 = s.track___106437;
+    s.callLocIdx = 173; s.pc = 11; return s.tmp_0;
+  case 11:
+    r0 = s.retval;
+  case 4:
+  case 5:
+    r0 = (s.unnamed1245___U2 + 1);
+    s.unnamed1245___U2 = (r0);
+    { step = 1; continue; }
+  case 6:
+    s.unnamed1244___U1 = (undefined);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_scheduleCurrentTick__P83318.info = {"start":1486,"length":512,"line":51,"column":8,"endLine":64,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"scheduleCurrentTick","argumentNames":["this"]}
+
+function music_sequencer_Sequencer_scheduleCurrentTick__P83318_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_scheduleCurrentTick__P83318, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  track___106437: undefined,
+  unnamed1244___U1: undefined,
+  unnamed1245___U2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_scheduleDrumTrack__P83320(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.i___106491 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Sequencer__C80637_VT)) failedCast(r0);
+    s.i___106491 = (0);
+  case 1:
+    s.tmp_1 = r0 = s.i___106491;
+    r0 = s.arg1.fields["currentNoteEvent"];
+    s.tmp_3 = r0;
+    r0 = s.tmp_3.fields["buf"];
+    s.tmp_4 = r0;
+    r0 = s.tmp_3.fields["offset"];
+    s.tmp_6 = r0;
+    r0 = (s.tmp_6 + 4);
+    s.tmp_5 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_4, s.tmp_5);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    s.tmp_7 = music_playInstructions__P80399_mk(s);
+    s.tmp_7.arg0 = 0;
+    s.tmp_8 = music_sequencer_renderDrumInstrument__P80633_mk(s);
+    r0 = s.arg1.fields["drums"];
+    s.tmp_9 = r0;
+    s.tmp_11 = music_sequencer_NoteEvent_getNote__P80580_mk(s);
+    r0 = s.arg1.fields["currentNoteEvent"];
+    s.tmp_11.arg0 = r0;
+    s.tmp_11.arg1 = s.i___106491;
+    s.tmp_11.arg2 = undefined;
+    s.callLocIdx = 185; s.pc = 5; return s.tmp_11;
+  case 5:
+    r0 = s.retval;
+    s.tmp_10 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_9, s.tmp_10);
+    s.tmp_8.arg0 = r0;
+    s.tmp_12 = music_volume__P80376_mk(s);
+    s.callLocIdx = 186; s.pc = 6; return s.tmp_12;
+  case 6:
+    r0 = s.retval;
+    s.tmp_8.arg1 = r0;
+    s.callLocIdx = 187; s.pc = 4; return s.tmp_8;
+  case 4:
+    r0 = s.retval;
+    s.tmp_7.arg1 = r0;
+    s.callLocIdx = 188; s.pc = 3; return s.tmp_7;
+  case 3:
+    r0 = s.retval;
+    r0 = (s.i___106491 + 1);
+    s.i___106491 = (r0);
+    { step = 1; continue; }
+  case 2:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_scheduleDrumTrack__P83320.info = {"start":2592,"length":406,"line":80,"column":8,"endLine":90,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"scheduleDrumTrack","argumentNames":["this","track"]}
+
+function music_sequencer_Sequencer_scheduleDrumTrack__P83320_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_scheduleDrumTrack__P83320, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  tmp_12: undefined,
+  i___106491: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_renderDrumInstrument__P80633(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.prevAmp___106537 = undefined;
+    s.prevFreq___106540 = undefined;
+    s.scaleVolume___106543 = undefined;
+    s.out___106551 = undefined;
+    s.i___106562 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_0 = music_sequencer_DrumInstrument_startVolume__P80620_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.callLocIdx = 109; s.pc = 3; return s.tmp_0;
+  case 3:
+    r0 = s.retval;
+    s.prevAmp___106537 = (r0);
+    s.tmp_0 = music_sequencer_DrumInstrument_startFrequency__P80618_mk(s);
+    s.tmp_0.arg0 = s.arg0;
+    s.callLocIdx = 110; s.pc = 4; return s.tmp_0;
+  case 4:
+    r0 = s.retval;
+    s.prevFreq___106540 = (r0);
+    r0 = pxsim_pxtcore_mkAction(1, scaleVolume_inline__P106544);
+    s.tmp_0 = r0;
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg1);
+    s.scaleVolume___106543 = (s.tmp_0);
+    r0 = s.arg0.fields["steps"];
+    s.tmp_3 = r0;
+    r0 = pxsim_Array__length(s.tmp_3);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 * 12);
+    s.tmp_0 = r0;
+    r0 = pxsim.control.createBuffer(s.tmp_0);
+    s.out___106551 = (r0);
+    s.i___106562 = (0);
+  case 1:
+    s.tmp_1 = r0 = s.i___106562;
+    r0 = s.arg0.fields["steps"];
+    s.tmp_3 = r0;
+    r0 = pxsim_Array__length(s.tmp_3);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    s.tmp_4 = music_addNote__P80391_mk(s);
+    s.tmp_4.arg0 = s.out___106551;
+    r0 = (s.i___106562 * 12);
+    s.tmp_4.arg1 = r0;
+    s.tmp_5 = music_sequencer_DrumStep_duration__P80630_mk(s);
+    r0 = s.arg0.fields["steps"];
+    s.tmp_6 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_6, s.i___106562);
+    s.tmp_5.arg0 = r0;
+    s.callLocIdx = 111; s.pc = 6; return s.tmp_5;
+  case 6:
+    r0 = s.retval;
+    s.tmp_4.arg2 = r0;
+    s.tmp_7 = lambda_2_mk(s);
+    s.tmp_7.argL = s.scaleVolume___106543;
+    s.tmp_7.arg0 = s.prevAmp___106537;
+    setupLambda(s.tmp_7, s.tmp_7.argL);
+    s.callLocIdx = 112; s.pc = 7; return s.tmp_7;
+  case 7:
+    r0 = s.retval;
+    s.tmp_4.arg3 = r0;
+    s.tmp_8 = lambda_2_mk(s);
+    s.tmp_8.argL = s.scaleVolume___106543;
+    s.tmp_9 = music_sequencer_DrumStep_volume__P80628_mk(s);
+    r0 = s.arg0.fields["steps"];
+    s.tmp_10 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_10, s.i___106562);
+    s.tmp_9.arg0 = r0;
+    s.callLocIdx = 113; s.pc = 9; return s.tmp_9;
+  case 9:
+    r0 = s.retval;
+    s.tmp_8.arg0 = r0;
+    setupLambda(s.tmp_8, s.tmp_8.argL);
+    s.callLocIdx = 114; s.pc = 8; return s.tmp_8;
+  case 8:
+    r0 = s.retval;
+    s.tmp_4.arg4 = r0;
+    r0 = s.arg0.fields["steps"];
+    s.tmp_12 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_12, s.i___106562);
+    s.tmp_11 = r0;
+    r0 = s.tmp_11.fields["buf"];
+    s.tmp_13 = r0;
+    r0 = s.tmp_11.fields["offset"];
+    s.tmp_14 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_13, s.tmp_14);
+    s.tmp_4.arg5 = r0;
+    s.tmp_4.arg6 = s.prevFreq___106540;
+    s.tmp_4.arg7 = 255;
+    s.tmp_15 = music_sequencer_DrumStep_frequency__P80626_mk(s);
+    r0 = s.arg0.fields["steps"];
+    s.tmp_16 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_16, s.i___106562);
+    s.tmp_15.arg0 = r0;
+    s.callLocIdx = 116; s.pc = 10; return s.tmp_15;
+  case 10:
+    r0 = s.retval;
+    s.tmp_4.arg8 = r0;
+    s.callLocIdx = 117; s.pc = 5; return s.tmp_4;
+  case 5:
+    r0 = s.retval;
+    s.tmp_0 = music_sequencer_DrumStep_volume__P80628_mk(s);
+    r0 = s.arg0.fields["steps"];
+    s.tmp_1 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_1, s.i___106562);
+    s.tmp_0.arg0 = r0;
+    s.callLocIdx = 118; s.pc = 11; return s.tmp_0;
+  case 11:
+    r0 = s.retval;
+    s.prevAmp___106537 = (r0);
+    s.tmp_0 = music_sequencer_DrumStep_frequency__P80626_mk(s);
+    r0 = s.arg0.fields["steps"];
+    s.tmp_1 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_1, s.i___106562);
+    s.tmp_0.arg0 = r0;
+    s.callLocIdx = 119; s.pc = 12; return s.tmp_0;
+  case 12:
+    r0 = s.retval;
+    s.prevFreq___106540 = (r0);
+    r0 = (s.i___106562 + 1);
+    s.i___106562 = (r0);
+    { step = 1; continue; }
+  case 2:
+    s.tmp_0 = music_addNote__P80391_mk(s);
+    s.tmp_0.arg0 = s.out___106551;
+    r0 = s.arg0.fields["steps"];
+    s.tmp_2 = r0;
+    r0 = pxsim_Array__length(s.tmp_2);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 * 12);
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = 10;
+    s.tmp_3 = lambda_2_mk(s);
+    s.tmp_3.argL = s.scaleVolume___106543;
+    s.tmp_3.arg0 = s.prevAmp___106537;
+    setupLambda(s.tmp_3, s.tmp_3.argL);
+    s.callLocIdx = 120; s.pc = 14; return s.tmp_3;
+  case 14:
+    r0 = s.retval;
+    s.tmp_0.arg3 = r0;
+    s.tmp_0.arg4 = 0;
+    r0 = s.arg0.fields["steps"];
+    s.tmp_5 = r0;
+    r0 = s.arg0.fields["steps"];
+    s.tmp_8 = r0;
+    r0 = pxsim_Array__length(s.tmp_8);
+    s.tmp_7 = r0;
+    r0 = (s.tmp_7 - 1);
+    s.tmp_6 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_5, s.tmp_6);
+    s.tmp_4 = r0;
+    r0 = s.tmp_4.fields["buf"];
+    s.tmp_9 = r0;
+    r0 = s.tmp_4.fields["offset"];
+    s.tmp_10 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_9, s.tmp_10);
+    s.tmp_0.arg5 = r0;
+    s.tmp_0.arg6 = s.prevFreq___106540;
+    s.tmp_0.arg7 = 255;
+    s.tmp_0.arg8 = s.prevFreq___106540;
+    s.callLocIdx = 122; s.pc = 13; return s.tmp_0;
+  case 13:
+    r0 = s.retval;
+    r0 = s.out___106551;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_renderDrumInstrument__P80633.info = {"start":23063,"length":1267,"line":708,"column":4,"endLine":747,"endColumn":5,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"renderDrumInstrument","argumentNames":["sound","volume"]}
+
+function music_sequencer_renderDrumInstrument__P80633_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_renderDrumInstrument__P80633, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  tmp_12: undefined,
+  tmp_13: undefined,
+  tmp_14: undefined,
+  tmp_15: undefined,
+  tmp_16: undefined,
+  prevAmp___106537: undefined,
+  prevFreq___106540: undefined,
+  scaleVolume___106543: undefined,
+  out___106551: undefined,
+  i___106562: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function scaleVolume_inline__P106544(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = (s.arg0 / 1024);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 * s.caps[0]);
+    return leave(s, r0)
+  default: oops()
+} } }
+scaleVolume_inline__P106544.info = {"start":23395,"length":42,"line":714,"column":28,"endLine":714,"endColumn":70,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"inline","argumentNames":["value"]}
+
+function scaleVolume_inline__P106544_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: scaleVolume_inline__P106544, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumStep_duration__P80630(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumStep__C80622_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 5);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumStep_duration__P80630.info = {"start":13675,"length":71,"line":504,"column":8,"endLine":506,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"duration","argumentNames":["this"]}
+music_sequencer_DrumStep_duration__P80630.isGetter = true;
+
+function music_sequencer_DrumStep_duration__P80630_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumStep_duration__P80630, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumStep_getValue__P83304(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumStep__C80622_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumStep_getValue__P83304.info = {"start":13842,"length":130,"line":512,"column":8,"endLine":514,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"getValue","argumentNames":["this","offset"]}
+
+function music_sequencer_DrumStep_getValue__P83304_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumStep_getValue__P83304, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumStep_volume__P80628(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumStep__C80622_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 3);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumStep_volume__P80628.info = {"start":13512,"length":69,"line":496,"column":8,"endLine":498,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"volume","argumentNames":["this"]}
+music_sequencer_DrumStep_volume__P80628.isGetter = true;
+
+function music_sequencer_DrumStep_volume__P80628_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumStep_volume__P80628, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumStep_frequency__P80626(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumStep__C80622_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumStep_frequency__P80626.info = {"start":13343,"length":72,"line":488,"column":8,"endLine":490,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"frequency","argumentNames":["this"]}
+music_sequencer_DrumStep_frequency__P80626.isGetter = true;
+
+function music_sequencer_DrumStep_frequency__P80626_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumStep_frequency__P80626, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumStep_waveform__P80624(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumStep__C80622_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumStep_waveform__P80624.info = {"start":13165,"length":76,"line":480,"column":8,"endLine":482,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"waveform","argumentNames":["this"]}
+music_sequencer_DrumStep_waveform__P80624.isGetter = true;
+
+function music_sequencer_DrumStep_waveform__P80624_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumStep_waveform__P80624, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumInstrument_startVolume__P80620(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumInstrument__C80612_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 3);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumInstrument_startVolume__P80620.info = {"start":12483,"length":74,"line":457,"column":8,"endLine":459,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"startVolume","argumentNames":["this"]}
+music_sequencer_DrumInstrument_startVolume__P80620.isGetter = true;
+
+function music_sequencer_DrumInstrument_startVolume__P80620_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumInstrument_startVolume__P80620, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumInstrument_getValue__P83302(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumInstrument__C80612_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumInstrument_getValue__P83302.info = {"start":12656,"length":130,"line":465,"column":8,"endLine":467,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"getValue","argumentNames":["this","offset"]}
+
+function music_sequencer_DrumInstrument_getValue__P83302_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumInstrument_getValue__P83302, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_DrumInstrument_startFrequency__P80618(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_DrumInstrument__C80612_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_DrumInstrument_startFrequency__P80618.info = {"start":12304,"length":77,"line":449,"column":8,"endLine":451,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"startFrequency","argumentNames":["this"]}
+music_sequencer_DrumInstrument_startFrequency__P80618.isGetter = true;
+
+function music_sequencer_DrumInstrument_startFrequency__P80618_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_DrumInstrument_startFrequency__P80618, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_NoteEvent_getNote__P80580(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.value___106514 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_NoteEvent__C80571_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 + s.arg1);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 + 5);
+    s.tmp_2 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_1, s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 & 63);
+    s.value___106514 = (r0);
+    r0 = (s.arg2 !== undefined);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_1 = r0 = s.value___106514;
+    r0 = (s.arg2 - 2);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 * 12);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 + s.tmp_2);
+    { step = 3; continue; }
+  case 1:
+  case 2:
+    r0 = s.value___106514;
+  case 3:
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_NoteEvent_getNote__P80580.info = {"start":7562,"length":249,"line":285,"column":8,"endLine":291,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"getNote","argumentNames":["this","offset","octave"]}
+
+function music_sequencer_NoteEvent_getNote__P80580_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_NoteEvent_getNote__P80580, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  value___106514: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_NoteEvent_polyphony__P80577(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_NoteEvent__C80571_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 4);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_NoteEvent_polyphony__P80577.info = {"start":7297,"length":81,"line":273,"column":8,"endLine":275,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"polyphony","argumentNames":["this"]}
+music_sequencer_NoteEvent_polyphony__P80577.isGetter = true;
+
+function music_sequencer_NoteEvent_polyphony__P80577_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_NoteEvent_polyphony__P80577, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_playInstructions__P80399(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = pxsim.music.queuePlayInstructions(s.arg0, s.arg1);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_playInstructions__P80399.info = {"start":21413,"length":127,"line":608,"column":4,"endLine":610,"endColumn":5,"fileName":"pxt_modules/mixer/melody.ts","functionName":"playInstructions","argumentNames":["when","instructions"]}
+
+function music_playInstructions__P80399_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_playInstructions__P80399, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_scheduleMelodicTrack__P83319(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.i___106670 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Sequencer__C80637_VT)) failedCast(r0);
+    s.i___106670 = (0);
+  case 1:
+    s.tmp_1 = r0 = s.i___106670;
+    r0 = s.arg1.fields["currentNoteEvent"];
+    s.tmp_3 = r0;
+    r0 = s.tmp_3.fields["buf"];
+    s.tmp_4 = r0;
+    r0 = s.tmp_3.fields["offset"];
+    s.tmp_6 = r0;
+    r0 = (s.tmp_6 + 4);
+    s.tmp_5 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_4, s.tmp_5);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    s.tmp_7 = music_playInstructions__P80399_mk(s);
+    s.tmp_7.arg0 = 0;
+    s.tmp_8 = music_sequencer_renderInstrument__P80632_mk(s);
+    r0 = s.arg1.fields["instrument"];
+    s.tmp_8.arg0 = r0;
+    s.tmp_9 = music_lookupFrequency__P80400_mk(s);
+    s.tmp_10 = music_sequencer_NoteEvent_getNote__P80580_mk(s);
+    r0 = s.arg1.fields["currentNoteEvent"];
+    s.tmp_10.arg0 = r0;
+    s.tmp_10.arg1 = s.i___106670;
+    r0 = s.arg1.fields["instrument"];
+    s.tmp_11 = r0;
+    r0 = s.tmp_11.fields["buf"];
+    s.tmp_12 = r0;
+    r0 = s.tmp_11.fields["offset"];
+    s.tmp_14 = r0;
+    r0 = (s.tmp_14 + 27);
+    s.tmp_13 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_12, s.tmp_13);
+    s.tmp_10.arg2 = r0;
+    s.callLocIdx = 176; s.pc = 6; return s.tmp_10;
+  case 6:
+    r0 = s.retval;
+    s.tmp_9.arg0 = r0;
+    s.callLocIdx = 177; s.pc = 5; return s.tmp_9;
+  case 5:
+    r0 = s.retval;
+    s.tmp_8.arg1 = r0;
+    s.tmp_15 = music_sequencer_Sequencer_tickToMs__P80645_mk(s);
+    s.tmp_15.arg0 = s.arg0;
+    s.tmp_17 = music_sequencer_NoteEvent_endTick__P80575_mk(s);
+    r0 = s.arg1.fields["currentNoteEvent"];
+    s.tmp_17.arg0 = r0;
+    s.callLocIdx = 178; s.pc = 8; return s.tmp_17;
+  case 8:
+    r0 = s.retval;
+    s.tmp_16 = r0;
+    s.tmp_19 = music_sequencer_NoteEvent_startTick__P80573_mk(s);
+    r0 = s.arg1.fields["currentNoteEvent"];
+    s.tmp_19.arg0 = r0;
+    s.callLocIdx = 179; s.pc = 9; return s.tmp_19;
+  case 9:
+    r0 = s.retval;
+    s.tmp_18 = r0;
+    r0 = (s.tmp_16 - s.tmp_18);
+    s.tmp_15.arg1 = r0;
+    s.callLocIdx = 180; s.pc = 7; return s.tmp_15;
+  case 7:
+    r0 = s.retval;
+    s.tmp_8.arg2 = r0;
+    s.tmp_20 = music_volume__P80376_mk(s);
+    s.callLocIdx = 181; s.pc = 10; return s.tmp_20;
+  case 10:
+    r0 = s.retval;
+    s.tmp_8.arg3 = r0;
+    s.callLocIdx = 182; s.pc = 4; return s.tmp_8;
+  case 4:
+    r0 = s.retval;
+    s.tmp_7.arg1 = r0;
+    s.callLocIdx = 183; s.pc = 3; return s.tmp_7;
+  case 3:
+    r0 = s.retval;
+    r0 = (s.i___106670 + 1);
+    s.i___106670 = (r0);
+    { step = 1; continue; }
+  case 2:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_scheduleMelodicTrack__P83319.info = {"start":2008,"length":574,"line":66,"column":8,"endLine":78,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"scheduleMelodicTrack","argumentNames":["this","track"]}
+
+function music_sequencer_Sequencer_scheduleMelodicTrack__P83319_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_scheduleMelodicTrack__P83319, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  tmp_12: undefined,
+  tmp_13: undefined,
+  tmp_14: undefined,
+  tmp_15: undefined,
+  tmp_16: undefined,
+  tmp_17: undefined,
+  tmp_18: undefined,
+  tmp_19: undefined,
+  tmp_20: undefined,
+  i___106670: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_renderInstrument__P80632(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.totalDuration___106732 = undefined;
+    s.ampLFOInterval___106738 = undefined;
+    s.pitchLFOInterval___106749 = undefined;
+    s.timePoints___106760 = undefined;
+    s.nextAETime___106762 = undefined;
+    s.nextPETime___106766 = undefined;
+    s.nextPLTime___106774 = undefined;
+    s.nextALTime___106780 = undefined;
+    s.time___106786 = undefined;
+    s.prevAmp___107046 = undefined;
+    s.prevPitch___107053 = undefined;
+    s.prevTime___107060 = undefined;
+    s.nextAmp___107061 = undefined;
+    s.nextPitch___107062 = undefined;
+    s.out___107063 = undefined;
+    s.i___107070 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.arg3 = (s.lambdaArgs[3]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_0 = r0 = s.arg2;
+    s.tmp_2 = music_sequencer_Envelope_release__P80561_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_2.arg0 = r0;
+    s.callLocIdx = 59; s.pc = 74; return s.tmp_2;
+  case 74:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 + s.tmp_1);
+    s.totalDuration___106732 = (r0);
+    r0 = s.arg0.fields["ampLFO"];
+    s.tmp_1 = r0;
+    r0 = s.tmp_1.fields["buf"];
+    s.tmp_2 = r0;
+    r0 = s.tmp_1.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 + 1);
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_2, 4, s.tmp_3);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_5 = Math_max__P78884_mk(s);
+    r0 = s.arg0.fields["ampLFO"];
+    s.tmp_7 = r0;
+    r0 = s.tmp_7.fields["buf"];
+    s.tmp_8 = r0;
+    r0 = s.tmp_7.fields["offset"];
+    s.tmp_9 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_8, s.tmp_9);
+    s.tmp_6 = r0;
+    r0 = (500 / s.tmp_6);
+    s.tmp_5.arg0 = r0;
+    s.tmp_5.arg1 = 50;
+    s.callLocIdx = 62; s.pc = 75; return s.tmp_5;
+  case 75:
+    r0 = s.retval;
+    { step = 2; continue; }
+  case 1:
+    r0 = 50;
+  case 2:
+    // jmp value (already in r0)
+    s.tmp_10 = r0;
+    s.ampLFOInterval___106738 = (s.tmp_10);
+    r0 = s.arg0.fields["pitchLFO"];
+    s.tmp_1 = r0;
+    r0 = s.tmp_1.fields["buf"];
+    s.tmp_2 = r0;
+    r0 = s.tmp_1.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 + 1);
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_2, 4, s.tmp_3);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    s.tmp_5 = Math_max__P78884_mk(s);
+    r0 = s.arg0.fields["pitchLFO"];
+    s.tmp_7 = r0;
+    r0 = s.tmp_7.fields["buf"];
+    s.tmp_8 = r0;
+    r0 = s.tmp_7.fields["offset"];
+    s.tmp_9 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_8, s.tmp_9);
+    s.tmp_6 = r0;
+    r0 = (500 / s.tmp_6);
+    s.tmp_5.arg0 = r0;
+    s.tmp_5.arg1 = 50;
+    s.callLocIdx = 65; s.pc = 76; return s.tmp_5;
+  case 76:
+    r0 = s.retval;
+    { step = 4; continue; }
+  case 3:
+    r0 = 50;
+  case 4:
+    // jmp value (already in r0)
+    s.tmp_10 = r0;
+    s.pitchLFOInterval___106749 = (s.tmp_10);
+    r0 = pxsim_Array__mk();
+    s.tmp_0 = r0;
+    r0 = pxsim_Array__push(s.tmp_0, 0);
+    s.timePoints___106760 = (s.tmp_0);
+    s.tmp_0 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_0.arg0 = r0;
+    s.callLocIdx = 66; s.pc = 77; return s.tmp_0;
+  case 77:
+    r0 = s.retval;
+    s.nextAETime___106762 = (r0);
+    s.tmp_1 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_1.arg0 = r0;
+    s.callLocIdx = 67; s.pc = 78; return s.tmp_1;
+  case 78:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 5; continue; }
+    s.tmp_2 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_2.arg0 = r0;
+    s.callLocIdx = 68; s.pc = 79; return s.tmp_2;
+  case 79:
+    r0 = s.retval;
+    { step = 6; continue; }
+  case 5:
+    r0 = s.totalDuration___106732;
+  case 6:
+    // jmp value (already in r0)
+    s.tmp_3 = r0;
+    s.nextPETime___106766 = (s.tmp_3);
+    r0 = s.arg0.fields["pitchLFO"];
+    s.tmp_1 = r0;
+    r0 = s.tmp_1.fields["buf"];
+    s.tmp_2 = r0;
+    r0 = s.tmp_1.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 + 1);
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_2, 4, s.tmp_3);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 7; continue; }
+    r0 = s.pitchLFOInterval___106749;
+    { step = 8; continue; }
+  case 7:
+    r0 = s.totalDuration___106732;
+  case 8:
+    // jmp value (already in r0)
+    s.tmp_5 = r0;
+    s.nextPLTime___106774 = (s.tmp_5);
+    r0 = s.arg0.fields["ampLFO"];
+    s.tmp_1 = r0;
+    r0 = s.tmp_1.fields["buf"];
+    s.tmp_2 = r0;
+    r0 = s.tmp_1.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 + 1);
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_2, 4, s.tmp_3);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 9; continue; }
+    r0 = s.ampLFOInterval___106738;
+    { step = 10; continue; }
+  case 9:
+    r0 = s.totalDuration___106732;
+  case 10:
+    // jmp value (already in r0)
+    s.tmp_5 = r0;
+    s.nextALTime___106780 = (s.tmp_5);
+    s.time___106786 = (0);
+  case 11:
+    r0 = (s.time___106786 < s.totalDuration___106732);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 68; continue; }
+    r0 = (s.nextAETime___106762 <= s.nextPETime___106766);
+    s.tmp_1 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_1);
+    if (r0) { step = 12; continue; }
+    r0 = s.tmp_1;
+    { step = 13; continue; }
+  case 12:
+    r0 = (s.nextAETime___106762 <= s.nextPLTime___106774);
+  case 13:
+    // jmp value (already in r0)
+    s.tmp_2 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_2);
+    if (r0) { step = 14; continue; }
+    r0 = s.tmp_2;
+    { step = 15; continue; }
+  case 14:
+    r0 = (s.nextAETime___106762 <= s.nextALTime___106780);
+  case 15:
+    // jmp value (already in r0)
+    s.tmp_3 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_3);
+    if (!r0) { step = 22; continue; }
+    s.time___106786 = (s.nextAETime___106762);
+    r0 = pxsim_Array__push(s.timePoints___106760, s.nextAETime___106762);
+    s.tmp_1 = r0 = s.time___106786;
+    s.tmp_4 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_4.arg0 = r0;
+    s.callLocIdx = 71; s.pc = 80; return s.tmp_4;
+  case 80:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    s.tmp_6 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_6.arg0 = r0;
+    s.callLocIdx = 72; s.pc = 81; return s.tmp_6;
+  case 81:
+    r0 = s.retval;
+    s.tmp_5 = r0;
+    r0 = (s.tmp_3 + s.tmp_5);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (r0) { step = 16; continue; }
+    r0 = s.tmp_0;
+    { step = 17; continue; }
+  case 16:
+    s.tmp_9 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_9.arg0 = r0;
+    s.callLocIdx = 73; s.pc = 82; return s.tmp_9;
+  case 82:
+    r0 = s.retval;
+    s.tmp_8 = r0;
+    s.tmp_11 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_11.arg0 = r0;
+    s.callLocIdx = 74; s.pc = 83; return s.tmp_11;
+  case 83:
+    r0 = s.retval;
+    s.tmp_10 = r0;
+    r0 = (s.tmp_8 + s.tmp_10);
+    s.tmp_7 = r0;
+    r0 = (s.tmp_7 < s.arg2);
+  case 17:
+    // jmp value (already in r0)
+    s.tmp_12 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_12);
+    if (!r0) { step = 18; continue; }
+    s.tmp_14 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_14.arg0 = r0;
+    s.callLocIdx = 75; s.pc = 84; return s.tmp_14;
+  case 84:
+    r0 = s.retval;
+    s.tmp_13 = r0;
+    s.tmp_16 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_16.arg0 = r0;
+    s.callLocIdx = 76; s.pc = 85; return s.tmp_16;
+  case 85:
+    r0 = s.retval;
+    s.tmp_15 = r0;
+    r0 = (s.tmp_13 + s.tmp_15);
+    s.nextAETime___106762 = (r0);
+    { step = 21; continue; }
+  case 18:
+    r0 = (s.time___106786 < s.arg2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 19; continue; }
+    s.nextAETime___106762 = (s.arg2);
+    { step = 20; continue; }
+  case 19:
+    s.nextAETime___106762 = (s.totalDuration___106732);
+  case 20:
+  case 21:
+    { step = 43; continue; }
+  case 22:
+    r0 = (s.nextPETime___106766 <= s.nextPLTime___106774);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (r0) { step = 23; continue; }
+    r0 = s.tmp_0;
+    { step = 24; continue; }
+  case 23:
+    r0 = (s.nextPETime___106766 <= s.nextALTime___106780);
+  case 24:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_1);
+    if (r0) { step = 25; continue; }
+    r0 = s.tmp_1;
+    { step = 26; continue; }
+  case 25:
+    r0 = (s.nextPETime___106766 < s.totalDuration___106732);
+  case 26:
+    // jmp value (already in r0)
+    s.tmp_2 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_2);
+    if (!r0) { step = 35; continue; }
+    s.time___106786 = (s.nextPETime___106766);
+    r0 = pxsim_Array__push(s.timePoints___106760, s.nextPETime___106766);
+    s.tmp_1 = r0 = s.time___106786;
+    s.tmp_4 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_4.arg0 = r0;
+    s.callLocIdx = 77; s.pc = 86; return s.tmp_4;
+  case 86:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    s.tmp_6 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_6.arg0 = r0;
+    s.callLocIdx = 78; s.pc = 87; return s.tmp_6;
+  case 87:
+    r0 = s.retval;
+    s.tmp_5 = r0;
+    r0 = (s.tmp_3 + s.tmp_5);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (r0) { step = 27; continue; }
+    r0 = s.tmp_0;
+    { step = 28; continue; }
+  case 27:
+    s.tmp_9 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_9.arg0 = r0;
+    s.callLocIdx = 79; s.pc = 88; return s.tmp_9;
+  case 88:
+    r0 = s.retval;
+    s.tmp_8 = r0;
+    s.tmp_11 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_11.arg0 = r0;
+    s.callLocIdx = 80; s.pc = 89; return s.tmp_11;
+  case 89:
+    r0 = s.retval;
+    s.tmp_10 = r0;
+    r0 = (s.tmp_8 + s.tmp_10);
+    s.tmp_7 = r0;
+    r0 = (s.tmp_7 < s.arg2);
+  case 28:
+    // jmp value (already in r0)
+    s.tmp_12 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_12);
+    if (!r0) { step = 29; continue; }
+    s.tmp_14 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_14.arg0 = r0;
+    s.callLocIdx = 81; s.pc = 90; return s.tmp_14;
+  case 90:
+    r0 = s.retval;
+    s.tmp_13 = r0;
+    s.tmp_16 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_16.arg0 = r0;
+    s.callLocIdx = 82; s.pc = 91; return s.tmp_16;
+  case 91:
+    r0 = s.retval;
+    s.tmp_15 = r0;
+    r0 = (s.tmp_13 + s.tmp_15);
+    s.nextPETime___106766 = (r0);
+    { step = 34; continue; }
+  case 29:
+    r0 = (s.time___106786 < s.arg2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 30; continue; }
+    s.nextPETime___106766 = (s.arg2);
+    { step = 33; continue; }
+  case 30:
+    s.tmp_1 = r0 = s.time___106786;
+    s.tmp_3 = r0 = s.arg2;
+    s.tmp_5 = music_sequencer_Envelope_release__P80561_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_5.arg0 = r0;
+    s.callLocIdx = 83; s.pc = 92; return s.tmp_5;
+  case 92:
+    r0 = s.retval;
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 + s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 31; continue; }
+    s.tmp_6 = Math_min__P78885_mk(s);
+    s.tmp_6.arg0 = s.totalDuration___106732;
+    s.tmp_7 = r0 = s.arg2;
+    s.tmp_9 = music_sequencer_Envelope_release__P80561_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_9.arg0 = r0;
+    s.callLocIdx = 84; s.pc = 94; return s.tmp_9;
+  case 94:
+    r0 = s.retval;
+    s.tmp_8 = r0;
+    r0 = (s.tmp_7 + s.tmp_8);
+    s.tmp_6.arg1 = r0;
+    s.callLocIdx = 85; s.pc = 93; return s.tmp_6;
+  case 93:
+    r0 = s.retval;
+    s.nextPETime___106766 = (r0);
+    { step = 32; continue; }
+  case 31:
+    s.nextPETime___106766 = (s.totalDuration___106732);
+  case 32:
+  case 33:
+  case 34:
+    { step = 42; continue; }
+  case 35:
+    r0 = (s.nextPLTime___106774 <= s.nextALTime___106780);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (r0) { step = 36; continue; }
+    r0 = s.tmp_0;
+    { step = 37; continue; }
+  case 36:
+    r0 = (s.nextPLTime___106774 < s.totalDuration___106732);
+  case 37:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_1);
+    if (!r0) { step = 38; continue; }
+    s.time___106786 = (s.nextPLTime___106774);
+    r0 = pxsim_Array__push(s.timePoints___106760, s.nextPLTime___106774);
+    r0 = (s.nextPLTime___106774 + s.pitchLFOInterval___106749);
+    s.nextPLTime___106774 = (r0);
+    { step = 41; continue; }
+  case 38:
+    r0 = (s.nextALTime___106780 < s.totalDuration___106732);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 39; continue; }
+    s.time___106786 = (s.nextALTime___106780);
+    r0 = pxsim_Array__push(s.timePoints___106760, s.nextALTime___106780);
+    r0 = (s.nextALTime___106780 + s.ampLFOInterval___106738);
+    s.nextALTime___106780 = (r0);
+  case 39:
+  case 40:
+  case 41:
+  case 42:
+  case 43:
+    r0 = (s.time___106786 >= s.totalDuration___106732);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 44; continue; }
+    { step = 68; continue; }
+  case 44:
+  case 45:
+    r0 = (s.nextAETime___106762 <= s.time___106786);
+    s.tmp_1 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_1);
+    if (!r0) { step = 52; continue; }
+    s.tmp_3 = r0 = s.time___106786;
+    s.tmp_6 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_6.arg0 = r0;
+    s.callLocIdx = 86; s.pc = 95; return s.tmp_6;
+  case 95:
+    r0 = s.retval;
+    s.tmp_5 = r0;
+    s.tmp_8 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_8.arg0 = r0;
+    s.callLocIdx = 87; s.pc = 96; return s.tmp_8;
+  case 96:
+    r0 = s.retval;
+    s.tmp_7 = r0;
+    r0 = (s.tmp_5 + s.tmp_7);
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 < s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_2);
+    if (r0) { step = 46; continue; }
+    r0 = s.tmp_2;
+    { step = 47; continue; }
+  case 46:
+    s.tmp_11 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_11.arg0 = r0;
+    s.callLocIdx = 88; s.pc = 97; return s.tmp_11;
+  case 97:
+    r0 = s.retval;
+    s.tmp_10 = r0;
+    s.tmp_13 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_13.arg0 = r0;
+    s.callLocIdx = 89; s.pc = 98; return s.tmp_13;
+  case 98:
+    r0 = s.retval;
+    s.tmp_12 = r0;
+    r0 = (s.tmp_10 + s.tmp_12);
+    s.tmp_9 = r0;
+    r0 = (s.tmp_9 < s.arg2);
+  case 47:
+    // jmp value (already in r0)
+    s.tmp_14 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_14);
+    if (!r0) { step = 48; continue; }
+    s.tmp_16 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_16.arg0 = r0;
+    s.callLocIdx = 90; s.pc = 99; return s.tmp_16;
+  case 99:
+    r0 = s.retval;
+    s.tmp_15 = r0;
+    s.tmp_18 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_18.arg0 = r0;
+    s.callLocIdx = 91; s.pc = 100; return s.tmp_18;
+  case 100:
+    r0 = s.retval;
+    s.tmp_17 = r0;
+    r0 = (s.tmp_15 + s.tmp_17);
+    s.nextAETime___106762 = (r0);
+    { step = 51; continue; }
+  case 48:
+    r0 = (s.time___106786 < s.arg2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 49; continue; }
+    s.nextAETime___106762 = (s.arg2);
+    { step = 50; continue; }
+  case 49:
+    s.nextAETime___106762 = (s.totalDuration___106732);
+  case 50:
+  case 51:
+  case 52:
+  case 53:
+    r0 = (s.nextPETime___106766 <= s.time___106786);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 62; continue; }
+    s.tmp_2 = r0 = s.time___106786;
+    s.tmp_5 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_5.arg0 = r0;
+    s.callLocIdx = 92; s.pc = 101; return s.tmp_5;
+  case 101:
+    r0 = s.retval;
+    s.tmp_4 = r0;
+    s.tmp_7 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_7.arg0 = r0;
+    s.callLocIdx = 93; s.pc = 102; return s.tmp_7;
+  case 102:
+    r0 = s.retval;
+    s.tmp_6 = r0;
+    r0 = (s.tmp_4 + s.tmp_6);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 < s.tmp_3);
+    s.tmp_1 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_1);
+    if (r0) { step = 54; continue; }
+    r0 = s.tmp_1;
+    { step = 55; continue; }
+  case 54:
+    s.tmp_10 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_10.arg0 = r0;
+    s.callLocIdx = 94; s.pc = 103; return s.tmp_10;
+  case 103:
+    r0 = s.retval;
+    s.tmp_9 = r0;
+    s.tmp_12 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_12.arg0 = r0;
+    s.callLocIdx = 95; s.pc = 104; return s.tmp_12;
+  case 104:
+    r0 = s.retval;
+    s.tmp_11 = r0;
+    r0 = (s.tmp_9 + s.tmp_11);
+    s.tmp_8 = r0;
+    r0 = (s.tmp_8 < s.arg2);
+  case 55:
+    // jmp value (already in r0)
+    s.tmp_13 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_13);
+    if (!r0) { step = 56; continue; }
+    s.tmp_15 = music_sequencer_Envelope_attack__P80555_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_15.arg0 = r0;
+    s.callLocIdx = 96; s.pc = 105; return s.tmp_15;
+  case 105:
+    r0 = s.retval;
+    s.tmp_14 = r0;
+    s.tmp_17 = music_sequencer_Envelope_decay__P80557_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_17.arg0 = r0;
+    s.callLocIdx = 97; s.pc = 106; return s.tmp_17;
+  case 106:
+    r0 = s.retval;
+    s.tmp_16 = r0;
+    r0 = (s.tmp_14 + s.tmp_16);
+    s.nextPETime___106766 = (r0);
+    { step = 61; continue; }
+  case 56:
+    r0 = (s.time___106786 < s.arg2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 57; continue; }
+    s.nextPETime___106766 = (s.arg2);
+    { step = 60; continue; }
+  case 57:
+    s.tmp_1 = r0 = s.time___106786;
+    s.tmp_3 = r0 = s.arg2;
+    s.tmp_5 = music_sequencer_Envelope_release__P80561_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_5.arg0 = r0;
+    s.callLocIdx = 98; s.pc = 107; return s.tmp_5;
+  case 107:
+    r0 = s.retval;
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 + s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 58; continue; }
+    s.tmp_6 = Math_min__P78885_mk(s);
+    s.tmp_6.arg0 = s.totalDuration___106732;
+    s.tmp_7 = r0 = s.arg2;
+    s.tmp_9 = music_sequencer_Envelope_release__P80561_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_9.arg0 = r0;
+    s.callLocIdx = 99; s.pc = 109; return s.tmp_9;
+  case 109:
+    r0 = s.retval;
+    s.tmp_8 = r0;
+    r0 = (s.tmp_7 + s.tmp_8);
+    s.tmp_6.arg1 = r0;
+    s.callLocIdx = 100; s.pc = 108; return s.tmp_6;
+  case 108:
+    r0 = s.retval;
+    s.nextPETime___106766 = (r0);
+    { step = 59; continue; }
+  case 58:
+    s.nextPETime___106766 = (s.totalDuration___106732);
+  case 59:
+  case 60:
+  case 61:
+  case 62:
+  case 63:
+  case 64:
+    r0 = (s.nextALTime___106780 <= s.time___106786);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 65; continue; }
+    r0 = (s.nextALTime___106780 + s.ampLFOInterval___106738);
+    s.nextALTime___106780 = (r0);
+    { step = 64; continue; }
+  case 65:
+  case 66:
+    r0 = (s.nextPLTime___106774 <= s.time___106786);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 67; continue; }
+    r0 = (s.nextPLTime___106774 + s.pitchLFOInterval___106749);
+    s.nextPLTime___106774 = (r0);
+    { step = 66; continue; }
+  case 67:
+    { step = 11; continue; }
+  case 68:
+    s.tmp_1 = music_sequencer_instrumentVolumeAtTime__P83307_mk(s);
+    s.tmp_1.arg0 = s.arg0;
+    s.tmp_1.arg1 = s.arg2;
+    s.tmp_1.arg2 = 0;
+    s.tmp_1.arg3 = s.arg3;
+    s.callLocIdx = 101; s.pc = 110; return s.tmp_1;
+  case 110:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 | 0);
+    s.prevAmp___107046 = (r0);
+    s.tmp_1 = music_sequencer_instrumentPitchAtTime__P83306_mk(s);
+    s.tmp_1.arg0 = s.arg0;
+    s.tmp_1.arg1 = s.arg1;
+    s.tmp_1.arg2 = s.arg2;
+    s.tmp_1.arg3 = 0;
+    s.callLocIdx = 102; s.pc = 111; return s.tmp_1;
+  case 111:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 | 0);
+    s.prevPitch___107053 = (r0);
+    s.prevTime___107060 = (0);
+    r0 = pxsim_Array__length(s.timePoints___106760);
+    s.tmp_1 = r0;
+    r0 = (12 * s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim.control.createBuffer(s.tmp_0);
+    s.out___107063 = (r0);
+    s.i___107070 = (1);
+  case 69:
+    s.tmp_1 = r0 = s.i___107070;
+    r0 = pxsim_Array__length(s.timePoints___106760);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 73; continue; }
+    r0 = pxsim_Array__getAt(s.timePoints___106760, s.i___107070);
+    s.tmp_5 = r0;
+    r0 = (s.tmp_5 - s.prevTime___107060);
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 < 5);
+    s.tmp_3 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_3);
+    if (!r0) { step = 70; continue; }
+    r0 = pxsim_Array__getAt(s.timePoints___106760, s.i___107070);
+    s.prevTime___107060 = (r0);
+    { step = 72; continue; }
+  case 70:
+  case 71:
+    s.tmp_1 = music_sequencer_instrumentVolumeAtTime__P83307_mk(s);
+    s.tmp_1.arg0 = s.arg0;
+    s.tmp_1.arg1 = s.arg2;
+    r0 = pxsim_Array__getAt(s.timePoints___106760, s.i___107070);
+    s.tmp_1.arg2 = r0;
+    s.tmp_1.arg3 = s.arg3;
+    s.callLocIdx = 103; s.pc = 112; return s.tmp_1;
+  case 112:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 | 0);
+    s.nextAmp___107061 = (r0);
+    s.tmp_1 = music_sequencer_instrumentPitchAtTime__P83306_mk(s);
+    s.tmp_1.arg0 = s.arg0;
+    s.tmp_1.arg1 = s.arg1;
+    s.tmp_1.arg2 = s.arg2;
+    r0 = pxsim_Array__getAt(s.timePoints___106760, s.i___107070);
+    s.tmp_1.arg3 = r0;
+    s.callLocIdx = 104; s.pc = 113; return s.tmp_1;
+  case 113:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 | 0);
+    s.nextPitch___107062 = (r0);
+    s.tmp_0 = music_addNote__P80391_mk(s);
+    s.tmp_0.arg0 = s.out___107063;
+    r0 = (s.i___107070 - 1);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 * 12);
+    s.tmp_0.arg1 = r0;
+    r0 = pxsim_Array__getAt(s.timePoints___106760, s.i___107070);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 - s.prevTime___107060);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 | 0);
+    s.tmp_0.arg2 = r0;
+    s.tmp_0.arg3 = s.prevAmp___107046;
+    s.tmp_0.arg4 = s.nextAmp___107061;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_4 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_5 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_4, s.tmp_5);
+    s.tmp_0.arg5 = r0;
+    s.tmp_0.arg6 = s.prevPitch___107053;
+    s.tmp_0.arg7 = 255;
+    s.tmp_0.arg8 = s.nextPitch___107062;
+    s.callLocIdx = 106; s.pc = 114; return s.tmp_0;
+  case 114:
+    r0 = s.retval;
+    s.prevAmp___107046 = (s.nextAmp___107061);
+    s.prevPitch___107053 = (s.nextPitch___107062);
+    r0 = pxsim_Array__getAt(s.timePoints___106760, s.i___107070);
+    s.prevTime___107060 = (r0);
+  case 72:
+    r0 = (s.i___107070 + 1);
+    s.i___107070 = (r0);
+    { step = 69; continue; }
+  case 73:
+    s.tmp_0 = music_addNote__P80391_mk(s);
+    s.tmp_0.arg0 = s.out___107063;
+    r0 = pxsim_Array__length(s.timePoints___106760);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 - 1);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 * 12);
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = 10;
+    s.tmp_0.arg3 = s.prevAmp___107046;
+    s.tmp_0.arg4 = 0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_3 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_3, s.tmp_4);
+    s.tmp_0.arg5 = r0;
+    s.tmp_0.arg6 = s.prevPitch___107053;
+    s.tmp_0.arg7 = 255;
+    s.tmp_0.arg8 = s.prevPitch___107053;
+    s.callLocIdx = 108; s.pc = 115; return s.tmp_0;
+  case 115:
+    r0 = s.retval;
+    r0 = s.out___107063;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_renderInstrument__P80632.info = {"start":14770,"length":8287,"line":531,"column":4,"endLine":706,"endColumn":5,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"renderInstrument","argumentNames":["instrument","noteFrequency","gateLength","volume"]}
+
+function music_sequencer_renderInstrument__P80632_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_renderInstrument__P80632, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  tmp_12: undefined,
+  tmp_13: undefined,
+  tmp_14: undefined,
+  tmp_15: undefined,
+  tmp_16: undefined,
+  tmp_17: undefined,
+  tmp_18: undefined,
+  totalDuration___106732: undefined,
+  ampLFOInterval___106738: undefined,
+  pitchLFOInterval___106749: undefined,
+  timePoints___106760: undefined,
+  nextAETime___106762: undefined,
+  nextPETime___106766: undefined,
+  nextPLTime___106774: undefined,
+  nextALTime___106780: undefined,
+  time___106786: undefined,
+  prevAmp___107046: undefined,
+  prevPitch___107053: undefined,
+  prevTime___107060: undefined,
+  nextAmp___107061: undefined,
+  nextPitch___107062: undefined,
+  out___107063: undefined,
+  i___107070: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+  arg3: undefined,
+} }
+
+
+
+
+
+function music_sequencer_instrumentVolumeAtTime__P83307(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.mod___107343 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.arg3 = (s.lambdaArgs[3]);
+      s.lambdaArgs = null;
+    }
+    s.mod___107343 = (0);
+    s.tmp_1 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_1.arg0 = r0;
+    s.callLocIdx = 128; s.pc = 5; return s.tmp_1;
+  case 5:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_2 = r0 = s.mod___107343;
+    s.tmp_4 = music_sequencer_envelopeValueAtTime__P83308_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_4.arg0 = r0;
+    s.tmp_4.arg1 = s.arg2;
+    s.tmp_4.arg2 = s.arg1;
+    s.callLocIdx = 129; s.pc = 6; return s.tmp_4;
+  case 6:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 + s.tmp_3);
+    s.mod___107343 = (r0);
+  case 1:
+  case 2:
+    r0 = s.arg0.fields["ampLFO"];
+    s.tmp_1 = r0;
+    r0 = s.tmp_1.fields["buf"];
+    s.tmp_2 = r0;
+    r0 = s.tmp_1.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 + 1);
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_2, 4, s.tmp_3);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    s.tmp_5 = r0 = s.mod___107343;
+    s.tmp_7 = music_sequencer_lfoValueAtTime__P83309_mk(s);
+    r0 = s.arg0.fields["ampLFO"];
+    s.tmp_7.arg0 = r0;
+    s.tmp_7.arg1 = s.arg2;
+    s.callLocIdx = 131; s.pc = 7; return s.tmp_7;
+  case 7:
+    r0 = s.retval;
+    s.tmp_6 = r0;
+    r0 = (s.tmp_5 + s.tmp_6);
+    s.mod___107343 = (r0);
+  case 3:
+  case 4:
+    s.tmp_3 = Math_max__P78884_mk(s);
+    s.tmp_4 = Math_min__P78885_mk(s);
+    s.tmp_4.arg0 = s.mod___107343;
+    s.tmp_5 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    r0 = s.arg0.fields["ampEnvelope"];
+    s.tmp_5.arg0 = r0;
+    s.callLocIdx = 132; s.pc = 10; return s.tmp_5;
+  case 10:
+    r0 = s.retval;
+    s.tmp_4.arg1 = r0;
+    s.callLocIdx = 133; s.pc = 9; return s.tmp_4;
+  case 9:
+    r0 = s.retval;
+    s.tmp_3.arg0 = r0;
+    s.tmp_3.arg1 = 0;
+    s.callLocIdx = 134; s.pc = 8; return s.tmp_3;
+  case 8:
+    r0 = s.retval;
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 / 1024);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 * s.arg3);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 | 0);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_instrumentVolumeAtTime__P83307.info = {"start":24790,"length":492,"line":760,"column":4,"endLine":769,"endColumn":5,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"instrumentVolumeAtTime","argumentNames":["instrument","gateLength","time","maxVolume"]}
+
+function music_sequencer_instrumentVolumeAtTime__P83307_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_instrumentVolumeAtTime__P83307, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  mod___107343: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+  arg3: undefined,
+} }
+
+
+
+
+
+function music_sequencer_lfoValueAtTime__P83309(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = (s.arg1 / 1000);
+    s.tmp_4 = r0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_6 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_7 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_6, s.tmp_7);
+    s.tmp_5 = r0;
+    r0 = (s.tmp_4 * s.tmp_5);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 * 2);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 * 3.141592653589793);
+    s.tmp_1 = r0;
+    r0 = pxsim.Math_.cos(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["buf"];
+    s.tmp_9 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_11 = r0;
+    r0 = (s.tmp_11 + 1);
+    s.tmp_10 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_9, 4, s.tmp_10);
+    s.tmp_8 = r0;
+    r0 = (s.tmp_0 * s.tmp_8);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_lfoValueAtTime__P83309.info = {"start":28217,"length":197,"line":827,"column":4,"endLine":830,"endColumn":5,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"lfoValueAtTime","argumentNames":["lfo","time"]}
+
+function music_sequencer_lfoValueAtTime__P83309_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_lfoValueAtTime__P83309, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_envelopeValueAtTime__P83308(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.adjustedSustain___107201 = undefined;
+    s.height___107222 = undefined;
+    s.height2___107249 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_2 = music_sequencer_Envelope_sustain__P80559_mk(s);
+    s.tmp_2.arg0 = s.arg0;
+    s.callLocIdx = 135; s.pc = 14; return s.tmp_2;
+  case 14:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 / 1024);
+    s.tmp_0 = r0;
+    s.tmp_4 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    s.tmp_4.arg0 = s.arg0;
+    s.callLocIdx = 136; s.pc = 15; return s.tmp_4;
+  case 15:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (s.tmp_0 * s.tmp_3);
+    s.adjustedSustain___107201 = (r0);
+    r0 = (s.arg1 > s.arg2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 7; continue; }
+    r0 = (s.arg1 - s.arg2);
+    s.tmp_2 = r0;
+    s.tmp_4 = music_sequencer_Envelope_release__P80561_mk(s);
+    s.tmp_4.arg0 = s.arg0;
+    s.callLocIdx = 137; s.pc = 16; return s.tmp_4;
+  case 16:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 > s.tmp_3);
+    s.tmp_1 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_1);
+    if (!r0) { step = 1; continue; }
+    r0 = 0;
+    { step = 13; continue; }
+    { step = 6; continue; }
+  case 1:
+    s.tmp_6 = r0 = s.arg1;
+    s.tmp_8 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_8.arg0 = s.arg0;
+    s.callLocIdx = 138; s.pc = 17; return s.tmp_8;
+  case 17:
+    r0 = s.retval;
+    s.tmp_7 = r0;
+    r0 = (s.tmp_6 < s.tmp_7);
+    s.tmp_5 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_5);
+    if (!r0) { step = 2; continue; }
+    s.tmp_11 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    s.tmp_11.arg0 = s.arg0;
+    s.callLocIdx = 139; s.pc = 18; return s.tmp_11;
+  case 18:
+    r0 = s.retval;
+    s.tmp_10 = r0;
+    s.tmp_13 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_13.arg0 = s.arg0;
+    s.callLocIdx = 140; s.pc = 19; return s.tmp_13;
+  case 19:
+    r0 = s.retval;
+    s.tmp_12 = r0;
+    r0 = (s.tmp_10 / s.tmp_12);
+    s.tmp_9 = r0;
+    r0 = (s.tmp_9 * s.arg2);
+    s.height___107222 = (r0);
+    s.tmp_0 = r0 = s.height___107222;
+    s.tmp_3 = r0 = s.height___107222;
+    s.tmp_5 = music_sequencer_Envelope_release__P80561_mk(s);
+    s.tmp_5.arg0 = s.arg0;
+    s.callLocIdx = 141; s.pc = 20; return s.tmp_5;
+  case 20:
+    r0 = s.retval;
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 / s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.arg1 - s.arg2);
+    s.tmp_6 = r0;
+    r0 = (s.tmp_2 * s.tmp_6);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 - s.tmp_1);
+    { step = 13; continue; }
+    { step = 5; continue; }
+  case 2:
+    s.tmp_8 = r0 = s.arg1;
+    s.tmp_11 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_11.arg0 = s.arg0;
+    s.callLocIdx = 142; s.pc = 21; return s.tmp_11;
+  case 21:
+    r0 = s.retval;
+    s.tmp_10 = r0;
+    s.tmp_13 = music_sequencer_Envelope_decay__P80557_mk(s);
+    s.tmp_13.arg0 = s.arg0;
+    s.callLocIdx = 143; s.pc = 22; return s.tmp_13;
+  case 22:
+    r0 = s.retval;
+    s.tmp_12 = r0;
+    r0 = (s.tmp_10 + s.tmp_12);
+    s.tmp_9 = r0;
+    r0 = (s.tmp_8 < s.tmp_9);
+    s.tmp_7 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_7);
+    if (!r0) { step = 3; continue; }
+    s.tmp_15 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    s.tmp_15.arg0 = s.arg0;
+    s.callLocIdx = 144; s.pc = 23; return s.tmp_15;
+  case 23:
+    r0 = s.retval;
+    s.tmp_14 = r0;
+    s.tmp_20 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    s.tmp_20.arg0 = s.arg0;
+    s.callLocIdx = 145; s.pc = 24; return s.tmp_20;
+  case 24:
+    r0 = s.retval;
+    s.tmp_19 = r0;
+    r0 = (s.tmp_19 - s.adjustedSustain___107201);
+    s.tmp_18 = r0;
+    s.tmp_22 = music_sequencer_Envelope_decay__P80557_mk(s);
+    s.tmp_22.arg0 = s.arg0;
+    s.callLocIdx = 146; s.pc = 25; return s.tmp_22;
+  case 25:
+    r0 = s.retval;
+    s.tmp_21 = r0;
+    r0 = (s.tmp_18 / s.tmp_21);
+    s.tmp_17 = r0;
+    s.tmp_24 = r0 = s.arg2;
+    s.tmp_26 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_26.arg0 = s.arg0;
+    s.callLocIdx = 147; s.pc = 26; return s.tmp_26;
+  case 26:
+    r0 = s.retval;
+    s.tmp_25 = r0;
+    r0 = (s.tmp_24 - s.tmp_25);
+    s.tmp_23 = r0;
+    r0 = (s.tmp_17 * s.tmp_23);
+    s.tmp_16 = r0;
+    r0 = (s.tmp_14 - s.tmp_16);
+    s.height2___107249 = (r0);
+    s.tmp_0 = r0 = s.height2___107249;
+    s.tmp_3 = r0 = s.height2___107249;
+    s.tmp_5 = music_sequencer_Envelope_release__P80561_mk(s);
+    s.tmp_5.arg0 = s.arg0;
+    s.callLocIdx = 148; s.pc = 27; return s.tmp_5;
+  case 27:
+    r0 = s.retval;
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 / s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.arg1 - s.arg2);
+    s.tmp_6 = r0;
+    r0 = (s.tmp_2 * s.tmp_6);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 - s.tmp_1);
+    { step = 13; continue; }
+    { step = 4; continue; }
+  case 3:
+    s.tmp_7 = r0 = s.adjustedSustain___107201;
+    s.tmp_10 = r0 = s.adjustedSustain___107201;
+    s.tmp_12 = music_sequencer_Envelope_release__P80561_mk(s);
+    s.tmp_12.arg0 = s.arg0;
+    s.callLocIdx = 149; s.pc = 28; return s.tmp_12;
+  case 28:
+    r0 = s.retval;
+    s.tmp_11 = r0;
+    r0 = (s.tmp_10 / s.tmp_11);
+    s.tmp_9 = r0;
+    r0 = (s.arg1 - s.arg2);
+    s.tmp_13 = r0;
+    r0 = (s.tmp_9 * s.tmp_13);
+    s.tmp_8 = r0;
+    r0 = (s.tmp_7 - s.tmp_8);
+    { step = 13; continue; }
+  case 4:
+  case 5:
+  case 6:
+    { step = 12; continue; }
+  case 7:
+    s.tmp_15 = r0 = s.arg1;
+    s.tmp_17 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_17.arg0 = s.arg0;
+    s.callLocIdx = 150; s.pc = 29; return s.tmp_17;
+  case 29:
+    r0 = s.retval;
+    s.tmp_16 = r0;
+    r0 = (s.tmp_15 < s.tmp_16);
+    s.tmp_14 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_14);
+    if (!r0) { step = 8; continue; }
+    s.tmp_20 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    s.tmp_20.arg0 = s.arg0;
+    s.callLocIdx = 151; s.pc = 30; return s.tmp_20;
+  case 30:
+    r0 = s.retval;
+    s.tmp_19 = r0;
+    s.tmp_22 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_22.arg0 = s.arg0;
+    s.callLocIdx = 152; s.pc = 31; return s.tmp_22;
+  case 31:
+    r0 = s.retval;
+    s.tmp_21 = r0;
+    r0 = (s.tmp_19 / s.tmp_21);
+    s.tmp_18 = r0;
+    r0 = (s.tmp_18 * s.arg1);
+    { step = 13; continue; }
+    { step = 11; continue; }
+  case 8:
+    s.tmp_24 = r0 = s.arg1;
+    s.tmp_27 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_27.arg0 = s.arg0;
+    s.callLocIdx = 153; s.pc = 32; return s.tmp_27;
+  case 32:
+    r0 = s.retval;
+    s.tmp_26 = r0;
+    s.tmp_29 = music_sequencer_Envelope_decay__P80557_mk(s);
+    s.tmp_29.arg0 = s.arg0;
+    s.callLocIdx = 154; s.pc = 33; return s.tmp_29;
+  case 33:
+    r0 = s.retval;
+    s.tmp_28 = r0;
+    r0 = (s.tmp_26 + s.tmp_28);
+    s.tmp_25 = r0;
+    r0 = (s.tmp_24 < s.tmp_25);
+    s.tmp_23 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_23);
+    if (!r0) { step = 9; continue; }
+    s.tmp_31 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    s.tmp_31.arg0 = s.arg0;
+    s.callLocIdx = 155; s.pc = 34; return s.tmp_31;
+  case 34:
+    r0 = s.retval;
+    s.tmp_30 = r0;
+    s.tmp_36 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    s.tmp_36.arg0 = s.arg0;
+    s.callLocIdx = 156; s.pc = 35; return s.tmp_36;
+  case 35:
+    r0 = s.retval;
+    s.tmp_35 = r0;
+    r0 = (s.tmp_35 - s.adjustedSustain___107201);
+    s.tmp_34 = r0;
+    s.tmp_38 = music_sequencer_Envelope_decay__P80557_mk(s);
+    s.tmp_38.arg0 = s.arg0;
+    s.callLocIdx = 157; s.pc = 36; return s.tmp_38;
+  case 36:
+    r0 = s.retval;
+    s.tmp_37 = r0;
+    r0 = (s.tmp_34 / s.tmp_37);
+    s.tmp_33 = r0;
+    s.tmp_40 = r0 = s.arg1;
+    s.tmp_42 = music_sequencer_Envelope_attack__P80555_mk(s);
+    s.tmp_42.arg0 = s.arg0;
+    s.callLocIdx = 158; s.pc = 37; return s.tmp_42;
+  case 37:
+    r0 = s.retval;
+    s.tmp_41 = r0;
+    r0 = (s.tmp_40 - s.tmp_41);
+    s.tmp_39 = r0;
+    r0 = (s.tmp_33 * s.tmp_39);
+    s.tmp_32 = r0;
+    r0 = (s.tmp_30 - s.tmp_32);
+    { step = 13; continue; }
+    { step = 10; continue; }
+  case 9:
+    r0 = s.adjustedSustain___107201;
+    { step = 13; continue; }
+  case 10:
+  case 11:
+  case 12:
+    r0 = undefined;
+  case 13:
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_envelopeValueAtTime__P83308.info = {"start":25757,"length":2168,"line":780,"column":4,"endLine":817,"endColumn":5,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"envelopeValueAtTime","argumentNames":["envelope","time","gateLength"]}
+
+function music_sequencer_envelopeValueAtTime__P83308_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_envelopeValueAtTime__P83308, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  tmp_12: undefined,
+  tmp_13: undefined,
+  tmp_14: undefined,
+  tmp_15: undefined,
+  tmp_16: undefined,
+  tmp_17: undefined,
+  tmp_18: undefined,
+  tmp_19: undefined,
+  tmp_20: undefined,
+  tmp_21: undefined,
+  tmp_22: undefined,
+  tmp_23: undefined,
+  tmp_24: undefined,
+  tmp_25: undefined,
+  tmp_26: undefined,
+  tmp_27: undefined,
+  tmp_28: undefined,
+  tmp_29: undefined,
+  tmp_30: undefined,
+  tmp_31: undefined,
+  tmp_32: undefined,
+  tmp_33: undefined,
+  tmp_34: undefined,
+  tmp_35: undefined,
+  tmp_36: undefined,
+  tmp_37: undefined,
+  tmp_38: undefined,
+  tmp_39: undefined,
+  tmp_40: undefined,
+  tmp_41: undefined,
+  tmp_42: undefined,
+  adjustedSustain___107201: undefined,
+  height___107222: undefined,
+  height2___107249: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Envelope_sustain__P80559(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Envelope__C80553_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 4);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Envelope_sustain__P80559.info = {"start":5275,"length":70,"line":194,"column":8,"endLine":196,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"sustain","argumentNames":["this"]}
+music_sequencer_Envelope_sustain__P80559.isGetter = true;
+
+function music_sequencer_Envelope_sustain__P80559_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Envelope_sustain__P80559, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Envelope_getValue__P83294(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Envelope__C80553_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Envelope_getValue__P83294.info = {"start":5914,"length":130,"line":220,"column":8,"endLine":222,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"getValue","argumentNames":["this","offset"]}
+
+function music_sequencer_Envelope_getValue__P83294_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Envelope_getValue__P83294, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_instrumentPitchAtTime__P83306(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.mod___107153 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.arg3 = (s.lambdaArgs[3]);
+      s.lambdaArgs = null;
+    }
+    s.mod___107153 = (0);
+    s.tmp_1 = music_sequencer_Envelope_amplitude__P80563_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_1.arg0 = r0;
+    s.callLocIdx = 123; s.pc = 5; return s.tmp_1;
+  case 5:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    s.tmp_2 = r0 = s.mod___107153;
+    s.tmp_4 = music_sequencer_envelopeValueAtTime__P83308_mk(s);
+    r0 = s.arg0.fields["pitchEnvelope"];
+    s.tmp_4.arg0 = r0;
+    s.tmp_4.arg1 = s.arg3;
+    s.tmp_4.arg2 = s.arg2;
+    s.callLocIdx = 124; s.pc = 6; return s.tmp_4;
+  case 6:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 + s.tmp_3);
+    s.mod___107153 = (r0);
+  case 1:
+  case 2:
+    r0 = s.arg0.fields["pitchLFO"];
+    s.tmp_1 = r0;
+    r0 = s.tmp_1.fields["buf"];
+    s.tmp_2 = r0;
+    r0 = s.tmp_1.fields["offset"];
+    s.tmp_4 = r0;
+    r0 = (s.tmp_4 + 1);
+    s.tmp_3 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_2, 4, s.tmp_3);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    s.tmp_5 = r0 = s.mod___107153;
+    s.tmp_7 = music_sequencer_lfoValueAtTime__P83309_mk(s);
+    r0 = s.arg0.fields["pitchLFO"];
+    s.tmp_7.arg0 = r0;
+    s.tmp_7.arg1 = s.arg3;
+    s.callLocIdx = 126; s.pc = 7; return s.tmp_7;
+  case 7:
+    r0 = s.retval;
+    s.tmp_6 = r0;
+    r0 = (s.tmp_5 + s.tmp_6);
+    s.mod___107153 = (r0);
+  case 3:
+  case 4:
+    s.tmp_0 = Math_max__P78884_mk(s);
+    r0 = (s.arg1 + s.mod___107153);
+    s.tmp_0.arg0 = r0;
+    s.tmp_0.arg1 = 0;
+    s.callLocIdx = 127; s.pc = 8; return s.tmp_0;
+  case 8:
+    r0 = s.retval;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_instrumentPitchAtTime__P83306.info = {"start":24336,"length":448,"line":749,"column":4,"endLine":758,"endColumn":5,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"instrumentPitchAtTime","argumentNames":["instrument","noteFrequency","gateLength","time"]}
+
+function music_sequencer_instrumentPitchAtTime__P83306_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_instrumentPitchAtTime__P83306, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  mod___107153: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+  arg3: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Instrument_waveform__P80608(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Instrument__C80602_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Instrument_waveform__P80608.info = {"start":11354,"length":76,"line":409,"column":8,"endLine":411,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"waveform","argumentNames":["this"]}
+music_sequencer_Instrument_waveform__P80608.isGetter = true;
+
+function music_sequencer_Instrument_waveform__P80608_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Instrument_waveform__P80608, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_LFO_amplitude__P80569(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_LFO__C80565_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_LFO_amplitude__P80569.info = {"start":6598,"length":114,"line":243,"column":8,"endLine":245,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"amplitude","argumentNames":["this"]}
+music_sequencer_LFO_amplitude__P80569.isGetter = true;
+
+function music_sequencer_LFO_amplitude__P80569_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_LFO_amplitude__P80569, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_LFO_frequency__P80567(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_LFO__C80565_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_LFO_frequency__P80567.info = {"start":6418,"length":77,"line":235,"column":8,"endLine":237,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"frequency","argumentNames":["this"]}
+music_sequencer_LFO_frequency__P80567.isGetter = true;
+
+function music_sequencer_LFO_frequency__P80567_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_LFO_frequency__P80567, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Envelope_amplitude__P80563(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Envelope__C80553_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 8);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Envelope_amplitude__P80563.info = {"start":5745,"length":72,"line":212,"column":8,"endLine":214,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"amplitude","argumentNames":["this"]}
+music_sequencer_Envelope_amplitude__P80563.isGetter = true;
+
+function music_sequencer_Envelope_amplitude__P80563_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Envelope_amplitude__P80563, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Envelope_release__P80561(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Envelope__C80553_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 6);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Envelope_release__P80561.info = {"start":5521,"length":70,"line":203,"column":8,"endLine":205,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"release","argumentNames":["this"]}
+music_sequencer_Envelope_release__P80561.isGetter = true;
+
+function music_sequencer_Envelope_release__P80561_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Envelope_release__P80561, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Envelope_decay__P80557(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Envelope__C80553_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 2);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Envelope_decay__P80557.info = {"start":5048,"length":68,"line":185,"column":8,"endLine":187,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"decay","argumentNames":["this"]}
+music_sequencer_Envelope_decay__P80557.isGetter = true;
+
+function music_sequencer_Envelope_decay__P80557_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Envelope_decay__P80557, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Envelope_attack__P80555(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Envelope__C80553_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 0);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Envelope_attack__P80555.info = {"start":4782,"length":69,"line":176,"column":8,"endLine":178,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"attack","argumentNames":["this"]}
+music_sequencer_Envelope_attack__P80555.isGetter = true;
+
+function music_sequencer_Envelope_attack__P80555_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Envelope_attack__P80555, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Instrument_octave__P80610(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Instrument__C80602_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 27);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Instrument_octave__P80610.info = {"start":11532,"length":78,"line":417,"column":8,"endLine":419,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"octave","argumentNames":["this"]}
+music_sequencer_Instrument_octave__P80610.isGetter = true;
+
+function music_sequencer_Instrument_octave__P80610_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Instrument_octave__P80610, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_NoteEvent_endTick__P80575(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_NoteEvent__C80571_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 2);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_NoteEvent_endTick__P80575.info = {"start":7132,"length":70,"line":265,"column":8,"endLine":267,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"endTick","argumentNames":["this"]}
+music_sequencer_NoteEvent_endTick__P80575.isGetter = true;
+
+function music_sequencer_NoteEvent_endTick__P80575_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_NoteEvent_endTick__P80575, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_NoteEvent_getValue__P83296(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_NoteEvent__C80571_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + s.arg1);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_NoteEvent_getValue__P83296.info = {"start":7821,"length":130,"line":293,"column":8,"endLine":295,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"getValue","argumentNames":["this","offset"]}
+
+function music_sequencer_NoteEvent_getValue__P83296_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_NoteEvent_getValue__P83296, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_lookupFrequency__P80400(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_1 = r0 = globals.freqs___83244;
+    r0 = (s.arg0 * 2);
+    s.tmp_2 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_1, 4, s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = s.tmp_0;
+    { step = 2; continue; }
+  case 1:
+    r0 = 0;
+  case 2:
+    // jmp value (already in r0)
+    s.tmp_3 = r0;
+    r0 = s.tmp_3;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_lookupFrequency__P80400.info = {"start":21546,"length":122,"line":612,"column":4,"endLine":614,"endColumn":5,"fileName":"pxt_modules/mixer/melody.ts","functionName":"lookupFrequency","argumentNames":["note"]}
+
+function music_lookupFrequency__P80400_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_lookupFrequency__P80400, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Track_advanceNoteEvent__P80595(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Track__C80581_VT)) failedCast(r0);
+    r0 = s.arg0.fields["currentNoteEvent"];
+    s.tmp_0 = r0;
+    r0 = s.tmp_0.fields["offset"];
+    s.tmp_2 = r0;
+    s.tmp_4 = music_sequencer_NoteEvent_byteLength__P80579_mk(s);
+    r0 = s.arg0.fields["currentNoteEvent"];
+    s.tmp_4.arg0 = r0;
+    s.callLocIdx = 38; s.pc = 3; return s.tmp_4;
+  case 3:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 + s.tmp_3);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["offset"] = (s.tmp_1);
+    r0 = s.arg0.fields["currentNoteEvent"];
+    r0 = r0.fields["offset"];
+    s.tmp_1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_3 = r0;
+    s.tmp_5 = music_sequencer_Track_byteLength__P80594_mk(s);
+    s.tmp_5.arg0 = s.arg0;
+    s.callLocIdx = 39; s.pc = 4; return s.tmp_5;
+  case 4:
+    r0 = s.retval;
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 + s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 >= s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = s.arg0.fields["currentNoteEvent"];
+    s.tmp_6 = r0;
+    s.tmp_9 = music_sequencer_Track_noteEventStart__P80591_mk(s);
+    s.tmp_9.arg0 = s.arg0;
+    s.callLocIdx = 40; s.pc = 5; return s.tmp_9;
+  case 5:
+    r0 = s.retval;
+    s.tmp_8 = r0;
+    r0 = (s.tmp_8 + 2);
+    s.tmp_7 = r0;
+    r0 = (s.tmp_6).fields["offset"] = (s.tmp_7);
+  case 1:
+  case 2:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Track_advanceNoteEvent__P80595.info = {"start":9454,"length":276,"line":353,"column":8,"endLine":359,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"advanceNoteEvent","argumentNames":["this"]}
+
+function music_sequencer_Track_advanceNoteEvent__P80595_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Track_advanceNoteEvent__P80595, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_NoteEvent_byteLength__P80579(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_NoteEvent__C80571_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_1 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 + 4);
+    s.tmp_2 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_1, s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 + 5);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_NoteEvent_byteLength__P80579.info = {"start":7485,"length":67,"line":281,"column":8,"endLine":283,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"byteLength","argumentNames":["this"]}
+music_sequencer_NoteEvent_byteLength__P80579.isGetter = true;
+
+function music_sequencer_NoteEvent_byteLength__P80579_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_NoteEvent_byteLength__P80579, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_NoteEvent_startTick__P80573(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_NoteEvent__C80571_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = s.arg0.fields["offset"];
+    s.tmp_2 = r0;
+    r0 = (s.tmp_2 + 0);
+    s.tmp_1 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, s.tmp_1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_NoteEvent_startTick__P80573.info = {"start":6963,"length":72,"line":257,"column":8,"endLine":259,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"startTick","argumentNames":["this"]}
+music_sequencer_NoteEvent_startTick__P80573.isGetter = true;
+
+function music_sequencer_NoteEvent_startTick__P80573_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_NoteEvent_startTick__P80573, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_tickToMs__P80645(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Sequencer__C80637_VT)) failedCast(r0);
+    r0 = s.arg0.fields["song"];
+    s.tmp_3 = r0;
+    r0 = s.tmp_3.fields["buf"];
+    s.tmp_4 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_4, 4, 1);
+    s.tmp_2 = r0;
+    r0 = (60000 / s.tmp_2);
+    s.tmp_1 = r0;
+    r0 = s.arg0.fields["song"];
+    s.tmp_6 = r0;
+    r0 = s.tmp_6.fields["buf"];
+    s.tmp_7 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_7, 4);
+    s.tmp_5 = r0;
+    r0 = (s.tmp_1 / s.tmp_5);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 * s.arg1);
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_tickToMs__P80645.info = {"start":1351,"length":125,"line":47,"column":8,"endLine":49,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"tickToMs","argumentNames":["this","ticks"]}
+
+function music_sequencer_Sequencer_tickToMs__P80645_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_tickToMs__P80645, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_beatsPerMinute__P80543(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Song__C80538_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = pxsim.BufferMethods.getNumber(s.tmp_0, 4, 1);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_beatsPerMinute__P80543.info = {"start":2462,"length":105,"line":98,"column":8,"endLine":100,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"beatsPerMinute","argumentNames":["this"]}
+music_sequencer_Song_beatsPerMinute__P80543.isGetter = true;
+
+function music_sequencer_Song_beatsPerMinute__P80543_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_beatsPerMinute__P80543, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_measures__P80549(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Song__C80538_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, 5);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_measures__P80549.info = {"start":3035,"length":66,"line":122,"column":8,"endLine":124,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"measures","argumentNames":["this"]}
+music_sequencer_Song_measures__P80549.isGetter = true;
+
+function music_sequencer_Song_measures__P80549_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_measures__P80549, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_ticksPerBeat__P80547(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Song__C80538_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, 4);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_ticksPerBeat__P80547.info = {"start":2869,"length":70,"line":114,"column":8,"endLine":116,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"ticksPerBeat","argumentNames":["this"]}
+music_sequencer_Song_ticksPerBeat__P80547.isGetter = true;
+
+function music_sequencer_Song_ticksPerBeat__P80547_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_ticksPerBeat__P80547, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Song_beatsPerMeasure__P80545(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Song__C80538_VT)) failedCast(r0);
+    r0 = s.arg0.fields["buf"];
+    s.tmp_0 = r0;
+    r0 = pxsim.BufferMethods.getByte(s.tmp_0, 3);
+    return leaveAccessor(s, r0)
+  default: oops()
+} } }
+music_sequencer_Song_beatsPerMeasure__P80545.info = {"start":2697,"length":73,"line":106,"column":8,"endLine":108,"endColumn":9,"fileName":"pxt_modules/mixer/instrument.ts","functionName":"beatsPerMeasure","argumentNames":["this"]}
+music_sequencer_Song_beatsPerMeasure__P80545.isGetter = true;
+
+function music_sequencer_Song_beatsPerMeasure__P80545_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Song_beatsPerMeasure__P80545, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function music_sequencer_Sequencer_constructor__P80642(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, music_sequencer_Sequencer__C80637_VT)) failedCast(r0);
+    r0 = (s.arg0).fields["song"] = (s.arg1);
+    r0 = (s.arg0).fields["currentTick"] = (0);
+    r0 = (s.arg0).fields["isPlaying"] = (false);
+    r0 = (s.arg0).fields["isLooping"] = (false);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+music_sequencer_Sequencer_constructor__P80642.info = {"start":354,"length":148,"line":12,"column":8,"endLine":16,"endColumn":9,"fileName":"pxt_modules/mixer/sequencer.ts","functionName":"inline","argumentNames":["this","song"]}
+
+function music_sequencer_Sequencer_constructor__P80642_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: music_sequencer_Sequencer_constructor__P80642, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  arg0: undefined,
+  arg1: undefined,
 } }
 
 
@@ -63621,21 +69400,6 @@ function game_GameOverDialog__C81701_v1_1_mk(s) {
 } }
 
 
-function music_Playable__C80666_v0_2_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: null, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  tmp_2: undefined,
-  tmp_3: undefined,
-  tmp_4: undefined,
-  arg0: undefined,
-  arg1: undefined,
-} }
-
-
 function if_id_2_mk(s) {
     checkStack(s.depth);
     return {
@@ -63930,6 +69694,21 @@ function if_factory_2_mk(s) {
 
 
 function if_callback_2_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: null, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+function music_Playable__C80666_v0_2_mk(s) {
     checkStack(s.depth);
     return {
         parent: s, fn: null, depth: s.depth + 1,
@@ -65651,21 +71430,6 @@ const JSON_Stringifier__C83206_VT = mkVTable({
     "go": JSON_Stringifier_go__P83208,
   },
 });
-const music_Playable__C80666_VT = mkVTable({
-  name: "Playable",
-  numFields: 1,
-  classNo: 48,
-  lastSubtypeNo: 49,
-  maxBgInstances: null,
-  methods: {
-    "play": music_Playable_play__P80669,
-  },
-  iface: {
-    "stopped": null,
-    "set/stopped": null,
-    "play": music_Playable_play__P80669,
-  },
-});
 const scene_Renderable__C81555_VT = mkVTable({
   name: "Renderable",
   numFields: 4,
@@ -65698,8 +71462,8 @@ const scene_Renderable__C81555_VT = mkVTable({
 const info_PlayerState__C81308_VT = mkVTable({
   name: "PlayerState",
   numFields: 8,
-  classNo: 50,
-  lastSubtypeNo: 50,
+  classNo: 48,
+  lastSubtypeNo: 48,
   maxBgInstances: null,
   methods: {
   },
@@ -65725,8 +71489,8 @@ const info_PlayerState__C81308_VT = mkVTable({
 const sprites_FollowingSprite__C81028_VT = mkVTable({
   name: "FollowingSprite",
   numFields: 4,
-  classNo: 51,
-  lastSubtypeNo: 51,
+  classNo: 49,
+  lastSubtypeNo: 49,
   maxBgInstances: null,
   methods: {
   },
@@ -65744,8 +71508,8 @@ const sprites_FollowingSprite__C81028_VT = mkVTable({
 const animation_SpriteAnimation__C82107_VT = mkVTable({
   name: "SpriteAnimation",
   numFields: 3,
-  classNo: 52,
-  lastSubtypeNo: 54,
+  classNo: 50,
+  lastSubtypeNo: 52,
   maxBgInstances: null,
   methods: {
     "update": animation_SpriteAnimation_update__P82110,
@@ -65764,8 +71528,8 @@ const animation_SpriteAnimation__C82107_VT = mkVTable({
 const animation_ImageAnimation__C82111_VT = mkVTable({
   name: "ImageAnimation",
   numFields: 6,
-  classNo: 53,
-  lastSubtypeNo: 53,
+  classNo: 51,
+  lastSubtypeNo: 51,
   maxBgInstances: null,
   methods: {
     "update": animation_ImageAnimation_update__P82113,
@@ -65790,8 +71554,8 @@ const animation_ImageAnimation__C82111_VT = mkVTable({
 const animation_MovementAnimation__C82114_VT = mkVTable({
   name: "MovementAnimation",
   numFields: 7,
-  classNo: 54,
-  lastSubtypeNo: 54,
+  classNo: 52,
+  lastSubtypeNo: 52,
   maxBgInstances: null,
   methods: {
     "update": animation_MovementAnimation_update__P82116,
@@ -65818,8 +71582,8 @@ const animation_MovementAnimation__C82114_VT = mkVTable({
 const sprites_SpriteSet__C81218_VT = mkVTable({
   name: "SpriteSet",
   numFields: 1,
-  classNo: 55,
-  lastSubtypeNo: 55,
+  classNo: 53,
+  lastSubtypeNo: 53,
   maxBgInstances: null,
   methods: {
   },
@@ -65838,8 +71602,8 @@ const sprites_SpriteSet__C81218_VT = mkVTable({
 const effects_ParticleEffect__C82017_VT = mkVTable({
   name: "ParticleEffect",
   numFields: 3,
-  classNo: 56,
-  lastSubtypeNo: 57,
+  classNo: 54,
+  lastSubtypeNo: 55,
   maxBgInstances: null,
   methods: {
   },
@@ -65857,8 +71621,8 @@ const effects_ParticleEffect__C82017_VT = mkVTable({
 const particles_ParticleFactory__C81942_VT = mkVTable({
   name: "ParticleFactory",
   numFields: 0,
-  classNo: 58,
-  lastSubtypeNo: 63,
+  classNo: 56,
+  lastSubtypeNo: 61,
   maxBgInstances: null,
   methods: {
     "createParticle": particles_ParticleFactory_createParticle__P81944,
@@ -65872,8 +71636,8 @@ const particles_ParticleFactory__C81942_VT = mkVTable({
 const particles_FireFactory__C81975_VT = mkVTable({
   name: "FireFactory",
   numFields: 3,
-  classNo: 59,
-  lastSubtypeNo: 59,
+  classNo: 57,
+  lastSubtypeNo: 57,
   maxBgInstances: null,
   methods: {
     "createParticle": particles_FireFactory_createParticle__P81977,
@@ -65957,8 +71721,8 @@ const particles_FireSource__C81928_VT = mkVTable({
 const particles_Particle__C81887_VT = mkVTable({
   name: "Particle",
   numFields: 8,
-  classNo: 64,
-  lastSubtypeNo: 64,
+  classNo: 62,
+  lastSubtypeNo: 62,
   maxBgInstances: 200,
   methods: {
   },
@@ -65984,8 +71748,8 @@ const particles_Particle__C81887_VT = mkVTable({
 const particles_SprayFactory__C81946_VT = mkVTable({
   name: "SprayFactory",
   numFields: 3,
-  classNo: 60,
-  lastSubtypeNo: 63,
+  classNo: 58,
+  lastSubtypeNo: 61,
   maxBgInstances: null,
   methods: {
     "createParticle": particles_SprayFactory_createParticle__P81948,
@@ -66007,8 +71771,8 @@ const particles_SprayFactory__C81946_VT = mkVTable({
 const animation_Path__C82102_VT = mkVTable({
   name: "Path",
   numFields: 12,
-  classNo: 65,
-  lastSubtypeNo: 65,
+  classNo: 63,
+  lastSubtypeNo: 63,
   maxBgInstances: null,
   methods: {
   },
@@ -66049,8 +71813,8 @@ const animation_Path__C82102_VT = mkVTable({
 const tiles_Location__C81448_VT = mkVTable({
   name: "Location",
   numFields: 2,
-  classNo: 66,
-  lastSubtypeNo: 66,
+  classNo: 64,
+  lastSubtypeNo: 64,
   maxBgInstances: null,
   methods: {
   },
@@ -66073,8 +71837,8 @@ const tiles_Location__C81448_VT = mkVTable({
 const effects_ImageEffect__C82045_VT = mkVTable({
   name: "ImageEffect",
   numFields: 4,
-  classNo: 67,
-  lastSubtypeNo: 67,
+  classNo: 65,
+  lastSubtypeNo: 65,
   maxBgInstances: null,
   methods: {
   },
@@ -66095,8 +71859,8 @@ const effects_ImageEffect__C82045_VT = mkVTable({
 const scene_TileOverlapHandler__C81573_VT = mkVTable({
   name: "TileOverlapHandler",
   numFields: 3,
-  classNo: 68,
-  lastSubtypeNo: 68,
+  classNo: 66,
+  lastSubtypeNo: 66,
   maxBgInstances: null,
   methods: {
   },
@@ -66109,11 +71873,264 @@ const scene_TileOverlapHandler__C81573_VT = mkVTable({
     "set/handler": null,
   },
 });
+const music_Playable__C80666_VT = mkVTable({
+  name: "Playable",
+  numFields: 1,
+  classNo: 67,
+  lastSubtypeNo: 69,
+  maxBgInstances: null,
+  methods: {
+    "play": music_Playable_play__P80669,
+  },
+  iface: {
+    "stopped": null,
+    "set/stopped": null,
+    "play": music_Playable_play__P80669,
+  },
+});
+const music_sequencer_Song__C80538_VT = mkVTable({
+  name: "Song",
+  numFields: 3,
+  classNo: 68,
+  lastSubtypeNo: 68,
+  maxBgInstances: null,
+  methods: {
+    "play": music_sequencer_Song_play__P80552,
+  },
+  iface: {
+    "stopped": null,
+    "set/stopped": null,
+    "tracks": null,
+    "set/tracks": null,
+    "buf": null,
+    "set/buf": null,
+    "beatsPerMinute": music_sequencer_Song_beatsPerMinute__P80543,
+    "beatsPerMeasure": music_sequencer_Song_beatsPerMeasure__P80545,
+    "ticksPerBeat": music_sequencer_Song_ticksPerBeat__P80547,
+    "measures": music_sequencer_Song_measures__P80549,
+    "numberOfTracks": music_sequencer_Song_numberOfTracks__P80551,
+    "play": music_sequencer_Song_play__P80552,
+  },
+});
+const music_sequencer_Track__C80581_VT = mkVTable({
+  name: "Track",
+  numFields: 3,
+  classNo: 70,
+  lastSubtypeNo: 72,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "currentNoteEvent": null,
+    "set/currentNoteEvent": null,
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "isMelodicTrack": music_sequencer_Track_isMelodicTrack__P80584,
+    "id": music_sequencer_Track_id__P80585,
+    "set/id": music_sequencer_Track_id__P80586,
+    "flags": music_sequencer_Track_flags__P80587,
+    "set/flags": music_sequencer_Track_flags__P80588,
+    "instrumentByteLength": music_sequencer_Track_instrumentByteLength__P80589,
+    "noteEventStart": music_sequencer_Track_noteEventStart__P80591,
+    "noteEventByteLength": music_sequencer_Track_noteEventByteLength__P80592,
+    "byteLength": music_sequencer_Track_byteLength__P80594,
+    "advanceNoteEvent": music_sequencer_Track_advanceNoteEvent__P80595,
+    "getValue": music_sequencer_Track_getValue__P83298,
+  },
+});
+const music_sequencer_MelodicTrack__C80596_VT = mkVTable({
+  name: "MelodicTrack",
+  numFields: 4,
+  classNo: 71,
+  lastSubtypeNo: 71,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "currentNoteEvent": null,
+    "set/currentNoteEvent": null,
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "instrument": null,
+    "set/instrument": null,
+    "isMelodicTrack": music_sequencer_Track_isMelodicTrack__P80584,
+    "id": music_sequencer_Track_id__P80585,
+    "set/id": music_sequencer_Track_id__P80586,
+    "flags": music_sequencer_Track_flags__P80587,
+    "set/flags": music_sequencer_Track_flags__P80588,
+    "instrumentByteLength": music_sequencer_Track_instrumentByteLength__P80589,
+    "noteEventStart": music_sequencer_Track_noteEventStart__P80591,
+    "noteEventByteLength": music_sequencer_Track_noteEventByteLength__P80592,
+    "byteLength": music_sequencer_Track_byteLength__P80594,
+    "advanceNoteEvent": music_sequencer_Track_advanceNoteEvent__P80595,
+    "getValue": music_sequencer_Track_getValue__P83298,
+  },
+});
+const music_sequencer_DrumTrack__C80599_VT = mkVTable({
+  name: "DrumTrack",
+  numFields: 4,
+  classNo: 72,
+  lastSubtypeNo: 72,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "currentNoteEvent": null,
+    "set/currentNoteEvent": null,
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "drums": null,
+    "set/drums": null,
+    "isMelodicTrack": music_sequencer_Track_isMelodicTrack__P80584,
+    "id": music_sequencer_Track_id__P80585,
+    "set/id": music_sequencer_Track_id__P80586,
+    "flags": music_sequencer_Track_flags__P80587,
+    "set/flags": music_sequencer_Track_flags__P80588,
+    "instrumentByteLength": music_sequencer_Track_instrumentByteLength__P80589,
+    "noteEventStart": music_sequencer_Track_noteEventStart__P80591,
+    "noteEventByteLength": music_sequencer_Track_noteEventByteLength__P80592,
+    "byteLength": music_sequencer_Track_byteLength__P80594,
+    "advanceNoteEvent": music_sequencer_Track_advanceNoteEvent__P80595,
+    "getValue": music_sequencer_Track_getValue__P83298,
+  },
+});
+const music_sequencer_DrumInstrument__C80612_VT = mkVTable({
+  name: "DrumInstrument",
+  numFields: 3,
+  classNo: 73,
+  lastSubtypeNo: 73,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "steps": null,
+    "set/steps": null,
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "byteLength": music_sequencer_DrumInstrument_byteLength__P80615,
+    "numSteps": music_sequencer_DrumInstrument_numSteps__P80616,
+    "startFrequency": music_sequencer_DrumInstrument_startFrequency__P80618,
+    "startVolume": music_sequencer_DrumInstrument_startVolume__P80620,
+    "getValue": music_sequencer_DrumInstrument_getValue__P83302,
+  },
+});
+const music_sequencer_DrumStep__C80622_VT = mkVTable({
+  name: "DrumStep",
+  numFields: 2,
+  classNo: 74,
+  lastSubtypeNo: 74,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "waveform": music_sequencer_DrumStep_waveform__P80624,
+    "frequency": music_sequencer_DrumStep_frequency__P80626,
+    "volume": music_sequencer_DrumStep_volume__P80628,
+    "duration": music_sequencer_DrumStep_duration__P80630,
+    "getValue": music_sequencer_DrumStep_getValue__P83304,
+  },
+});
+const music_sequencer_NoteEvent__C80571_VT = mkVTable({
+  name: "NoteEvent",
+  numFields: 2,
+  classNo: 75,
+  lastSubtypeNo: 75,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "startTick": music_sequencer_NoteEvent_startTick__P80573,
+    "endTick": music_sequencer_NoteEvent_endTick__P80575,
+    "polyphony": music_sequencer_NoteEvent_polyphony__P80577,
+    "byteLength": music_sequencer_NoteEvent_byteLength__P80579,
+    "getNote": music_sequencer_NoteEvent_getNote__P80580,
+    "getValue": music_sequencer_NoteEvent_getValue__P83296,
+  },
+});
+const music_sequencer_Instrument__C80602_VT = mkVTable({
+  name: "Instrument",
+  numFields: 6,
+  classNo: 76,
+  lastSubtypeNo: 76,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "ampEnvelope": null,
+    "set/ampEnvelope": null,
+    "pitchEnvelope": null,
+    "set/pitchEnvelope": null,
+    "ampLFO": null,
+    "set/ampLFO": null,
+    "pitchLFO": null,
+    "set/pitchLFO": null,
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "waveform": music_sequencer_Instrument_waveform__P80608,
+    "octave": music_sequencer_Instrument_octave__P80610,
+  },
+});
+const music_sequencer_Envelope__C80553_VT = mkVTable({
+  name: "Envelope",
+  numFields: 2,
+  classNo: 77,
+  lastSubtypeNo: 77,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "attack": music_sequencer_Envelope_attack__P80555,
+    "decay": music_sequencer_Envelope_decay__P80557,
+    "sustain": music_sequencer_Envelope_sustain__P80559,
+    "release": music_sequencer_Envelope_release__P80561,
+    "amplitude": music_sequencer_Envelope_amplitude__P80563,
+    "getValue": music_sequencer_Envelope_getValue__P83294,
+  },
+});
+const music_sequencer_LFO__C80565_VT = mkVTable({
+  name: "LFO",
+  numFields: 2,
+  classNo: 78,
+  lastSubtypeNo: 78,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "buf": null,
+    "set/buf": null,
+    "offset": null,
+    "set/offset": null,
+    "frequency": music_sequencer_LFO_frequency__P80567,
+    "amplitude": music_sequencer_LFO_amplitude__P80569,
+  },
+});
 const controller_ButtonHandler__C80938_VT = mkVTable({
   name: "ButtonHandler",
   numFields: 2,
-  classNo: 69,
-  lastSubtypeNo: 69,
+  classNo: 79,
+  lastSubtypeNo: 79,
   maxBgInstances: null,
   methods: {
   },
@@ -66127,8 +72144,8 @@ const controller_ButtonHandler__C80938_VT = mkVTable({
 const controller_ButtonEventHandlerState__C80940_VT = mkVTable({
   name: "ButtonEventHandlerState",
   numFields: 3,
-  classNo: 70,
-  lastSubtypeNo: 70,
+  classNo: 80,
+  lastSubtypeNo: 80,
   maxBgInstances: null,
   methods: {
   },
@@ -66144,8 +72161,8 @@ const controller_ButtonEventHandlerState__C80940_VT = mkVTable({
 const scene_OverlapHandler__C81569_VT = mkVTable({
   name: "OverlapHandler",
   numFields: 3,
-  classNo: 71,
-  lastSubtypeNo: 71,
+  classNo: 81,
+  lastSubtypeNo: 81,
   maxBgInstances: null,
   methods: {
   },
@@ -66161,8 +72178,8 @@ const scene_OverlapHandler__C81569_VT = mkVTable({
 const scene_systemMenu_PauseMenu__C81850_VT = mkVTable({
   name: "PauseMenu",
   numFields: 7,
-  classNo: 72,
-  lastSubtypeNo: 72,
+  classNo: 82,
+  lastSubtypeNo: 82,
   maxBgInstances: null,
   methods: {
   },
@@ -66192,8 +72209,8 @@ const scene_systemMenu_PauseMenu__C81850_VT = mkVTable({
 const scene_systemMenu_MenuOption__C81842_VT = mkVTable({
   name: "MenuOption",
   numFields: 8,
-  classNo: 73,
-  lastSubtypeNo: 73,
+  classNo: 83,
+  lastSubtypeNo: 83,
   maxBgInstances: null,
   methods: {
   },
@@ -66226,8 +72243,8 @@ const scene_systemMenu_MenuOption__C81842_VT = mkVTable({
 const effects_ScreenEffect__C82021_VT = mkVTable({
   name: "ScreenEffect",
   numFields: 5,
-  classNo: 57,
-  lastSubtypeNo: 57,
+  classNo: 55,
+  lastSubtypeNo: 55,
   maxBgInstances: null,
   methods: {
   },
@@ -66251,8 +72268,8 @@ const effects_ScreenEffect__C82021_VT = mkVTable({
 const particles_AreaFactory__C81952_VT = mkVTable({
   name: "AreaFactory",
   numFields: 8,
-  classNo: 61,
-  lastSubtypeNo: 63,
+  classNo: 59,
+  lastSubtypeNo: 61,
   maxBgInstances: null,
   methods: {
     "createParticle": particles_AreaFactory_createParticle__P81958,
@@ -66284,8 +72301,8 @@ const particles_AreaFactory__C81952_VT = mkVTable({
 const particles_ShapeFactory__C81968_VT = mkVTable({
   name: "ShapeFactory",
   numFields: 11,
-  classNo: 62,
-  lastSubtypeNo: 63,
+  classNo: 60,
+  lastSubtypeNo: 61,
   maxBgInstances: null,
   methods: {
     "createParticle": particles_ShapeFactory_createParticle__P81972,
@@ -66324,8 +72341,8 @@ const particles_ShapeFactory__C81968_VT = mkVTable({
 const particles_ConfettiFactory__C81973_VT = mkVTable({
   name: "ConfettiFactory",
   numFields: 11,
-  classNo: 63,
-  lastSubtypeNo: 63,
+  classNo: 61,
+  lastSubtypeNo: 61,
   maxBgInstances: null,
   methods: {
     "createParticle": particles_ShapeFactory_createParticle__P81972,
@@ -66364,8 +72381,8 @@ const particles_ConfettiFactory__C81973_VT = mkVTable({
 const music_MelodyPlayable__C80671_VT = mkVTable({
   name: "MelodyPlayable",
   numFields: 2,
-  classNo: 49,
-  lastSubtypeNo: 49,
+  classNo: 69,
+  lastSubtypeNo: 69,
   maxBgInstances: null,
   methods: {
     "play": music_MelodyPlayable_play__P80673,
@@ -66381,8 +72398,8 @@ const music_MelodyPlayable__C80671_VT = mkVTable({
 const music_Melody__C80381_VT = mkVTable({
   name: "Melody",
   numFields: 2,
-  classNo: 74,
-  lastSubtypeNo: 74,
+  classNo: 84,
+  lastSubtypeNo: 84,
   maxBgInstances: null,
   methods: {
   },
@@ -66405,8 +72422,8 @@ const music_Melody__C80381_VT = mkVTable({
 const music_MelodyPlayer__C80392_VT = mkVTable({
   name: "MelodyPlayer",
   numFields: 2,
-  classNo: 75,
-  lastSubtypeNo: 75,
+  classNo: 85,
+  lastSubtypeNo: 85,
   maxBgInstances: null,
   methods: {
   },
@@ -66423,8 +72440,8 @@ const music_MelodyPlayer__C80392_VT = mkVTable({
 const effects_SceneAnchor__C84101_VT = mkVTable({
   name: "SceneAnchor",
   numFields: 1,
-  classNo: 76,
-  lastSubtypeNo: 76,
+  classNo: 86,
+  lastSubtypeNo: 86,
   maxBgInstances: null,
   methods: {
   },
@@ -66437,11 +72454,54 @@ const effects_SceneAnchor__C84101_VT = mkVTable({
     "height": effects_SceneAnchor_height__P84105,
   },
 });
+const music_sequencer_Sequencer__C80637_VT = mkVTable({
+  name: "Sequencer",
+  numFields: 5,
+  classNo: 87,
+  lastSubtypeNo: 87,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "currentTick": null,
+    "set/currentTick": null,
+    "isPlaying": null,
+    "set/isPlaying": null,
+    "isLooping": null,
+    "set/isLooping": null,
+    "isRunning": null,
+    "set/isRunning": null,
+    "song": null,
+    "set/song": null,
+    "start": music_sequencer_Sequencer_start__P80643,
+    "stop": music_sequencer_Sequencer_stop__P80644,
+    "tickToMs": music_sequencer_Sequencer_tickToMs__P80645,
+    "scheduleCurrentTick": music_sequencer_Sequencer_scheduleCurrentTick__P83318,
+    "scheduleMelodicTrack": music_sequencer_Sequencer_scheduleMelodicTrack__P83319,
+    "scheduleDrumTrack": music_sequencer_Sequencer_scheduleDrumTrack__P83320,
+  },
+});
+const music_sequencer__SimulatorSequencer__C80647_VT = mkVTable({
+  name: "_SimulatorSequencer",
+  numFields: 1,
+  classNo: 88,
+  lastSubtypeNo: 88,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "id": null,
+    "set/id": null,
+    "play": music_sequencer__SimulatorSequencer_play__P80649,
+    "setVolume": music_sequencer__SimulatorSequencer_setVolume__P80651,
+    "state": music_sequencer__SimulatorSequencer_state__P80654,
+  },
+});
 const MovingSprite__C81280_VT = mkVTable({
   name: "MovingSprite",
   numFields: 7,
-  classNo: 77,
-  lastSubtypeNo: 77,
+  classNo: 89,
+  lastSubtypeNo: 89,
   maxBgInstances: null,
   methods: {
   },
@@ -66465,8 +72525,8 @@ const MovingSprite__C81280_VT = mkVTable({
 const sprites_StaticObstacle__C81253_VT = mkVTable({
   name: "StaticObstacle",
   numFields: 5,
-  classNo: 78,
-  lastSubtypeNo: 78,
+  classNo: 90,
+  lastSubtypeNo: 90,
   maxBgInstances: null,
   methods: {
   },
@@ -66490,8 +72550,8 @@ const sprites_StaticObstacle__C81253_VT = mkVTable({
 const sprites_BaseSpriteSayRenderer__C81014_VT = mkVTable({
   name: "BaseSpriteSayRenderer",
   numFields: 3,
-  classNo: 79,
-  lastSubtypeNo: 79,
+  classNo: 91,
+  lastSubtypeNo: 91,
   maxBgInstances: null,
   methods: {
     "draw": sprites_BaseSpriteSayRenderer_draw__P81016,
@@ -66511,7 +72571,7 @@ const sprites_BaseSpriteSayRenderer__C81014_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["tile0___83119","tile1___83120","tile2___83121","tile3___83122","tile4___83123","tile5___83124","tile6___83125","tile7___83126","tile9___83127","tile10___83128","tile11___83129","transparency16___83118","Coin___83108","Flower___83109","Fireball___83110","Hops_and_Paw___83115","current_level___83116","bee___83114","flower___83113","fireball___83112"])
+const breakpoints = setupDebugger(1, ["tile0___83119","tile1___83120","tile2___83121","tile3___83122","tile4___83123","tile5___83124","tile6___83125","tile7___83126","tile9___83127","tile10___83128","tile11___83129","transparency16___83118","Coin___117706","Flower___117709","Fireball___117712","Hops_and_Paw___117737","current_level___117761","bee___117778","flower___117884","fireball___117943"])
 
-return _main___P104131
+return _main___P118225
 })
