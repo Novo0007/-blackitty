@@ -8,7 +8,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSpr
     otherSprite.destroy()
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    music.play(music.createSong(hex`0078000408020108001c000e050046006603320000040a002d000000640014000132000201000206001c002000011d`), music.PlaybackMode.InBackground)
     if (Hops_and_Paw.vy == 0) {
         Hops_and_Paw.vy = -150
     }
