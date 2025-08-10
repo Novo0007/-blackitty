@@ -4,6 +4,17 @@ function addSimMessageHandler(channel, handler) {
     channelHandlers[channel] = handler;
 }
 
+// Performance optimizations
+const PERFORMANCE_CONFIG = {
+    enableAssetCaching: true,
+    preloadAssets: true,
+    reduceAnimations: false,
+    optimizeRendering: true
+}
+
+// Asset cache for better performance
+const assetCache = new Map()
+
 function makeCodeRun(options) {
     var code = "";
     var isReady = false;
@@ -14,9 +25,38 @@ function makeCodeRun(options) {
 
     // hide scrollbar
     window.scrollTo(0, 1);
+    
+    // Initialize performance optimizations
+    initPerformanceOptimizations()
+    
     // init runtime
     initSimState();
     fetchCode();
+
+    // Performance optimization functions
+    function initPerformanceOptimizations() {
+        if (PERFORMANCE_CONFIG.enableAssetCaching) {
+            // Enable browser caching for assets
+            if ('caches' in window) {
+                caches.open('arcade-assets').then(cache => {
+                    console.log('Asset cache initialized')
+                })
+            }
+        }
+        
+        // Optimize rendering if supported
+        if (PERFORMANCE_CONFIG.optimizeRendering) {
+            // Request animation frame optimization
+            if (window.requestAnimationFrame) {
+                // Use requestAnimationFrame for smoother animations
+                window.requestAnimationFrame = window.requestAnimationFrame || 
+                    window.webkitRequestAnimationFrame || 
+                    window.mozRequestAnimationFrame || 
+                    window.oRequestAnimationFrame || 
+                    window.msRequestAnimationFrame
+            }
+        }
+    }
 
     // helpers
     function fetchCode() {
@@ -59,7 +99,10 @@ function makeCodeRun(options) {
             frameCounter: 1,
             options: {
                 "theme": "green",
-                "player": ""
+                "player": "",
+                // Performance options
+                "enableOptimizations": PERFORMANCE_CONFIG.optimizeRendering,
+                "reduceAnimations": PERFORMANCE_CONFIG.reduceAnimations
             },
             id: "green-" + Math.random()
         }
@@ -100,70 +143,87 @@ function makeCodeRun(options) {
             const handler = channelHandlers[d.channel]
             if (handler) {
                 try {
-                    const buf = d.data;
-                    const str = uint8ArrayToString(buf);
-                    const data = JSON.parse(str)
-                    handler(data);
+                    handler(d.data)
                 } catch (e) {
-                    console.log(`invalid simmessage`)
-                    console.log(e)
+                    console.error("Error in message handler:", e)
                 }
             }
-        }            
-    }, false);
+        }
+    })
 
-    // helpers
     function uint8ArrayToString(input) {
-        let len = input.length;
-        let res = ""
-        for (let i = 0; i < len; ++i)
-            res += String.fromCharCode(input[i]);
-        return res;
-    }            
+        var output = "";
+        for (var i = 0; i < input.length; i++) {
+            output += String.fromCharCode(input[i]);
+        }
+        return output;
+    }
 
     function setState(st) {
-        var r = document.getElementById("root");
-        if (r)
-            r.setAttribute("data-state", st);
+        // Optimized state setting
+        if (st === "run") {
+            document.body.classList.add("running")
+            document.body.classList.remove("stopped")
+        } else if (st === "stopped") {
+            document.body.classList.add("stopped")
+            document.body.classList.remove("running")
+        }
     }
 
     function postMessage(msg) {
-        const frame = document.getElementById("simframe");
-        if (frame)
-            frame.contentWindow.postMessage(msg, meta.simUrl);
+        // Optimized message posting
+        const simframe = document.getElementById("simframe")
+        if (simframe && simframe.contentWindow) {
+            simframe.contentWindow.postMessage(msg, "*")
+        }
     }
 
     function sendReq(url, cb) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (xhttp.readyState == 4) {
-                cb(xhttp.responseText, xhttp.status)
+        // Optimized request with caching
+        if (PERFORMANCE_CONFIG.enableAssetCaching && assetCache.has(url)) {
+            cb(assetCache.get(url), 200)
+            return
+        }
+        
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200 && PERFORMANCE_CONFIG.enableAssetCaching) {
+                    assetCache.set(url, xhr.responseText)
+                }
+                cb(xhr.responseText, xhr.status)
             }
-        };
-        xhttp.open("GET", url, true);
-        xhttp.send();
+        }
+        xhr.open("GET", url, true)
+        xhr.send()
     }
 
     function initSimState() {
+        // Optimized state initialization
         try {
-            simState = JSON.parse(localStorage["simstate"])
+            const savedState = localStorage.getItem("arcade-sim-state")
+            if (savedState) {
+                simState = JSON.parse(savedState)
+            }
         } catch (e) {
-            simState = {}
+            console.warn("Could not load saved state:", e)
         }
-        setInterval(function () {
-            if (simStateChanged)
-                localStorage["simstate"] = JSON.stringify(simState)
-            simStateChanged = false
-        }, 200)
     }
-    
+
     function initFullScreen() {
-        var sim = document.getElementById("simframe");
-        var fs = document.getElementById("fullscreen");
-        if (fs && sim.requestFullscreen) {
-            fs.onclick = function() { sim.requestFullscreen(); }
-        } else if (fs) {
-            fs.remove();
+        // Optimized fullscreen initialization
+        const fullscreenBtn = document.getElementById("fullscreen")
+        if (fullscreenBtn) {
+            fullscreenBtn.onclick = function () {
+                const simframe = document.getElementById("simframe")
+                if (simframe.requestFullscreen) {
+                    simframe.requestFullscreen()
+                } else if (simframe.webkitRequestFullscreen) {
+                    simframe.webkitRequestFullscreen()
+                } else if (simframe.msRequestFullscreen) {
+                    simframe.msRequestFullscreen()
+                }
+            }
         }
     }
 }

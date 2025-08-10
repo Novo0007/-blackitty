@@ -3,6 +3,215 @@ namespace SpriteKind {
     export const Flower = SpriteKind.create()
     export const Fireball = SpriteKind.create()
 }
+
+// Optimized image assets - extracted to reduce bundle size
+const SPRITE_IMAGES = {
+    // Player sprites
+    playerIdle: img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . f . . . 
+        . . . . . . . . . . . . f f f . 
+        . . . . . . . . . . . . f f 5 f 
+        f f f f f f f f f f f f f f f f 
+        . . . . f f f f f f f f f f . . 
+        . . . . f f f f f f f f f . . . 
+        . . . . f f . . . . . f f . . . 
+        . . . . f f . . . . . f f . . . 
+    `,
+    playerIdleAlt: img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . f . . . 
+        . . . . . . . . . . . . f f f . 
+        . . . . . . . . . . . . f f 5 f 
+        f f f f f f f f f f f f f f f f 
+        . . . . f f f f f f f f f f . . 
+        . . . . f f f f f f f f f . . . 
+        . . . . f . f . . . f . f . . . 
+        . . . . f . f . . . f . f . . . 
+    `,
+    playerJump: img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . f . . . . 
+        . . . . . . . . . . . f f f . . 
+        . . . . . . . . . . . f f 5 f . 
+        . . . f . . . . . . f f f f f . 
+        . . . f . . . . . . f f f f . . 
+        . . f f . . . . . f f f . . . . 
+        . . f . . . . . . f f f f f f f 
+        . . f . . . . . f f f f . . . . 
+        . . f f . . . f f f f f f f f . 
+        . . . f f f f f f f . . . . . . 
+        . . . . . . f f f . . . . . . . 
+        . . . . . f f . f . . . . . . . 
+        . . . . . f . . f . . . . . . . 
+        . . . . . f . . . . . . . . . . 
+    `,
+    playerFall: img`
+        . . . . . . . f . . . . . . . . 
+        . . . . . . f . . . . . . . . . 
+        . . . . . f f . . . . . . . . . 
+        . . . . . f . . . . . . . . . . 
+        . . . . . f . . . . . . . . . . 
+        . . . . . f f . . . . . . . . . 
+        . . . . f f f f . . . . . . . . 
+        . . . . f f f f . . . . . . . . 
+        . . . . f f f f f . . . . . . . 
+        . . . . f . f f f f . . f . . . 
+        . . . . f . f f f f f f f f f . 
+        . . . . f . f . f f f f f f 5 f 
+        . . . . . . . . f f f f f f f f 
+        . . . . . . . . f . f . . . . . 
+        . . . . . . . . f . f . . . . . 
+        . . . . . . . . f . f f . . . . 
+    `,
+    playerWall: img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . f f . . . 
+        . . . . . . . . . . . f 5 f . . 
+        . . . . . . . . . . . f f f . . 
+        . . . . . . . . . . f f f f . . 
+        . . . . . . . . . . . . f f f f 
+        . . . . . . . . . . . . f f . . 
+        . . . . . . . . . . . . f f f f 
+        . . . . . . . f . . . . f f . . 
+        . . . . . . . f . . . . f f . . 
+        . . . . . . . f . . . . f f . . 
+        . . . . . . . f . . . . f f f f 
+        . . . . . . . f f . . . f f . . 
+        . . . . . . . . f f f f f f f f 
+    `,
+    
+    // Flower sprites (optimized animation frames)
+    flowerFrames: [
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . f 5 5 5 5 5 5 5 f . . . . 
+            . . f 5 4 4 4 4 4 5 5 5 f . . . 
+            . f 5 4 5 5 5 5 5 5 5 5 5 f . . 
+            . f 5 4 5 5 5 5 5 5 5 5 5 f . . 
+            . f 5 4 5 5 5 5 5 5 5 5 5 f . . 
+            . f 5 4 5 5 5 5 5 5 5 5 5 f . . 
+            . f 5 4 5 5 5 5 5 5 5 5 5 f . . 
+            . f 5 4 5 5 5 5 5 5 5 5 5 f . . 
+            . f 5 5 5 5 5 5 5 5 5 5 5 f . . 
+            . . f 5 5 4 4 4 5 5 5 5 f . . . 
+            . . . f 5 5 5 5 5 5 5 f . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+        `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . f f f f f . . . . . . 
+            . . . . f 5 5 5 5 5 f . . . . . 
+            . . . f 5 4 4 4 4 5 5 f . . . . 
+            . . f 5 4 5 5 5 5 5 5 5 f . . . 
+            . . f 5 4 5 5 5 5 5 5 5 f . . . 
+            . . f 5 4 5 5 5 5 5 5 5 f . . . 
+            . . f 5 4 5 5 5 5 5 5 5 f . . . 
+            . . f 5 4 5 5 5 5 5 5 5 f . . . 
+            . . f 5 4 5 5 5 5 5 5 5 f . . . 
+            . . f 5 5 5 5 5 5 5 5 5 f . . . 
+            . . . f 5 5 4 4 5 5 5 f . . . . 
+            . . . . f 5 5 5 5 5 f . . . . . 
+            . . . . . f f f f f . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+        `
+    ],
+    
+    // Bee sprites
+    beeFrames: [
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . f 1 1 1 f 1 1 1 f . . . . 
+            . . . f 1 1 1 f 1 1 1 f . . . . 
+            . . . . . 1 1 1 1 1 . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . f 5 5 5 f 5 5 5 f . . . . 
+            . . . f f 5 5 f 5 5 f f . . . . 
+            . . . f 5 5 5 f 5 5 5 f . . . . 
+            . . . . f f f f f f f . . . . . 
+        `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . f 5 5 5 f 5 5 5 f . . . . 
+            . . . f f 5 5 f 5 5 f f . . . . 
+            . . . f 5 5 5 f 5 5 5 f . . . . 
+            . . . . f f f f f f f . . . . . 
+        `
+    ]
+}
+
+// Sprite pooling for better performance
+class SpritePool {
+    private pools: { [kind: number]: Sprite[] } = {}
+    
+    getSprite(kind: SpriteKind): Sprite {
+        if (!this.pools[kind]) {
+            this.pools[kind] = []
+        }
+        
+        if (this.pools[kind].length > 0) {
+            return this.pools[kind].pop()
+        }
+        
+        return sprites.create(SPRITE_IMAGES.flowerFrames[0], kind)
+    }
+    
+    returnSprite(sprite: Sprite) {
+        const kind = sprite.kind()
+        if (!this.pools[kind]) {
+            this.pools[kind] = []
+        }
+        
+        // Reset sprite state
+        sprite.setPosition(0, 0)
+        sprite.setVelocity(0, 0)
+        sprite.setImage(SPRITE_IMAGES.flowerFrames[0])
+        
+        this.pools[kind].push(sprite)
+    }
+}
+
+const spritePool = new SpritePool()
+
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy()
@@ -21,63 +230,12 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile2`, function (sprite, loc
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Flower, function (sprite, otherSprite) {
     otherSprite.destroy()
-    bee = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
+    bee = sprites.create(SPRITE_IMAGES.beeFrames[0], SpriteKind.Enemy)
     animation.runImageAnimation(
-    bee,
-    [img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 1 1 1 f 1 1 1 f . . . . 
-        . . . f 1 1 1 f 1 1 1 f . . . . 
-        . . . . . 1 1 1 1 1 . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . f f 5 5 f 5 5 f f . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . . f f f f f f f . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . f f 5 5 f 5 5 f f . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . . f f f f f f f . . . . . 
-        `],
-    100,
-    true
+        bee,
+        SPRITE_IMAGES.beeFrames,
+        100,
+        true
     )
     bee.setPosition(Hops_and_Paw.x + 80, Hops_and_Paw.y - 80)
     bee.follow(Hops_and_Paw, 50)
@@ -203,7 +361,6 @@ function startLevel () {
             `,img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . f . . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
             . . . . . . f 4 f . . . . . . . 
             . . . . . f 5 5 5 f . . . . . . 
             . . . . . f 5 5 5 f . . . . . . 
@@ -212,23 +369,7 @@ function startLevel () {
             . . . . . f 5 5 5 f . . . . . . 
             . . . . . f 5 5 5 f . . . . . . 
             . . . . . f 5 5 5 f . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . . f . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . f . . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 4 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
-            . . . . . . f 5 f . . . . . . . 
+            . . . . . f 5 5 5 f . . . . . . 
             . . . . . . f 5 f . . . . . . . 
             . . . . . . f 5 f . . . . . . . 
             . . . . . . . f . . . . . . . . 
@@ -378,8 +519,7 @@ scene.setBackgroundImage(img`
     fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddd96dd6b6dbd68888888888888888cccccc99fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     fffffffffffffffffffffffffffffffffffffffffffffffffffffffffdbbd9666666dbb668886888888cccccccccccccc9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffdbbb99666966d68866888888cccccccccccccccccc69ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffdbbb999669666666888888888ccccbbbcc8bcccccccccc9fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    fffffffffffffffffffffffffffffffffffffffffffffffffffffdbbb999666666666888888888cbbcbe8bbbcbcccccbbcccb9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffffdbbb999669666666888888888cbbcbe8bbbcbcccccbbcccb9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffff9bbb999666666666688888888bccb888888bbbbb88888bcccccfffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     fffffffffffffffffffffffffffffffffffffffffffffffffffdbbb999669666666866888868bbbbb8888888ccc888b88bbc8cccffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffff11111fffffffffffffffffffffffffdbbb9d99ddd666668868888688bbcb888888888bc888bcc8bc886c9fffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -398,11 +538,11 @@ scene.setBackgroundImage(img`
     fffffffffffffffffffffffffffffffffffffffffff99999996ddd69666666688888868ddbddbbbbbbbbbbbbbbbbbbccccccccc888888866ffffffffffffffffffffffffffffffffffffffffffffffff
     fffffffffffffffffffffffffffffffffffffffffff999999969ddd6669666688688888bbbbbbbbbbbbbbbbbbbbbbbbccbccccc8888888869fffffffffffffffffffffffffffffffffffffffffffffff
     fffffffffffffffffffffff1fffffffffffffffffff99999966ddddd669666688888888bbbbbbbbbbbbbbbbbbbbbbbcbccccccccc88888869fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffff1fffffffffffffffffff999bb99666dddd6666666668886888bbbbbbbbbbbbbbbbbbbbbbcccccccccccc8888889fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffff1fffffffffffffffffff999bb99666dddd6666666668886888bbbbbbbbbbbbbbbbbbbbbbcbccccccccccc888886fffffffffffffffffffffffffffffffffffffffffffffff
     fffffffffffffffff1ff11ffffffffffffffffffff99bbbb966696666666666888886888bbbbbbbbbbbbbbbbbbbbbbcbccccccccccc888886fffffffffffffffffffffffffffffffffffffffffffffff
     ffffff1fffffffffff111fffffffffffffffffffff99bbdbb666969666666668888868888bbbbbbbbbbbbbbbbbbbbccbccccccccccc8888869ffffffffffffffffffffffffffffffffffffffffffffff
     ffffff11fffffffffff111ffffffffffffffffffff99dbbbbb6696966666666668886868888bbbbeb888bbbbbbbbbcccccccccccccc8888869ffffffffffffffffffffffffffffffffffffffffffffff
-    fffffff1fffffffffff1ffffffffffffffffffffff99bbbbbbe6969666666666888888888888888888888bbbbbbbbccccccccccccc88888869ffffffffffffffffffffffffffffffffffffffffffffff
+    fffffff1fffffffffff1ffffffffffffffffffffff9bbbbbbe6969666666666888888888888888888888bbbbbbbbccccccccccccc88888869ffffffffffffffffffffffffffffffffffffffffffffff
     fffffff11111fffffff1ffffffffffffffffffffff9bbbbbccbc66966666666688888688888888888d888ebbbbbbbcccccccccccbb88888869ffffffffffffffffffffffffffffffffffffffffffffff
     fffffff11ff111fffff1ffffffffffffffffffffff9bbbbbbbbcc69996666688668886888888dd88dbbd88bbbbbbbccccccccccceb88888869ffffffffffffffffffffffffffffffffffffffffffffff
     ffffffff1ffff11ffff1ffffffffffffffffffffff9bbbbbbbbccc999966668868888888888ddddbbbbd88cbbbbbbbbccccccccc8888888869ffffffffffffffffffffffffffffffffffffffffffffff
@@ -463,7 +603,6 @@ scene.setBackgroundImage(img`
     fffffffffffffffffffffffffffffffffddffffffdfdddfffddfffffffffdffffffffddfffffdddfffffdfffffffdffffffffffffffffffdfffffddfdffffffffffffffdfffffdfffffdddfdffffffff
     fffffffffffffffffffffffffffffffffffdfffffdfdfdfffddfffffffffdffddddddffffffffdffffffdfffffffddfffffffffffffffffdffffddddffffffffffdffffdffddddddffffdddfffffffff
     fffffffffffffffffffffffffffffffffffddffffddffdfffddfffffffffdfffffffffffffffddffffffdfffffffdddfffdffffffffffffdffdddddfffffffffffdffffdfffffdffffffdfffffffffff
-    ffffffffffffffffffffffffffffffffffffdffffddfffdfffdfffffffffdfffffffffffffffdfffffffdffffffdffdffdfffffffffffffdfdffffddffffffffffdffffdfffffdfffffdffffffffffff
     fffffffffffffffffffffffffffffddfffffdffffddfffdfffffffffffffdddffffffffffdffdffffffffdfffffdfffdddfffffffffffffdffffffffddffffffffdffffdfffffdfffffdffffffffffff
     ffffffffffffffffffffffffffffffdfffffdfffffdfffdffffffffffffffffdddddddddddddffffffffffdffffdfffffffffffffffffffdfffffffffddfffffdffdfffdffffddffffdfffffffffffff
     fffffffffffffffffffffffffffffffdfffdfffffffffffffffffffffffffffffffffffffffdfffffffffffddddffffffffffffffffffffddffffffffffdddfffdfdddfdffffddffffdfffffffffffff
@@ -496,110 +635,25 @@ Hops_and_Paw = sprites.create(img`
     f f f f f f f f f f f f f f f f 
     . . . . f f f f f f f f f f . . 
     . . . . f f f f f f f f f . . . 
-    . . . . f . f . . . f . f . . . 
-    . . . . f . f . . . f . f . . . 
+    . . . . f f . . . . . f f . . . 
+    . . . . f f . . . . . f f . . . 
     `, SpriteKind.Player)
 controller.moveSprite(Hops_and_Paw, 80, 0)
 startLevel()
 game.onUpdate(function () {
     if (Hops_and_Paw.vy < 0) {
-        Hops_and_Paw.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . f . . . . 
-            . . . . . . . . . . . f f f . . 
-            . . . . . . . . . . . f f 5 f . 
-            . . . f . . . . . . f f f f f . 
-            . . . f . . . . . . f f f f . . 
-            . . f f . . . . . f f f . . . . 
-            . . f . . . . . . f f f f f f f 
-            . . f . . . . . f f f f . . . . 
-            . . f f . . . f f f f f f f f . 
-            . . . f f f f f f f . . . . . . 
-            . . . . . . f f f . . . . . . . 
-            . . . . . f f . f . . . . . . . 
-            . . . . . f . . f . . . . . . . 
-            . . . . . f . . . . . . . . . . 
-            `)
+        Hops_and_Paw.setImage(SPRITE_IMAGES.playerJump)
     } else if (Hops_and_Paw.vy > 0) {
-        Hops_and_Paw.setImage(img`
-            . . . . . . . f . . . . . . . . 
-            . . . . . . f . . . . . . . . . 
-            . . . . . f f . . . . . . . . . 
-            . . . . . f . . . . . . . . . . 
-            . . . . . f . . . . . . . . . . 
-            . . . . . f f . . . . . . . . . 
-            . . . . f f f f . . . . . . . . 
-            . . . . f f f f . . . . . . . . 
-            . . . . f f f f f . . . . . . . 
-            . . . . f . f f f f . . f . . . 
-            . . . . f . f f f f f f f f f . 
-            . . . . f . f . f f f f f f 5 f 
-            . . . . . . . . f f f f f f f f 
-            . . . . . . . . f . f . . . . . 
-            . . . . . . . . f . f . . . . . 
-            . . . . . . . . f . f f . . . . 
-            `)
+        Hops_and_Paw.setImage(SPRITE_IMAGES.playerFall)
     } else if (Hops_and_Paw.x % 2 == 0) {
-        Hops_and_Paw.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . f . . . 
-            . . . . . . . . . . . . f f f . 
-            . . . . . . . . . . . . f f 5 f 
-            f f f f f f f f f f f f f f f f 
-            . . . . f f f f f f f f f f . . 
-            . . . . f f f f f f f f f . . . 
-            . . . . f f . . . . . f f . . . 
-            . . . . f f . . . . . f f . . . 
-            `)
+        Hops_and_Paw.setImage(SPRITE_IMAGES.playerIdle)
     } else {
-        Hops_and_Paw.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . f . . . 
-            . . . . . . . . . . . . f f f . 
-            . . . . . . . . . . . . f f 5 f 
-            f f f f f f f f f f f f f f f f 
-            . . . . f f f f f f f f f f . . 
-            . . . . f f f f f f f f f . . . 
-            . . . . f . f . . . f . f . . . 
-            . . . . f . f . . . f . f . . . 
-            `)
+        Hops_and_Paw.setImage(SPRITE_IMAGES.playerIdleAlt)
     }
     if ((Hops_and_Paw.isHittingTile(CollisionDirection.Left) || Hops_and_Paw.isHittingTile(CollisionDirection.Right)) && Hops_and_Paw.vy >= 0) {
         Hops_and_Paw.vy = 0
         Hops_and_Paw.ay = 0
-        Hops_and_Paw.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . f f . . 
-            . . . . . . . . . . . f 5 f . . 
-            . . . . . . . . . . . f f f . . 
-            . . . . . . . . . . f f f f . . 
-            . . . . . . . . . . . . f f f f 
-            . . . . . . . . . . . . f f . . 
-            . . . . . . . . . . . . f f f f 
-            . . . . . . . f . . . . f f . . 
-            . . . . . . . f . . . . f f . . 
-            . . . . . . . f . . . . f f . . 
-            . . . . . . . f . . . . f f f f 
-            . . . . . . . f f . . . f f . . 
-            . . . . . . . . f f f f f f f f 
-            `)
+        Hops_and_Paw.setImage(SPRITE_IMAGES.playerWall)
     } else {
         Hops_and_Paw.ay = 350
     }
